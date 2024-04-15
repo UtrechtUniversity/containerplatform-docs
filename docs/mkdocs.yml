@@ -1,0 +1,50 @@
+site_name: Container Platform Universiteit Utrecht
+theme:
+  logo: images/cm_hs_avatar_corporate.png
+  name: material
+  custom_dir: overrides
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.left
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to Dark Mode
+      primary: yellow
+      accent: blue
+    - scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to Light Mode
+      primary: yellow
+      accent: blue
+
+  extra:
+    social:
+      - type: fontawesome/brands/github-alt
+        link: https://github.com/UtrechtUniversity
+  
+  copyright: Copyright &copy; 2024 <a href="https://UniversiteitUtrecht.nl" target="_blank" rel="noopener"><Universiteit Utrecht. All rights reserved></a>
+
+  plugins:
+    - mkdocs-macro
+    - mkdocs-video:
+        is_video: True
+        video_muted: True
+        video_controls: True
+        video_type: mp4
+        css_style:
+          width: "50%"
+
+
+        
+
