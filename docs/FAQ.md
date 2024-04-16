@@ -1,4 +1,4 @@
-# ArgoCD
+# FAQ
 ![tux-161406_1280.png](./images/tux-161406_1280.png)
 ## lorem ipsum
 ### Why linux is better than window

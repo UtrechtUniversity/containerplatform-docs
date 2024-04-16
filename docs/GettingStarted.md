@@ -1,4 +1,4 @@
-# OC console login
+# GettingStarted
 
 ## How to connect to OpenShift4 container platform [console](https://console.cp.its.uu.nl)
 

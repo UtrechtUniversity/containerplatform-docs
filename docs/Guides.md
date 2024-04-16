@@ -1,4 +1,4 @@
-# How to
+# Guides
 This is the place to upload your howto's.
 ## Work with markdown
 
