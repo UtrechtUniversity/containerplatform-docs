@@ -17,7 +17,7 @@ Container Platform public documentation
 5. create a pull request
 6. wait for the pull request to be reviewed and merged
 7. your changes will be visible on the documentation site after approval
-#todo how do we want the layout of the page(s) that external people can place in this repo
+[Container Platform docs site](https://docs.cp.its.uu.nl/)
 
 ## Check these sites on how markdown works: 
 
