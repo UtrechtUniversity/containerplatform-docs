@@ -1,4 +1,4 @@
-# OC console login
+# GettingStarted
 
 ## How to connect to OpenShift4 container platform [console](https://console.cp.its.uu.nl)
 
@@ -53,3 +53,12 @@ oc login --token=<your-token> --server=https://localhost:6443
 <iframe src="https://player.vimeo.com/video/932020706?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="480" height="270" frameBorder="1" class="giphy-embed" ; encrypted-media; gyroscope; picture-in-picture; allowfullscreen" title="oc_toegang2fa"></iframe>
 
 ### Troubleshooting
+If you have trouble connecting to the OpenShift4 api, you can try the following:
+Alternatively, you can reach the OpenShift4 api like this: 
+```bash
+ssh -i ~/.ssh/<your-private-key> 6443:console.cp.its.uu.nl:6443 -D 3333 <your-username>@steppingstone.its.uu.nl 
+```
+and use the oc login like so:
+```bash
+oc login --token=<your-token> --server=https://localhost:6443
+``` 
