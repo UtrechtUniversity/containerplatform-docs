@@ -53,7 +53,7 @@ nav:
   - Welcome: index.md
   - Getting Started:
     - Overview: content/basics/get-started.md
-    - Login: content/basics/login.md
+    - Login to the container platform: content/basics/login.md
   - Guides:
     - Overview: content/guides/guides.md
     - Create project: content/guides/create-project.md

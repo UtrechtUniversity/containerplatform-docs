@@ -1,1 +1,2 @@
-Here you will find information on how to connect to the platform through the steppingstone server.
+Here you'll find the basic steps you'll have to go through once before you can use the container platform.
+Choose your topic on the left to get started.
