@@ -68,7 +68,7 @@ If you have trouble connecting to the OpenShift4 api, you can try the following:
 - Check if the proxy is running.
 - Check if the OpenShift4 console is reachable.
 - Check if there are no conflicting settings in your `~/.ssh/config` file.
-- 
+
 If you have trouble reaching the api trough the cli, you can also setup your connection like so: 
 #### Proxy setup for the CLI
 Make sure to set the correct port e
