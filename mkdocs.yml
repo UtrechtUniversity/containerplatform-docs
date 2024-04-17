@@ -49,6 +49,11 @@ theme:
         css_style:
           width: "50%"
 
-
-        
-
+nav:
+  - Welcome: index.md
+  - Getting Started: get-started.md
+  - Guides: guides.md
+  - Reference: reference.md
+  - Samples: samples.md
+  - FAQ: faq.md
+  - Roadmap: roadmap.md
