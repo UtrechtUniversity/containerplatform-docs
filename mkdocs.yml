@@ -1,11 +1,11 @@
-site_name: Container Platform Universiteit Utrecht
+site_name: Container Platform Utrecht University
 theme:
   logo: images/cm_hs_avatar_corporate.png
   name: material
   custom_dir: overrides
   features:
+    - navigation.tracking
     - navigation.tabs
-    - toc.integrate
     - navigation.path
     - navigation.top
     - navigation.left

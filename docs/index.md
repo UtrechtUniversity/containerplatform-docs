@@ -1,4 +1,4 @@
-## Welcome
+# Welcome
 Welcome to the documentation site for the Container Platform of the University Utrecht.
 
 You have landed on the documentation site of the Container Platform of the University Utrecht. Here you will find 
