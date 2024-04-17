@@ -9,7 +9,8 @@ Container Platform public documentation
 - Choose which file you want to edit (you can choose all except the index.md file) you can find the files in the docs folder.
 - Add `##` to the end of the file, to create a new header and place your content below it. If you want to make subheaders use `###` or `####`. Never use `#` as this is the main header of the page.
 - Make sure you use the correct Markdown syntax. See the links below for more information.
-- If you want to include images, place them in the `docs/images` folder and reference them in your markdown file.
+- If you want to include images, place them in the `docs/images` folder and reference them in your markdown file.\
+  example:
 ```bash
 ![cm_hs_avatar_corporate.png](./images/cm_hs_avatar_corporate.png)
 ```

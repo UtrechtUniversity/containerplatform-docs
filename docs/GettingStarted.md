@@ -52,8 +52,8 @@ SOCKS v5
 
 5. Start your epic work on OpenShift ;-)
 
-### How to connect to OpenShift4 container platform walkthrough movie
-<iframe src="https://player.vimeo.com/video/932020706?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="480" height="270" frameBorder="1" class="giphy-embed" ; encrypted-media; gyroscope; picture-in-picture; allowfullscreen" title="oc_toegang2fa"></iframe>
+### Walkthrough movie
+<iframe src="https://player.vimeo.com/video/932020706?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="480" height="270" frameBorder="1" class="giphy-embed" ; allow="autoplay; fullscreen; picture-in-picture; clipboard-write"  title="oc_toegang2fa"></iframe>
 
 ### Steps for the CLI
 Get your login command from the OpenShift4 console and execute it in your terminal.
