@@ -6,6 +6,9 @@ theme:
   features:
     - navigation.tracking
     - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - toc.follow
     - navigation.path
     - navigation.top
     - navigation.left
