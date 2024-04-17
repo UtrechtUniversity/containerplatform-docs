@@ -31,7 +31,6 @@ theme:
         name: Switch to Light Mode
       primary: yellow
       accent: blue
-
   plugins:
     - mkdocs-macro
     - mkdocs-video:
@@ -41,26 +40,23 @@ theme:
         video_type: mp4
         css_style:
           width: "50%"
-
   nav:
     - Welcome: index.md
     - Getting Started:
-      - Overview: content/basics/get-started.md
-      - Login to the container platform: content/basics/login.md
+        - Overview: content/basics/get-started.md
+        - Login to the container platform: content/basics/login.md
     - Guides:
-      - Overview: content/guides/guides.md
-      - Create project: content/guides/create-project.md
-      - Deploy sample application: content/guides/deploy-a-sample-app.md
+        - Overview: content/guides/guides.md
+        - Create project: content/guides/create-project.md
+        - Deploy sample application: content/guides/deploy-a-sample-app.md
     - Reference:
-      - Overview: content/references/reference.md
+        - Overview: content/references/reference.md
     - Samples:
-      - Overview: content/samples/samples.md
+        - Overview: content/samples/samples.md
     - FAQ: faq.md
     - Roadmap: roadmap.md
-
   extra:
     social:
       - type: fontawesome/brands/github-alt
         link: https://github.com/UtrechtUniversity
-  
   copyright: Copyright &copy; 2024 <a href="https://UniversiteitUtrecht.nl" target="_blank" rel="noopener"><Universiteit Utrecht. All rights reserved></a>
