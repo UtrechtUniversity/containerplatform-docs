@@ -45,7 +45,8 @@ theme:
       - type: fontawesome/brands/github-alt
         link: https://github.com/UtrechtUniversity
 
-  copyright: Copyright &copy; 2024 <a href="https://UniversiteitUtrecht.nl" target="_blank" rel="noopener"><Universiteit Utrecht. All rights reserved></a>
+copyright: |
+  &copy; 2024 <a href="https://uu.nl" target="_blank" rel="noopener"><Utrecht University. All rights reserved></a>
 
 nav:
   - Welcome: index.md
@@ -54,7 +55,7 @@ nav:
     - Login to the container platform: content/basics/login.md
   - Guides:
     - Overview: content/guides/guides.md
-    - Create project: content/guides/create-project.md
+    - Create a project: content/guides/create-project.md
     - Deploy sample application: content/guides/deploy-a-sample-app.md
   - Reference:
     - Overview: content/references/reference.md
