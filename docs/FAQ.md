@@ -1,7 +1,7 @@
 # FAQ
-![tux-161406_1280.png](./images/tux-161406_1280.png)
+Here you will find answers to frequently asked questions about the Container Platform of the University Utrecht.
+
 ## Frequently Asked Questions
-Here's a quick FAQ tailored for developers working with OpenShift 4:
 
 **1. What is OpenShift 4?**
 OpenShift 4 is a container orchestration platform built around Kubernetes, providing a consistent hybrid cloud foundation for building and scaling applications.
