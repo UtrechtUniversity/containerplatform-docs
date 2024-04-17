@@ -18,4 +18,5 @@ If you have any questions, please contact the linux team of the University Utrec
 If you want to contribute to this documentation (please do, because we value your knowledge), please follow the steps below:
 
 Go to [Container Platform docs repo](https://github.com/UtrechtUniversity/containerplatform-docs/)
-There is a main README.md file in the root of the repository. This file contains the main information about the repository and the documentation site.
+
+There is a README.md file in the root of the repository. This file contains the main information about the repository and the documentation site.
