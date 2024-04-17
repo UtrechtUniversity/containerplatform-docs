@@ -51,9 +51,16 @@ theme:
 
 nav:
   - Welcome: index.md
-  - Getting Started: get-started.md
-  - Guides: guides.md
-  - Reference: reference.md
-  - Samples: samples.md
+  - Getting Started:
+    - Overview: content/basics/get-started.md
+    - Login: content/basics/login.md
+  - Guides:
+    - Overview: content/guides/guides.md
+    - Create project: content/guides/create-project.md
+    - Deploy sample application: content/guides/deploy-a-sample-app.md
+  - Reference:
+    - Overview: content/references/reference.md
+  - Samples:
+    - Overview: content/samples/samples.md
   - FAQ: faq.md
   - Roadmap: roadmap.md

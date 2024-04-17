@@ -1,6 +1,3 @@
-# Getting started
-Here you will find information on how to connect to the platform through the steppingstone server.
-
 ## Login to OpenShift4 container platform [console](https://console.cp.its.uu.nl)
 
 You cannot login directly to the steppingstone server steppingstone.its.uu.nl
@@ -79,10 +76,3 @@ Use the oc login like so:
 ```bash
 oc login --token=<your-token> --server=https://localhost:6443
 ``` 
-
-## Create a project
-
-### Prerequisites
-- You need to have permissions to create a project from the UI.
-
-

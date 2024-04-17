@@ -1,16 +1,15 @@
-# Welcome
 Welcome to the documentation site for the Container Platform of the University Utrecht.
 
 You have landed on the documentation site of the Container Platform of the University Utrecht. Here you will find 
 information on how to connect to the platform, how to deploy applications, and how to use the platform in general.
 If you have any questions, please contact the linux team of the University Utrecht.
 
-## Services we offer
+# Services we offer
 
 1. RedHat OpenShift4
 2. ArgoCD (Roadmap)
 
-## Contribute to the documentation
+# Contribute to the documentation
 If you want to contribute to this documentation (please do, because we value your knowledge), please follow the steps below:
 
 Go to [Container Platform docs repo](https://github.com/UtrechtUniversity/containerplatform-docs/)

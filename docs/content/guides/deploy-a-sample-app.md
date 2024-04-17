@@ -1,7 +1,4 @@
-# Guides
-This is the place to upload your guides or HOWTO's.
-
-## HOWTO: Deploy a sample app on openshift4
+# Deploy a sample app on openshift4
 To set up a sample app on OpenShift 4 and expose it using Ingress, you can follow these steps:
 
 1. **Deploy the Sample App**:
@@ -93,5 +90,3 @@ oc get ingress sample-ingress
 This should display details about your Ingress resource, including its status and any associated rules.
 
 That's it! Your sample app should now be deployed and exposed using Ingress on OpenShift 4.
-
-## HOWTO: Set up a custom domain for OpenShift 4
