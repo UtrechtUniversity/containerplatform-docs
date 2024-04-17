@@ -32,13 +32,6 @@ theme:
       primary: yellow
       accent: blue
 
-  extra:
-    social:
-      - type: fontawesome/brands/github-alt
-        link: https://github.com/UtrechtUniversity
-  
-  copyright: Copyright &copy; 2024 <a href="https://UniversiteitUtrecht.nl" target="_blank" rel="noopener"><Universiteit Utrecht. All rights reserved></a>
-
   plugins:
     - mkdocs-macro
     - mkdocs-video:
@@ -49,18 +42,25 @@ theme:
         css_style:
           width: "50%"
 
-nav:
-  - Welcome: index.md
-  - Getting Started:
-    - Overview: content/basics/get-started.md
-    - Login to the container platform: content/basics/login.md
-  - Guides:
-    - Overview: content/guides/guides.md
-    - Create project: content/guides/create-project.md
-    - Deploy sample application: content/guides/deploy-a-sample-app.md
-  - Reference:
-    - Overview: content/references/reference.md
-  - Samples:
-    - Overview: content/samples/samples.md
-  - FAQ: faq.md
-  - Roadmap: roadmap.md
+  nav:
+    - Welcome: index.md
+    - Getting Started:
+      - Overview: content/basics/get-started.md
+      - Login to the container platform: content/basics/login.md
+    - Guides:
+      - Overview: content/guides/guides.md
+      - Create project: content/guides/create-project.md
+      - Deploy sample application: content/guides/deploy-a-sample-app.md
+    - Reference:
+      - Overview: content/references/reference.md
+    - Samples:
+      - Overview: content/samples/samples.md
+    - FAQ: faq.md
+    - Roadmap: roadmap.md
+
+  extra:
+    social:
+      - type: fontawesome/brands/github-alt
+        link: https://github.com/UtrechtUniversity
+  
+  copyright: Copyright &copy; 2024 <a href="https://UniversiteitUtrecht.nl" target="_blank" rel="noopener"><Universiteit Utrecht. All rights reserved></a>

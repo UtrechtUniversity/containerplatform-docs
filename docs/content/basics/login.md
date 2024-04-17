@@ -9,8 +9,7 @@ If you do no have these prerequisites, please contact one of the service deliver
 You can find all the information on how to do that on the <a href="https://manuals.uu.nl" target="_blank">manuals</a> website.
 
 ## Steps for the GUI
-### 1. Add lines below to your `~/.ssh/config` file.
-
+Add lines below to your `~/.ssh/config` file.
 ```bash
 Host steppingstone
     HostName steppingstone.its.uu.nl
@@ -20,29 +19,27 @@ Host steppingstone
     Port 54322 (or 22)
 ```
 
-Set environment variables for the proxy in your terminal. 
+Set environment variables for the proxy in your terminal
 ```bash
 export HTTP_PROXY=socks5://127.0.0.1:6443
 export HTTPS_PROXY=socks5://127.0.0.1:6443
 ```
 
-### 2. Set up the proxy:
+Set up the proxy
 ```bash
 ssh -D localhost:6443 -N steppingstone
 ```
 
-### 3. Set your browser to use the proxy:
-
-Manual proxy configuration:
+Set your browser to use the proxy
 ```bash
 SOCKS Host: localhost Port: 6443
 SOCKS v5
 ```
 
 ![sockproxy.png](../../images/sockproxy.png)
-### 4. Open the OpenShift4 console in your browser: <a href="https://console.cp.its.uu.nl" target="_blank">console</a>
+Open the OpenShift4 console in your browser: <a href="https://console.cp.its.uu.nl" target="_blank">console</a>
 
-### 5. Start your epic work on OpenShift ;-)
+Start your epic work on OpenShift ;-)
 
 ## Walkthrough movie
 <iframe src="https://player.vimeo.com/video/932020706?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="480" height="270" frameBorder="1" class="giphy-embed" ; allow="autoplay; fullscreen; picture-in-picture; clipboard-write"  title="oc_toegang2fa"></iframe>
