@@ -1,4 +1,4 @@
-# GettingStarted
+# Getting Started
 Here you will find information on how to connect to the platform through the steppingstone server.
 
 ## Login to OpenShift4 container platform [console](https://console.cp.its.uu.nl)
