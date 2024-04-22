@@ -1,5 +1,6 @@
 # Guides
 This is the place to upload your guides or HOWTO's.
+
 ## HOWTO: Deploy a sample app on openshift4
 To set up a sample app on OpenShift 4 and expose it using Ingress, you can follow these steps:
 

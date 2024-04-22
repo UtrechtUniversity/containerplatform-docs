@@ -1,6 +1,3 @@
-# Container Platform UU
-![tux-161406_1280.png](./images/UU_logo_2021_EN_RGB.png)
-
 ## Welcome
 Welcome to the documentation site for the Container Platform of the University Utrecht.
 
@@ -12,7 +9,6 @@ If you have any questions, please contact the linux team of the University Utrec
 
 1. RedHat OpenShift4
 2. ArgoCD (Roadmap)
-3. 
 
 ## Contribute to the documentation
 If you want to contribute to this documentation (please do, because we value your knowledge), please follow the steps below:

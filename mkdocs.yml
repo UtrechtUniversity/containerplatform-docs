@@ -5,8 +5,9 @@ theme:
   custom_dir: overrides
   features:
     - navigation.tabs
-    - navigation.sections
     - toc.integrate
+    - navigation.path
+    - navigation.top
     - navigation.left
     - search.suggest
     - search.highlight
