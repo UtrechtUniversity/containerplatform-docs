@@ -45,8 +45,8 @@ theme:
       - type: fontawesome/brands/github-alt
         link: https://github.com/UtrechtUniversity
 
-  extra_css:
-    - stylesheets/extra.css
+extra_css:
+  - stylesheets/extra.css
 
 copyright: |
   &copy; 2024 <a href="https://uu.nl" target="_blank" rel="noopener"><Utrecht University. All rights reserved></a>
