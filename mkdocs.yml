@@ -23,13 +23,13 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Switch to Dark Mode
-      primary: yellow
+      primary: custom
       accent: blue
     - scheme: slate
       toggle:
         icon: material/weather-night
         name: Switch to Light Mode
-      primary: yellow
+      primary: custom
       accent: blue
   plugins:
     - mkdocs-macro
@@ -44,6 +44,9 @@ theme:
     social:
       - type: fontawesome/brands/github-alt
         link: https://github.com/UtrechtUniversity
+
+  extra_css:
+    - stylesheets/extra.css
 
 copyright: |
   &copy; 2024 <a href="https://uu.nl" target="_blank" rel="noopener"><Utrecht University. All rights reserved></a>
