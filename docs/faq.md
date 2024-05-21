@@ -33,3 +33,6 @@ OpenShift 4 incorporates various security features, including role-based access 
 **10. Where can I find resources for learning more about OpenShift 4 development?**
 You can explore the official OpenShift documentation, participate in community forums, attend workshops and webinars, and access online tutorials and courses offered by Red Hat and other providers.
 
+**11. What kind of storage do we supply?**
+At the moment we do not supply object storage, but we do supply persistent storage for your applications.
+Just make sure you use RWO for your PVC's. `accessModes:    ReadWriteOnce`
