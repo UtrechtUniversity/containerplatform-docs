@@ -6,7 +6,8 @@ Before you can access the <a href="https://console.cp.its.uu.nl" target="_blank"
 - You need to have an project/ namespace on the OpenShift4 container platform of the University Utrecht.
 
 If you do no have these prerequisites, please contact one of the service delivery managers of the University Utrecht.
-You can find all the information on how to do that on the <a href="https://manuals.uu.nl" target="_blank">manuals</a> website.
+You can find all the information on how to do that on the <a href="https://manuals.uu.nl" target="_blank">manuals</a> website.\
+For a quick overview of what you will be doing check: <a href="https://kubernetes.io/docs/tasks/extend-kubernetes/socks5-proxy-access-api/" target="_blank">k8s socks5-proxy-access-api</a>
 
 ## Steps for the GUI
 Add lines below to your `~/.ssh/config` file.
