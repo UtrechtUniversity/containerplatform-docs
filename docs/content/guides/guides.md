@@ -11,3 +11,5 @@ This is the place to upload your guides or HOWTO's.
 - In OpenShift, go to "User Management" --> "Groups"
 - In the top right corner, click on "Create group"
 - In the YAML view, give the group a name and add the users 
+
+INFO: This is something only ITS can do, so please create a support ticket for this request
