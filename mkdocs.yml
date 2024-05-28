@@ -17,6 +17,8 @@ theme:
     - content.tabs.link
     - content.code.annotation
     - content.code.copy
+    - content.code.select
+    - content.code.annotation
   language: en
   palette:
     - scheme: default
@@ -60,9 +62,22 @@ nav:
     - Overview: content/guides/guides.md
     - Create a project: content/guides/create-project.md
     - Deploy sample application: content/guides/deploy-a-sample-app.md
+    - Deploy wordpress application: content/guides/wordpress-example-app.md
   - Reference:
     - Overview: content/references/reference.md
   - Samples:
     - Overview: content/samples/samples.md
   - FAQ: faq.md
   - Roadmap: roadmap.md
+
+markdown_extensions:
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
