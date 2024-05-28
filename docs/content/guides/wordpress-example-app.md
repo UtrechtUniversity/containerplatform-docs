@@ -13,7 +13,7 @@ How to deploy an wordpress app on openshift running in unpriviliged containers
 [UtrechtUniversity/wordpress-example-app](https://github.com/UtrechtUniversity/wordpress-example-app)   
 `git clone https://github.com/UtrechtUniversity/wordpress-example-app`  
 
-2. **Replace the \<your-....\> with your own data in the yaml files below**  
+2. **Replace the `<your-...>` with your own data in the yaml files below**  
 
      * [x] mariadb-secret.yaml
      * [x] wordpress-cm.yaml
