@@ -67,3 +67,8 @@ nav:
     - Overview: content/samples/samples.md
   - FAQ: faq.md
   - Roadmap: roadmap.md
+
+markdown_extensions:
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
