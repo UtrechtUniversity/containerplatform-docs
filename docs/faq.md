@@ -36,3 +36,17 @@ You can explore the official OpenShift documentation, participate in community f
 **11. What kind of storage do we supply?**
 At the moment we do not supply object storage, but we do supply persistent storage for your applications.
 Just make sure you use RWO for your PVC's. `accessModes:    ReadWriteOnce`
+
+**12. Why We Use Bitnami Unprivileged Containers?**
+
+- **Security Compliance:**
+   OpenShift uses Security Context Constraints (SCCs) to define permissions and access controls for pods. By default, it restricts the use of root user to minimize the risk of privilege escalation attacks. Bitnami unprivileged containers are designed to comply with these constraints, ensuring smooth deployment and operation.
+
+- **Reduced Attack Surface:**
+   Running containers as non-root reduces the attack surface, limiting the potential damage that can be done if a container is compromised. It prevents attackers from gaining elevated privileges on the host system.
+
+- **Best Practices Alignment:**
+   Following best practices in container security, such as running applications as non-root, is essential for modern cloud-native applications. Bitnami unprivileged containers are built with these best practices in mind.
+
+- **Ease of Use:**
+   Bitnami unprivileged containers come pre-configured to run as non-root users. This simplifies the process of deploying applications on OpenShift, as there is no need for additional configuration to drop privileges.
