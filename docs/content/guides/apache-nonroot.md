@@ -1,16 +1,17 @@
 # Run Apache as non root on OpenShift
 
 ## What are non-root containers?
-By default, Docker containers are run as root users. This means that you can do whatever you want in your container, such as install system packages, edit configuration files, bind privilege ports, adjust permissions, create system users and groups, access networking information. 
+By default, Docker containers are run as the root user. This means that you can do whatever you want in your container, such as install system packages, edit configuration files, bind privilege ports, adjust permissions, create system users and groups, access networking information. 
 With a non-root container you can't do any of this . A non-root container should be configured for its main purpose, for example, run Apache. 
 
 ## Why use a non-root container?
-Mainly because it is a best practise for security. If there is a container engine security issue, running the container as an unprivileged user will prevent the malicious code from scaling permissions on the host node. Another reason is because some Kubernetes distributions, like OpenShift, forces you to use them. OpenShift runs containers with a random user.
+Mainly because it is a best practise for security. If there is a container engine security issue, running the container as an unprivileged user will prevent the malicious code from scaling permissions on the host node. Another reason is because some Kubernetes distributions, like OpenShift, forces you to use them. OpenShift runs containers with a random user, configured in your OpenShift project.
 
 ## How to create a non-root container?
 
-In this example, we are going to use the apache container from docker.io. 
-This container runs as root.
+In this example, an apache container from docker.io will be used.  
+This container runs as root.  
+It will be modified so that it runs on OpenShift.
 
 ### Run root apache container on OpenShift.
 We are going to use a Dockerfile here and we will build the container and push it to quay.io. 
@@ -230,5 +231,3 @@ $ curl apache-uu-boon0031.apps.cl01.cp.its.uu.nl
         </body>
 </html>
 ```
-
-## Use 
