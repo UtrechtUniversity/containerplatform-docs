@@ -19,22 +19,25 @@ In this example, an apache container from docker.io will be used.
 This container runs as root.  
 It will be modified so that it runs on OpenShift.
 
-## Clone this repository
-[UtrechtUniversity/apache-non-root-example](https://github.com/UtrechtUniversity/apache-non-root-example)   
-`git clone https://github.com/UtrechtUniversity/apache-non-root-example` 
-
-### Run root apache container on OpenShift.
+## Run root apache container on OpenShift.
 We are going to use a Dockerfile here and we will build the container and push it to dockerhub  
 Replace DOCKER-USER with your own user account on dockerhub.
 
+1. Clone this repository
+[UtrechtUniversity/apache-non-root-example](https://github.com/UtrechtUniversity/apache-non-root-example)   
+`git clone https://github.com/UtrechtUniversity/apache-non-root-example` 
+
 ```bash
+$ git clone https://github.com/UtrechtUniversity/apache-non-root-example
 $ cd apache-non-root-example
+```
+
+2. Build and run container unmodified
 $ cat Dockerfile-v1
 FROM docker.io/httpd:2.4.59
 
 COPY ./html/ /usr/local/apache2/htdocs/
-```
-This Dockerfile just pulls the image from docker.io and copies an example index.html file into the htdocs directory. First we build te container.
+
 ```bash
 $ sudo docker build -t DOCKER-USER/custom-httpd:v1 -f Dockerfile-v1 .
 [+] Building 0.7s (7/7) FINISHED                                                                                                                                                                           docker:default
@@ -50,7 +53,7 @@ $ sudo docker build -t DOCKER-USER/custom-httpd:v1 -f Dockerfile-v1 .
  => exporting to image                                                                                                                                                                                               0.0s
  => => exporting layers                                                                                                                                                                                              0.0s
  => => writing image sha256:4e54773780fcad018bd02919818e8e261f5072afdd83cf066b2ba6585ea332ac                                                                                                                         0.0s
- => => naming to docker.io/DOCKER-USER/custom-httpd:v1
+ => => naming to docker.io/xxxxxx/custom-httpd:v1
 ```
 Then push it to dockerhub
 ```bash
@@ -96,7 +99,7 @@ AH00015: Unable to open logs
 It complains that it can't bind to port 80, because it needs root privileges that is not allowed by OpenShift.
 To fix this, we first modify the port in the Container to for example 8080.
 
-### Change container port to 8080
+3. Change container port to 8080
 ```bash
 $ cat Dockerfile-v2
 FROM docker.io/httpd:2.4.59
@@ -141,7 +144,7 @@ d138aa37a32d: Layer already exists
 5d4427064ecc: Layer already exists 
 v2: digest: sha256:0eec468e3fab66e52cdcba77cbdf09d94241c326587f79aa1ea78bf71e4284ab size: 1987
 ```
-first let's delete the previous deployment
+first delete the previous deployment
 ```bash
 $ oc delete all -l app=apache
 ```
@@ -173,7 +176,7 @@ AH00558: httpd: Could not reliably determine the server's fully qualified domain
 ```
 Still an error, it can't create files in /usr/local/apache2, because they are owned by root and our user is a non-root user.
 
-### Change directory permissions 
+4. Change directory permissions 
 In OpenShift, the container user is always member of the root group (but is not root!). 
 The root group does not have any special permissions, unlike the root user.
 You can use this to set the correct permissions for any random user OpenShift assigns to your container.
@@ -238,8 +241,8 @@ imagestream.image.openshift.io "apache" deleted
 Create the new deployment
 
 ```bash
-$ oc new-app --name=apache --image=cpjboon/custom-httpd:v3
---> Found container image 904657b (3 minutes old) from Docker Hub for "cpjboon/custom-httpd:v3"
+$ oc new-app --name=apache --image=DOCKER-USER/custom-httpd:v3
+--> Found container image 904657b (3 minutes old) from Docker Hub for "xxxxxx/custom-httpd:v3"
 
     * An image stream tag will be created as "apache:v3" that will track this image
 
@@ -251,22 +254,24 @@ $ oc new-app --name=apache --image=cpjboon/custom-httpd:v3
     Application is not exposed. You can expose services to the outside world by executing one or more of the commands below:
      'oc expose service/apache' 
     Run 'oc status' to view your app.
-boon0031@boon0031-desktop:~/git/apache-non-root-example$ oc get pods
+
+$ oc get pods
 NAME                      READY   STATUS    RESTARTS   AGE
 apache-84f948858f-hfjf2   1/1     Running   0          27s
 ```
-Now the container is running. You can check the user
+
+5. Now the container is running. You can check the user the container is running as
 ```bash
 $ oc exec pod/apache-84f948858f-hfjf2 id
 uid=1001100000(1001100000) gid=0(root) groups=0(root),1001100000
 ```
 It's running as user 1001100000. These settings are configured in the project.
 ```bash
-$ oc describe project/uu-boon0031 | grep uid
+$ oc describe project/uu-xxxxxx | grep uid
                         openshift.io/sa.scc.uid-range=1001100000/10000
 ```
 
-### expose service and access website
+6. test website
 Now let's check if we can actually access the html files.  
 Because we used oc new-app the command also creates a service. 
 We only need to expose it. 
@@ -278,10 +283,10 @@ route.route.openshift.io/apache exposed
 ```bash
 $ oc get route
 NAME     HOST/PORT                                   PATH   SERVICES   PORT   TERMINATION   WILDCARD
-apache   apache-uu-boon0031.apps.cl01.cp.its.uu.nl          apache     8080                 None
+apache   apache-uu-xxxxxx.apps.cl01.cp.its.uu.nl          apache     8080                 None
 
 
-$ curl apache-uu-boon0031.apps.cl01.cp.its.uu.nl
+$ curl apache-uu-xxxxxx.apps.cl01.cp.its.uu.nl
 <!doctype html>
 <html>
   <head>
