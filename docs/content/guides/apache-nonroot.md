@@ -25,7 +25,6 @@ Replace DOCKER-USER with your own user account on dockerhub.
 
 1. Clone this repository
 [UtrechtUniversity/apache-non-root-example](https://github.com/UtrechtUniversity/apache-non-root-example)   
-`git clone https://github.com/UtrechtUniversity/apache-non-root-example` 
 
 ```bash
 $ git clone https://github.com/UtrechtUniversity/apache-non-root-example
@@ -33,10 +32,13 @@ $ cd apache-non-root-example
 ```
 
 2. Build and run container unmodified
+First let's try to run a root container unmodified on OpenShift
+```bash
 $ cat Dockerfile-v1
 FROM docker.io/httpd:2.4.59
 
 COPY ./html/ /usr/local/apache2/htdocs/
+```
 
 ```bash
 $ sudo docker build -t DOCKER-USER/custom-httpd:v1 -f Dockerfile-v1 .
