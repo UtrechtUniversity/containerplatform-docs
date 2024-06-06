@@ -63,6 +63,7 @@ nav:
     - Create a project: content/guides/create-project.md
     - Deploy sample application: content/guides/deploy-a-sample-app.md
     - Deploy wordpress application: content/guides/wordpress-example-app.md
+    - Deploy Apache rootless: content/guides/apache-nonroot.md
   - Reference:
     - Overview: content/references/reference.md
   - Samples:
