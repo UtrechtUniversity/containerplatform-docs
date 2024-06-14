@@ -63,6 +63,7 @@ nav:
     - Create a project: content/guides/create-project.md
     - Deploy sample application: content/guides/deploy-a-sample-app.md
     - Deploy wordpress application: content/guides/wordpress-example-app.md
+    - NetApp storage: content/guides/netapp-storage.md
   - Reference:
     - Overview: content/references/reference.md
   - Samples:
