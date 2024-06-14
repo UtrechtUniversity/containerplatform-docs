@@ -66,7 +66,7 @@ spec:
 
 #### ReadWriteOnce (RWO)
 
-  ```yaml
+```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
