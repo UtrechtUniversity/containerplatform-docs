@@ -39,11 +39,13 @@ You got two options:
 
 1. **Netapp Trident storage** (preferred) on openshift nodes. You can use:
 
-   - ReadWriteMany (RWX): `accessModes:    ReadWriteMany`
-   - ReadOnlyMany (ROX): `accessModes:    ReadOnlyMany`
-   - ReadWriteOnce (RWO): `accessModes:    ReadWriteOnce`
+   ReadWriteMany (RWX): `accessModes:    ReadWriteMany`
 
-   There is a guide on how to use Trident on our documentation site.
+   ReadOnlyMany (ROX): `accessModes:    ReadOnlyMany`
+
+   ReadWriteOnce (RWO): `accessModes:    ReadWriteOnce`
+
+   > There is a guide on how to use NetApp storage on our documentation site named `NetApp storage`
 
 2. **Storage on openshift nodes.** Make sure you use RWO for your PVC's. `accessModes:    ReadWriteOnce`
 
