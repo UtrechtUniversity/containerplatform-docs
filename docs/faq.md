@@ -37,15 +37,15 @@ You can explore the official OpenShift documentation, participate in community f
 At the moment we do not supply object storage, but we do supply persistent storage for your applications.
 You got two options:
 
-1. (preferred) Netapp Trident storage on openshift nodes. You can use:
+1. **Netapp Trident storage** (preferred) on openshift nodes. You can use:
 
-- ReadWriteMany (RWX): `accessModes:    ReadWriteMany`
-- ReadOnlyMany (ROX): `accessModes:    ReadOnlyMany`
-- ReadWriteOnce (RWO): `accessModes:    ReadWriteOnce`
+   - ReadWriteMany (RWX): `accessModes:    ReadWriteMany`
+   - ReadOnlyMany (ROX): `accessModes:    ReadOnlyMany`
+   - ReadWriteOnce (RWO): `accessModes:    ReadWriteOnce`
 
-There is a guide on how to use Trident on our documentation site.
+   There is a guide on how to use Trident on our documentation site.
 
-2. Storage on openshift nodes. Make sure you use RWO for your PVC's. `accessModes:    ReadWriteOnce`
+2. **Storage on openshift nodes.** Make sure you use RWO for your PVC's. `accessModes:    ReadWriteOnce`
 
 **12. Why We Use Bitnami Unprivileged Containers?**
 
