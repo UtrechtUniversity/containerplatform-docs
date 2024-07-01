@@ -18,11 +18,8 @@ For a quick overview of what you will be doing check: <a href="https://kubernete
 
 ### Steps
 
-1. Run the command below in your terminal
-
-```bash
-sshuttle -r solisid@steppingstone.its.uu.nl 0/0
-```
+1. Run the command below in your terminal  
+   `sshuttle -r solisid@steppingstone.its.uu.nl 0/0`
 2. Fill in your 2fa code when prompted
 
 Now the gui and cli of OpenShift are accessible, so you can start your epic work on OpenShift :-)
