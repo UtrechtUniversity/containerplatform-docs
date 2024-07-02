@@ -10,12 +10,16 @@ You can find all the information on how to do that on the <a href="https://manua
 website.  
 For a quick overview of what you will be doing check: <a href="https://kubernetes.io/docs/tasks/extend-kubernetes/socks5-proxy-access-api/" target="_blank">k8s socks5-proxy-access-api</a>
 
-## Option-1: sshuttle (recommended)
+## Option 1: sshuttle (recommended)
 
 ### Pre-requisites
 
 - Install sshuttle on your local machine
   [sshuttle-docs](https://sshuttle.readthedocs.io/en/stable/installation.html)
+
+> If for some reason you don't have a mac or linux machine, you can use the Windows Subsystem for Linux (WSL) to install
+> sshuttle
+[wsl-docs](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
 ### Steps
 
@@ -29,7 +33,7 @@ Now the gui and cli of OpenShift are accessible, so you can start your epic work
 > providing a secure and encrypted connection without needing root access on the client
 > side. [sshuttle-docs](https://sshuttle.readthedocs.io/en/stable/usage.html)
 
-## Option-2: socks5-proxy
+## Option 2: socks5-proxy
 
 ### Steps for the GUI
 Add lines below to your `~/.ssh/config` file.
