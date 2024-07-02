@@ -6,10 +6,32 @@ Before you can access the <a href="https://console.cp.its.uu.nl" target="_blank"
 - You need to have an project/ namespace on the OpenShift4 container platform of the University Utrecht.
 
 If you do no have these prerequisites, please contact one of the service delivery managers of the University Utrecht.
-You can find all the information on how to do that on the <a href="https://manuals.uu.nl" target="_blank">manuals</a> website.\
+You can find all the information on how to do that on the <a href="https://manuals.uu.nl" target="_blank">manuals</a>
+website.  
 For a quick overview of what you will be doing check: <a href="https://kubernetes.io/docs/tasks/extend-kubernetes/socks5-proxy-access-api/" target="_blank">k8s socks5-proxy-access-api</a>
 
-## Steps for the GUI
+## Option-1: sshuttle (recommended)
+
+### Pre-requisites
+
+- Install sshuttle on your local machine
+  [sshuttle-docs](https://sshuttle.readthedocs.io/en/stable/installation.html)
+
+### Steps
+
+1. Run the command below in your terminal  
+   `sshuttle -r solisid@steppingstone.its.uu.nl 0/0`
+2. Fill in your 2fa code when prompted
+
+Now the gui and cli of OpenShift are accessible, so you can start your epic work on OpenShift :-)
+> SSHuttle is a VPN tool that transparently tunnels your internet traffic over SSH, combining the simplicity of SSH with
+> the capabilities of a VPN. It allows you to route traffic from your local machine through a remote server, effectively
+> providing a secure and encrypted connection without needing root access on the client
+> side. [sshuttle-docs](https://sshuttle.readthedocs.io/en/stable/usage.html)
+
+## Option-2: socks5-proxy
+
+### Steps for the GUI
 Add lines below to your `~/.ssh/config` file.
 ```bash
 Host steppingstone
@@ -42,17 +64,17 @@ Open the OpenShift4 console in your browser: <a href="https://console.cp.its.uu.
 
 Start your epic work on OpenShift ;-)
 
-## Walkthrough movie
+### Walkthrough movie
 <iframe src="https://player.vimeo.com/video/932020706?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="480" height="270" frameBorder="1" class="giphy-embed" ; allow="autoplay; fullscreen; picture-in-picture; clipboard-write"  title="oc_toegang2fa"></iframe>
 
-## Steps for the CLI
+### Steps for the CLI
 Get your login command from the OpenShift4 console and execute it in your terminal.
 Click on your username in the right top corner and select `Copy Login Command`.
 ```bash
 oc login --token=<your-token> --server=https://localhost:6443
 ```
 
-## Troubleshooting
+### Troubleshooting
 If you have trouble connecting to the OpenShift4 api, you can try the following:
 - Check if the proxy is set correctly.
 - Check if the proxy is running.
@@ -61,7 +83,7 @@ If you have trouble connecting to the OpenShift4 api, you can try the following:
 
 If you have trouble reaching the api trough the cli, you can also setup your connection like so: 
 
-### Proxy setup for the CLI
+#### Proxy setup for the CLI
 Make sure to set the correct port:
 ```bash
 ssh -i ~/.ssh/<your-private-key> 6443:console.cp.its.uu.nl:6443 -D 3333 <your-username>@steppingstone.its.uu.nl 
