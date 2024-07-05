@@ -59,3 +59,6 @@ You got two options:
 
 - **Ease of Use:**
    Bitnami unprivileged containers come pre-configured to run as non-root users. This simplifies the process of deploying applications on OpenShift, as there is no need for additional configuration to drop privileges.
+
+**13. How to access the OpenShift 4 console?**
+gewoon om te testen
