@@ -60,10 +60,12 @@ nav:
     - Login to the container platform: content/basics/login.md
   - Guides:
     - Overview: content/guides/guides.md
+    - Access image registry: content/guides/access-registry.md
     - Create a project: content/guides/create-project.md
     - Deploy sample application: content/guides/deploy-a-sample-app.md
     - Deploy wordpress application: content/guides/wordpress-example-app.md
     - NetApp storage: content/guides/netapp-storage.md
+    - Deploy Apache rootless: content/guides/apache-nonroot.md
   - Reference:
     - Overview: content/references/reference.md
   - Samples:
