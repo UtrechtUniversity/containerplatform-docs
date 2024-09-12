@@ -66,6 +66,7 @@ nav:
     - Deploy wordpress application: content/guides/wordpress-example-app.md
     - NetApp storage: content/guides/netapp-storage.md
     - Deploy Apache rootless: content/guides/apache-nonroot.md
+    - Deploy with ServiceAccount: content/guides/deploy-using-a-serviceaccount.md
   - Reference:
     - Overview: content/references/reference.md
   - Samples:
