@@ -15,11 +15,11 @@ OpenShift has some default roles in the cluster. For example:
 | edit  | A user that can modify most objects in a project but does not have the power to view or modify roles or bindings, usually a developer role |
 | view  | A user who cannot make any modifications, but can see most objects in a project. They cannot view or modify roles or bindings. |
 
-## Roles at the University of Utrecht
+## Roles at the Utrecht University
 
 At the University, we basically have two roles:  
-| Role | Description |
-| ---- | ----------- |
+| Role      | Description |
+| --------- | ----------- |
 | key-user  | A user with the OpenShift admin role, who can create projects / project users |
 | developer | A user with the OpenShift edit role |
 
@@ -125,8 +125,6 @@ Here the project uu-boon0004 will be used as example OpenShift project.
     pod "busybox" deleted
     ```
 
-8. TODO
-    We probably need to add some documentation to create an actual deployment with Ansible or GitHub pipelines using a Service Account.
 
 
     
