@@ -17,7 +17,8 @@ OpenShift has some default roles in the cluster. For example:
 
 ## Roles at the Utrecht University
 
-At the University, we basically have two roles:  
+At the University, we basically have two roles:
+
 | Role  | Description |
 | ----  | ----------- |
 | key-user  | A user with the OpenShift admin role, who can create projects / project users |
