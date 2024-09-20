@@ -52,7 +52,8 @@ $ oc new-project ansible-deployment
 Now using project "ansible-deployment" on server "https://api.cl01.cp-acc.its.uu.nl:6443".
 ```
 
-Then a service account with a rolebinding
+Then a service account with a rolebinding (can be setup by a key user)
+
 ```bash
 $ oc project ansible-deployment
 Already on project "ansible-deployment" on server "https://api.cl01.cp-acc.its.uu.nl:6443".
@@ -61,7 +62,7 @@ $ oc create sa ansible-sa
 serviceaccount/ansible-sa created
 ```
 
-Then create a token
+Then create a token for the service account
 ```
 $ oc create token ansible-sa
 eyJhbGciOiJSUzI1NiIsImtpZCI6IjQtX1c4bzMtTENtLS0zNExKel9ZeFFPZHg5UmJMQ1A1U3R2MFBnVFF1RWcifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjIl0sImV4cCI6MTcyNjg0MDM4MiwiaWF0IjoxNzI2ODM2NzgyLCJpc3MiOiJodHRwczovL2t1YmVybmV0ZXMuZGVmYXVsdC5zdmMiLCJrdWJlcm5ldGVzLmlvIjp7Im5hbWVzcGFjZSI6ImFuc2libGUtZGVwbG95bWVudCIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJhbnNpYmxlLXNhIiwidWlkIjoiMWJkNWYxYTYtMDU5Ni00MDkzLWI5MDgtMmEyOTA3NTI0MTY3In19LCJuYmYiOjE3MjY4MzY3ODIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDphbnNpYmxlLWRlcGxveW1lbnQ6YW5zaWJsZS1zYSJ9.jmE1BdXW8UcjKa4-hYuas4TALoNyQzgOsu0zDXz69j_uLQd8n0dpUs3QxpuqWEHkEYREo7TbRkV_-qbWXV5FM75Mgt1mYgGMogpLZgWzbilj2wnblrHacdibSQNBVMTfmpE4ebajXw2Vju-zj6dapwouVCGqUnCTAchwXQlpwkf1Zg4-BLMrg-7MLQ7kpb9hgLqoFoUFiP4z-Odg8k8cynXabKm1hVtuX3mcF47PAKeXrpJQkuogBTnnJodwAqVbnjZhCbBlTw7Oa2csM1ErE9n12o_M21Ex4RFKDhyw7HO7ra3ynwDURj8mqbKb0nvXi2H9LfH_8lPEEAA8x6jmfVk3e9ow6I6p8ervj_XxTxD1nQe03chaXa15LozkFTxf9eP278Iqs8s2JwZYggpweZwtZhL0oNcIhCG4aPqkTICJeq3qzWq569ektUQ5FZmqNVNAUvaNCGWJglQuoLy4fBaQ-3ur2xZnhJYYC60re3qlSo_LV0tDQ_qzxVxFlgv1ttjtTnrmQiPWAPMwsKQuLgiuGAxfRlF9z1_B9Rm4s-0LIh7JX1O9N5ZM63DdELNubC01vlcY_4IHpr1gagRcw8AyDtPKpul_aNRmVNRHkdMK7nWFXyR6F7VrgLuKXP9IqW6kE-rrdUcp5YeMoN8pPLKDUl-lsA9FsKoeOy694UA
@@ -155,7 +156,7 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ```
 
-Now test if the pods are running:
+And test if the pods are running:
 ```
 $ oc get deployment -n ansible-deployment
 NAME     READY   UP-TO-DATE   AVAILABLE   AGE
