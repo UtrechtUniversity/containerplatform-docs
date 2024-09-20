@@ -8,7 +8,7 @@
 ## Install requirements
 
 For these deployments, **plain** Ansible is used, so not the Ansible Automation Platform.  
-That platform used is Fedora, but these packages should be available on Ubuntu too.  
+The platform used is Fedora, but these packages should be available on Ubuntu too.  
 First install Ansible and the Kubernetes packages for Python.
 
 ```bash
@@ -42,7 +42,7 @@ Nothing to do. All requested collections are already installed. If you want to r
 ```
 ## Setup Service Account / Token / Project
 
-In this guide, it is assumed a service account with enough permission and a projet is already available, like this steps here:  
+In this guide, it is assumed a service account with enough permission and a project is already available, like this steps here:  
 [deploy-using-a-serviceaccount](https://docs.cp.its.uu.nl/content/guides/deploy-using-a-serviceaccount/)
 
 First an example project is created:
@@ -86,7 +86,8 @@ Confirm New Vault password:
 When running these command an editor will open, paste there your token like this:  
 token: eyJhbGciOiJSUzI1NiIsImtpZCI6IjQtX1c4b....
 
-Then create an example playbook like this:
+Then create an example playbook like this: (Don't forget to change it with your own project / namespace)
+
 ```bash
 $ vim deploy-to-openshift.yaml
 - name: create a Deployment
@@ -129,7 +130,7 @@ spec:
         name: apache24
 ```
 The deploy-to-openshift playbook loads the ansible vault.yaml.  
-This file is encrypted, so it should some how know the password.
+This file is encrypted, so it should ask for the password.  
 You can use a vault password file for this or let ansible ask for it.
 
 ## Deploying to OpenShift
@@ -165,4 +166,3 @@ apache-64dc8cb5ff-7nd97   1/1     Running   0          116s
 ```
 A lot more cool stuff can be done with kubernetes.core.  
 Have a look at the documentation: [kubernetes.core documentation](https://github.com/ansible-collections/kubernetes.core)
-
