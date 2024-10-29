@@ -125,14 +125,3 @@ Here the project uu-boon0004 will be used as example OpenShift project.
     $ oc delete pod/busybox
     pod "busybox" deleted
     ```
-
-
-
-    
-
-
-
-
-
-
-
