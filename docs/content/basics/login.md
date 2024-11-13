@@ -43,7 +43,7 @@ Host steppingstone
     IdentityFile ~/.ssh/<your-private-key>
     User <your-username>
     ForwardAgent yes
-    Port 54322 (or 22)
+    Port 22
 ```
 
 Set environment variables for the proxy in your terminal
