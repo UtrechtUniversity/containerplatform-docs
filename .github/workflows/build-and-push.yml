@@ -48,7 +48,7 @@ jobs:
         shell: bash
 
       - name: "Login to registry"
-        run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login ${{ env.ACC_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
+        run: echo ${{ secrets.SA_DEVOPS_TOKEN_ACC }} | docker login ${{ env.ACC_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
         shell: bash
 
       - name: "Build image"
