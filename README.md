@@ -12,8 +12,10 @@ Container Platform public documentation
 - If you want to include images, place them in the `docs/images` folder and reference them in your markdown file.\
   example:
 ```bash
-![cm_hs_avatar_corporate.png](./images/cm_hs_avatar_corporate.png)
+![cm_hs_avatar_corporate.png](docs/images/cm_hs_avatar_corporate.png)
 ```
+
+![cm_hs_avatar_corporate.png](docs/images/cm_hs_avatar_corporate.png)
 4. push your changes to the repository
 5. create a pull request
 6. wait for the pull request to be reviewed and merged
