@@ -47,7 +47,10 @@ jobs:
         run: |
           ping -c 5 127.0.0.1
           docker info
+          curl -v 127.0.0.1:5000
+          sleep 5
         shell: bash
+
 
       - name: "Login to registry"
         run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login 127.0.0.1:5000 -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
