@@ -9,16 +9,17 @@ env:
   SSH_KEY_PATH: "/tmp/ssh-key/id_rsa"
 
 on:
-  #  push:
-  #    branches: [ "main" ]
-  #  pull_request:
-  #    branches: [ "main" ]
+  pull_request:
+    branches:
+      - dev
+      - main
   workflow_dispatch:
 
 jobs:
   acceptance:
+    name: Acceptance Build&Push
     runs-on: ubuntu-latest
-    if: ${{ github.ref != 'refs/heads/main' }}
+    if: github.event_name == 'pull_request' && github.base_ref == 'dev' || github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/dev'
     environment:
       name: acceptance
     steps:
@@ -57,7 +58,8 @@ jobs:
 
   production:
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' }}
+    name: Production Build&Push
+    if: github.event_name == 'pull_request' && github.base_ref == 'main' || github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
     environment:
       name: production
     steps:
@@ -87,9 +89,9 @@ jobs:
         shell: bash
 
       - name: "Build image"
-        run: docker build -t ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
+        run: docker build -t ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable .
         shell: bash
 
       - name: "Push image"
-        run: docker push ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
+        run: docker push ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable
         shell: bash
