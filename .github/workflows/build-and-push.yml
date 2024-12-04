@@ -43,20 +43,16 @@ jobs:
           # Create the SSH tunnel (port forward)
           ssh -o StrictHostKeyChecking=no -f -N -L 5000:${{ env.ACC_REGISTRY_URL }}:443 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} -i ${{ env.SSH_KEY_PATH }}
 
-      - name: ping the registry
-        run: curl -k https://${{ env.ACC_REGISTRY_URL }}
-        shell: bash
-
       - name: "Login to registry"
         run: echo ${{ secrets.SA_DEVOPS_TOKEN_ACC }} | docker login ${{ env.ACC_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
         shell: bash
 
       - name: "Build image"
-        run: docker build -t localhost:5000/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
+        run: docker build -t ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
         shell: bash
 
       - name: "Push image"
-        run: docker push localhost:5000/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
+        run: docker push ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
         shell: bash
 
   production:
@@ -87,13 +83,13 @@ jobs:
           ssh -o StrictHostKeyChecking=no -f -N -L 5000:${{ env.PRD_REGISTRY_URL }}:443 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} -i ${{ env.SSH_KEY_PATH }}
 
       - name: "Login to registry"
-        run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login 127.0.0.1:5000 -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
+        run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login ${{ env.PRD_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
         shell: bash
 
       - name: "Build image"
-        run: docker build -t 127.0.0.1:5000/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable .
+        run: docker build -t ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
         shell: bash
 
       - name: "Push image"
-        run: docker push 127.0.0.1:5000/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable
+        run: docker push ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
         shell: bash
