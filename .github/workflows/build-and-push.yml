@@ -38,6 +38,12 @@ jobs:
       - name: "Checkout code"
         uses: actions/checkout@v4
 
+      - name: "Add Steppingstone server to known hosts"
+        run: |
+          # Add the Steppingstone host to known hosts to prevent host key verification issues
+          ssh-keyscan -H ${{ secrets.STEPPINGSTONE_HOST }} >> ~/.ssh/known_hosts
+        shell: bash
+
       - name: "Establish SSH Tunnel through Steppingstone"
         run: |
           # Create the SSH tunnel (port forward)
@@ -82,6 +88,12 @@ jobs:
 
       - name: "Checkout code"
         uses: actions/checkout@v4
+
+      - name: "Add Steppingstone server to known hosts"
+        run: |
+          # Add the Steppingstone host to known hosts to prevent host key verification issues
+          ssh-keyscan -H ${{ secrets.STEPPINGSTONE_HOST }} >> ~/.ssh/known_hosts
+        shell: bash
 
       - name: "Establish SSH Tunnel through Steppingstone"
         run: |
