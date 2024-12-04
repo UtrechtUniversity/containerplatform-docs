@@ -52,15 +52,15 @@ jobs:
 
 
       - name: "Login to registry"
-        run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login 127.0.0.1:5000 -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
+        run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login localhost:5000 -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
         shell: bash
 
       - name: "Build image"
-        run: docker build -t 127.0.0.1:5000/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
+        run: docker build -t localhost:5000/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
         shell: bash
 
       - name: "Push image"
-        run: docker push 127.0.0.1:5000/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
+        run: docker push localhost:5000/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
         shell: bash
 
   production:
