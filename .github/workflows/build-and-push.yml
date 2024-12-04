@@ -24,15 +24,17 @@ jobs:
       - name: "Checkout code"
         uses: actions/checkout@v2
 
-      - name: "Build and Push"
-        uses: .github/actions/build-and-push-container-image
-        with:
-          username: ${{ secrets.OPENSHIFT_USERNAME }}
-          password: ${{ secrets.SA_DEVOPS_TOKEN }}
-          registry_url: ${{ env.ACC_REGISTRY_URL }}
-          container_image_name: ${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}
-          container_image_version: dev
-          build_context: .
+      - name: "Login to registry"
+        run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login ${{ env.ACC_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
+        shell: bash
+
+      - name: "Build image"
+        run: docker build -t ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
+        shell: bash
+
+      - name: "Push image"
+        run: docker push ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
+        shell: bash
 
   production:
     runs-on: ubuntu-latest
@@ -43,13 +45,14 @@ jobs:
       - name: "Checkout code"
         uses: actions/checkout@v2
 
-      - name: "Build and Push"
-        uses: .github/actions/build-and-push-container-image
-        with:
-          username: ${{ env.OPENSHIFT_USERNAME }}
-          password: ${{ secrets.SA_DEVOPS_TOKEN }}
-          registry_url: ${{ env.PRD_REGISTRY_URL }}
-          container_image_name: ${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}
-          # Once we separate the build and deploy code, set the image tag like this back ${{ env.MAJOR_VERSION }}.${{ github.run_number }}
-          container_image_version: stable
-          build_context: .
+      - name: "Login to registry"
+        run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login ${{ env.PRD_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
+        shell: bash
+
+      - name: "Build image"
+        run: docker build -t ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable .
+        shell: bash
+
+      - name: "Push image"
+        run: docker push ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable
+        shell: bash
