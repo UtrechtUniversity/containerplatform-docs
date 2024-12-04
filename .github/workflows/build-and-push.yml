@@ -48,6 +48,7 @@ jobs:
           ping -c 5 127.0.0.1
           docker info
           sleep 5
+          curl -v https://localhost:5000/v2/
         shell: bash
 
 
