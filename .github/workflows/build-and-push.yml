@@ -24,6 +24,12 @@ jobs:
       - name: "Checkout code"
         uses: actions/checkout@v2
 
+      - name: Check if we can ping the registry
+        run: |
+          ping -c 5 ${{ env.ACC_REGISTRY_URL }}
+          ping -c 5 ${{ env.PRD_REGISTRY_URL }}
+        shell: bash
+
       - name: "Login to registry"
         run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login ${{ env.ACC_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
         shell: bash
