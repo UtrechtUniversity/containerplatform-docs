@@ -43,11 +43,6 @@ jobs:
           # Create the SSH tunnel (port forward)
           ssh -o StrictHostKeyChecking=no -f -N -L 5000:${{ env.ACC_REGISTRY_URL }}:443 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} -i ${{ env.SSH_KEY_PATH }}
 
-      - name: "Check if we can curl the registry"
-        run: |
-          curl -v https://api.cl01.cp-acc.its.uu.nl:/v2/
-        shell: bash
-
       - name: "Login to registry"
         run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login ${{ env.ACC_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
         shell: bash
