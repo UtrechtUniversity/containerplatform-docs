@@ -45,11 +45,11 @@ jobs:
 
       - name: "Check if we can curl the registry"
         run: |
-          curl -v https://localhost:5000/v2/
+          curl -v https://api.cl01.cp-acc.its.uu.nl:/v2/
         shell: bash
 
       - name: "Login to registry"
-        run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login localhost:5000 -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
+        run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login ${{ env.ACC_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
         shell: bash
 
       - name: "Build image"
