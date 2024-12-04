@@ -1,8 +1,9 @@
 name: Build and push mkdocs openshift container to OpenShift
 
 env:
-  OPENSHIFT_USERNAME: sa-devops
   OPENSHIFT_PROJECT: docs
+  ACC_REGISTRY_URL: registry.cp-acc.its.uu.nl
+  PRD_REGISTRY_URL: registry.cp.its.uu.nl
   IMAGE_NAME: docs
   MAJOR_VERSION: 1
 
@@ -26,12 +27,12 @@ jobs:
       - name: "Build and Push"
         uses: .github/actions/build-and-push-container-image@main
         with:
-          username: ${{ env.OPENSHIFT_USERNAME }}
+          username: ${{ secrets.OPENSHIFT_USERNAME }}
           password: ${{ secrets.SA_DEVOPS_TOKEN }}
-          registry_url: registry.cp-acc.its.uu.nl
+          registry_url: ${{ env.ACC_REGISTRY_URL }}
           container_image_name: ${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}
           container_image_version: dev
-          build_context: containers/acc
+          build_context: .
 
   production:
     runs-on: ubuntu-latest
@@ -47,8 +48,8 @@ jobs:
         with:
           username: ${{ env.OPENSHIFT_USERNAME }}
           password: ${{ secrets.SA_DEVOPS_TOKEN }}
-          registry_url: registry.cp.its.uu.nl
+          registry_url: ${{ env.PRD_REGISTRY_URL }}
           container_image_name: ${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}
           # Once we separate the build and deploy code, set the image tag like this back ${{ env.MAJOR_VERSION }}.${{ github.run_number }}
           container_image_version: stable
-          build_context: containers/prd
+          build_context: .
