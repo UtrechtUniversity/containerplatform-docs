@@ -6,50 +6,92 @@ env:
   PRD_REGISTRY_URL: registry.cp.its.uu.nl
   IMAGE_NAME: docs
   MAJOR_VERSION: 1
+  SSH_KEY_PATH: "/tmp/ssh-key/id_rsa"
 
 on:
-  #  push:
-  #    branches: [ "main" ]
-  #  pull_request:
-  #    branches: [ "main" ]
+  pull_request:
+    branches:
+      - dev
+      - main
   workflow_dispatch:
 
 jobs:
   acceptance:
+    name: Acceptance Build&Push
     runs-on: ubuntu-latest
-    if: ${{ github.ref != 'refs/heads/main' }}
+    if: github.event_name == 'pull_request' && github.base_ref == 'dev' || github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/dev'
     environment:
       name: acceptance
     steps:
-      - name: "Checkout code"
-        uses: actions/checkout@v2
+      - name: Create SSH Key
+        id: create_ssh_key
+        run: |
+          # Create a temporary directory for the key
+          mkdir -p /tmp/ssh-key
+          export SSH_KEY_PATH="/tmp/ssh-key/id_rsa"
+          # Write the secret to the key file
+          echo "${{ secrets.PROXY_PRIVATE_KEY }}" > $SSH_KEY_PATH
+          # Set permissions for the key
+          chmod 600 $SSH_KEY_PATH
+          eval "$(ssh-agent -s)"
+          ssh-add $SSH_KEY_PATH
 
-      - name: "Build and Push"
-        uses: .github/actions/build-and-push-container-image@main
-        with:
-          username: ${{ secrets.OPENSHIFT_USERNAME }}
-          password: ${{ secrets.SA_DEVOPS_TOKEN }}
-          registry_url: ${{ env.ACC_REGISTRY_URL }}
-          container_image_name: ${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}
-          container_image_version: dev
-          build_context: .
+      - name: "Checkout code"
+        uses: actions/checkout@v4
+
+      - name: "Establish SSH Tunnel through Steppingstone"
+        run: |
+          # Create the SSH tunnel (port forward)
+          ssh -o StrictHostKeyChecking=no -f -N -L 5000:${{ env.ACC_REGISTRY_URL }}:443 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} -i ${{ env.SSH_KEY_PATH }}
+
+      - name: "Login to registry"
+        run: echo ${{ secrets.SA_DEVOPS_TOKEN_ACC }} | docker login ${{ env.ACC_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
+        shell: bash
+
+      - name: "Build image"
+        run: docker build -t ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
+        shell: bash
+
+      - name: "Push image"
+        run: docker push ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
+        shell: bash
 
   production:
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' }}
+    name: Production Build&Push
+    if: github.event_name == 'pull_request' && github.base_ref == 'main' || github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
     environment:
       name: production
     steps:
-      - name: "Checkout code"
-        uses: actions/checkout@v2
+      - name: Create SSH Key
+        id: create_ssh_key
+        run: |
+          # Create a temporary directory for the key
+          mkdir -p /tmp/ssh-key
+          export SSH_KEY_PATH="/tmp/ssh-key/id_rsa"
+          # Write the secret to the key file
+          echo "${{ secrets.PROXY_PRIVATE_KEY }}" > $SSH_KEY_PATH
+          # Set permissions for the key
+          chmod 600 $SSH_KEY_PATH
+          eval "$(ssh-agent -s)"
+          ssh-add $SSH_KEY_PATH
 
-      - name: "Build and Push"
-        uses: .github/actions/build-and-push-container-image@main
-        with:
-          username: ${{ env.OPENSHIFT_USERNAME }}
-          password: ${{ secrets.SA_DEVOPS_TOKEN }}
-          registry_url: ${{ env.PRD_REGISTRY_URL }}
-          container_image_name: ${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}
-          # Once we separate the build and deploy code, set the image tag like this back ${{ env.MAJOR_VERSION }}.${{ github.run_number }}
-          container_image_version: stable
-          build_context: .
+      - name: "Checkout code"
+        uses: actions/checkout@v4
+
+      - name: "Establish SSH Tunnel through Steppingstone"
+        run: |
+          # Create the SSH tunnel (port forward)
+          ssh -o StrictHostKeyChecking=no -f -N -L 5000:${{ env.PRD_REGISTRY_URL }}:443 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} -i ${{ env.SSH_KEY_PATH }}
+
+      - name: "Login to registry"
+        run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login ${{ env.PRD_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
+        shell: bash
+
+      - name: "Build image"
+        run: docker build -t ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable .
+        shell: bash
+
+      - name: "Push image"
+        run: docker push ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable
+        shell: bash
