@@ -6,6 +6,7 @@ env:
   PRD_REGISTRY_URL: registry.cp.its.uu.nl
   IMAGE_NAME: docs
   MAJOR_VERSION: 1
+  SSH_KEY_PATH: "/tmp/ssh-key/id_rsa"
 
 on:
   #  push:
@@ -21,25 +22,48 @@ jobs:
     environment:
       name: acceptance
     steps:
+      - name: Create SSH Key
+        id: create_ssh_key
+        run: |
+          # Create a temporary directory for the key
+          mkdir -p /tmp/ssh-key
+          export SSH_KEY_PATH="/tmp/ssh-key/id_rsa"
+          # Write the secret to the key file
+          echo "${{ secrets.PROXY_PRIVATE_KEY }}" > $SSH_KEY_PATH
+          # Set permissions for the key
+          chmod 600 $SSH_KEY_PATH
+          eval "$(ssh-agent -s)"
+          ssh-add $SSH_KEY_PATH
+
       - name: "Checkout code"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+
+      - name: ssh-key agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.PROXY_PRIVATE_KEY }}
+
+      - name: "Establish SSH Tunnel through Steppingstone"
+        run: |
+          # Create the SSH tunnel (port forward)
+          ssh -f -N -L 5000:${{ env.ACC_REGISTRY_URL }}:5000 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }}
 
       - name: Check if we can ping the registry
         run: |
-          ping -c 5 ${{ env.ACC_REGISTRY_URL }}
-          ping -c 5 ${{ env.PRD_REGISTRY_URL }}
+          ping -c 5 127.0.0.1
+          docker info
         shell: bash
 
       - name: "Login to registry"
-        run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login ${{ env.ACC_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
+        run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login 127.0.0.1:5000 -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
         shell: bash
 
       - name: "Build image"
-        run: docker build -t ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
+        run: docker build -t 127.0.0.1:5000/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
         shell: bash
 
       - name: "Push image"
-        run: docker push ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
+        run: docker push 127.0.0.1:5000/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
         shell: bash
 
   production:
@@ -48,17 +72,40 @@ jobs:
     environment:
       name: production
     steps:
+      - name: Create SSH Key
+        id: create_ssh_key
+        run: |
+          # Create a temporary directory for the key
+          mkdir -p /tmp/ssh-key
+          export SSH_KEY_PATH="/tmp/ssh-key/id_rsa"
+          # Write the secret to the key file
+          echo "${{ secrets.PROXY_PRIVATE_KEY }}" > $SSH_KEY_PATH
+          # Set permissions for the key
+          chmod 600 $SSH_KEY_PATH
+          eval "$(ssh-agent -s)"
+          ssh-add $SSH_KEY_PATH
+
       - name: "Checkout code"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+
+      - name: ssh-key agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.PROXY_PRIVATE_KEY }}
+
+      - name: "Establish SSH Tunnel through Steppingstone"
+        run: |
+          # Create the SSH tunnel (port forward)
+          ssh -f -N -L 5000:${{ env.PRD_REGISTRY_URL }}:5000 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }}
 
       - name: "Login to registry"
-        run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login ${{ env.PRD_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
+        run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login 127.0.0.1:5000 -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
         shell: bash
 
       - name: "Build image"
-        run: docker build -t ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable .
+        run: docker build -t 127.0.0.1:5000/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable .
         shell: bash
 
       - name: "Push image"
-        run: docker push ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable
+        run: docker push 127.0.0.1:5000/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable
         shell: bash
