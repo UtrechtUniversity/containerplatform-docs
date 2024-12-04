@@ -38,15 +38,10 @@ jobs:
       - name: "Checkout code"
         uses: actions/checkout@v4
 
-      - name: ssh-key agent
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.PROXY_PRIVATE_KEY }}
-
       - name: "Establish SSH Tunnel through Steppingstone"
         run: |
           # Create the SSH tunnel (port forward)
-          ssh -f -N -L 5000:${{ env.ACC_REGISTRY_URL }}:5000 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }}
+          ssh -f -N -L 5000:${{ env.ACC_REGISTRY_URL }}:5000 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} -i ${{ env.SSH_KEY_PATH }}
 
       - name: Check if we can ping the registry
         run: |
@@ -88,15 +83,10 @@ jobs:
       - name: "Checkout code"
         uses: actions/checkout@v4
 
-      - name: ssh-key agent
-        uses: webfactory/ssh-agent@v0.9.0
-        with:
-          ssh-private-key: ${{ secrets.PROXY_PRIVATE_KEY }}
-
       - name: "Establish SSH Tunnel through Steppingstone"
         run: |
           # Create the SSH tunnel (port forward)
-          ssh -f -N -L 5000:${{ env.PRD_REGISTRY_URL }}:5000 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }}
+          ssh -f -N -L 5000:${{ env.PRD_REGISTRY_URL }}:5000 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} -i ${{ env.SSH_KEY_PATH }}
 
       - name: "Login to registry"
         run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login 127.0.0.1:5000 -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
