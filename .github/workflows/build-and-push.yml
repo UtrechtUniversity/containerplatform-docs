@@ -1,0 +1,55 @@
+name: Build and push mkdocs openshift container to OpenShift
+
+env:
+  OPENSHIFT_PROJECT: docs
+  ACC_REGISTRY_URL: registry.cp-acc.its.uu.nl
+  PRD_REGISTRY_URL: registry.cp.its.uu.nl
+  IMAGE_NAME: docs
+  MAJOR_VERSION: 1
+
+on:
+  #  push:
+  #    branches: [ "main" ]
+  #  pull_request:
+  #    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    if: ${{ github.ref != 'refs/heads/main' }}
+    environment:
+      name: acceptance
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v2
+
+      - name: "Build and Push"
+        uses: .github/actions/build-and-push-container-image@main
+        with:
+          username: ${{ secrets.OPENSHIFT_USERNAME }}
+          password: ${{ secrets.SA_DEVOPS_TOKEN }}
+          registry_url: ${{ env.ACC_REGISTRY_URL }}
+          container_image_name: ${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}
+          container_image_version: dev
+          build_context: .
+
+  production:
+    runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' }}
+    environment:
+      name: production
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v2
+
+      - name: "Build and Push"
+        uses: .github/actions/build-and-push-container-image@main
+        with:
+          username: ${{ env.OPENSHIFT_USERNAME }}
+          password: ${{ secrets.SA_DEVOPS_TOKEN }}
+          registry_url: ${{ env.PRD_REGISTRY_URL }}
+          container_image_name: ${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}
+          # Once we separate the build and deploy code, set the image tag like this back ${{ env.MAJOR_VERSION }}.${{ github.run_number }}
+          container_image_version: stable
+          build_context: .
