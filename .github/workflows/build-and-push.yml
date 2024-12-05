@@ -46,17 +46,17 @@ jobs:
           # Create the SSH tunnel (port forward)
           ssh -o StrictHostKeyChecking=no -f -N -L 5000:${{ env.ACC_REGISTRY_URL }}:443 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} -i ${{ env.SSH_KEY_PATH }}
 
-      - name: "Login to registry"
-        run: echo ${{ secrets.SA_DEVOPS_TOKEN_ACC }} | docker login ${{ env.ACC_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
-        shell: bash
-
-      - name: "Build image"
-        run: docker build -t ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
-        shell: bash
-
-      - name: "Push image"
-        run: docker push ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
-        shell: bash
+      #      - name: "Login to registry"
+      #        run: echo ${{ secrets.SA_DEVOPS_TOKEN_ACC }} | docker login ${{ env.ACC_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
+      #        shell: bash
+      #
+      #      - name: "Build image"
+      #        run: docker build -t ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
+      #        shell: bash
+      #
+      #      - name: "Push image"
+      #        run: docker push ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
+      #        shell: bash
 
       # Restart deployment
 
@@ -66,15 +66,17 @@ jobs:
           source: "mirror"
           oc: ${{ env.OC_CLIENT_VERSION }}
 
-      - name: "Authenticate to OpenShift"
-        uses: redhat-actions/oc-login@v1
-        with:
-          openshift_server_url: ${{ env.ACC_REGISTRY_URL }}
-          openshift_token: ${{ secrets.SA_DEVOPS_TOKEN_ACC }}
+      #      - name: "Authenticate to OpenShift"
+      #        uses: redhat-actions/oc-login@v1
+      #        with:
+      #          openshift_server_url: ${{ env.ACC_REGISTRY_URL }}
+      #          openshift_token: ${{ secrets.SA_DEVOPS_TOKEN_ACC }}
 
 
       - name: "OpenShift restart deployment"
-        run: oc --namespace docs rollout restart deployment/docs-public
+        run: |
+          oc login --token=${{ secrets.SA_DEVOPS_TOKEN_ACC }} --server=${{ env.ACC_REGISTRY_URL }}
+          oc --namespace docs rollout restart deployment/docs-public
 
 
   production:
