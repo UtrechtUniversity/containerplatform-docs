@@ -68,9 +68,6 @@ jobs:
 
       - name: "Authenticate to OpenShift"
         uses: redhat-actions/oc-login@v1
-        env:
-          OPENSHIFT_USER: ${{ secrets.OPENSHIFT_USERNAME }}
-          OPENSHIFT_NAMESPACE: ${{ env.OPENSHIFT_PROJECT }}
         with:
           openshift_server_url: ${{ env.ACC_REGISTRY_URL }}
           openshift_token: ${{ secrets.SA_DEVOPS_TOKEN_ACC }}
