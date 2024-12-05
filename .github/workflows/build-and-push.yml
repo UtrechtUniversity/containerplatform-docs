@@ -27,11 +27,21 @@ jobs:
     environment:
       name: acceptance
     steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v4
+
       - name: Install CLI tools from OpenShift Mirror
         uses: redhat-actions/openshift-tools-installer@v1
         with:
           source: "mirror"
           oc: ${{ env.OC_CLIENT_VERSION }}
+
+      # Install sshuttle
+      - name: Install sshuttle
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pip
+          pip3 install sshuttle
 
       - name: Create SSH Key
         id: create_ssh_key
@@ -46,13 +56,15 @@ jobs:
           eval "$(ssh-agent -s)"
           ssh-add $SSH_KEY_PATH
 
-
-      - name: "Checkout code"
-        uses: actions/checkout@v4
-      - name: "Establish SSH Tunnel through Steppingstone"
+      - name: setup tunnel with sshuttle
         run: |
-          # Create the SSH tunnel (port forward)
-          ssh -o StrictHostKeyChecking=no -f -N -L 5000:${{ env.ACC_REGISTRY_URL }}:443 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} -i ${{ env.SSH_KEY_PATH }}
+          sshuttle -r ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} 0/0 --ssh-cmd "ssh -i ${{ env.SSH_KEY_PATH }}" --dns
+      
+
+      #      - name: "Establish SSH Tunnel through Steppingstone"
+      #        run: |
+      #          # Create the SSH tunnel (port forward)
+      #          ssh -o StrictHostKeyChecking=no -f -N -L 5000:${{ env.ACC_REGISTRY_URL }}:443 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} -i ${{ env.SSH_KEY_PATH }}
 
       #      - name: "Login to registry"
       #        run: echo ${{ secrets.SA_DEVOPS_TOKEN_ACC }} | docker login ${{ env.ACC_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
