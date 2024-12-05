@@ -133,7 +133,7 @@ metadata:
 spec:
   ingressClassName: openshift-default
   rules:
-  - host: phoenix.k8s.im.hum.uu.nl
+  - host: <your-domain>
     http:
         paths:
         - path: /
