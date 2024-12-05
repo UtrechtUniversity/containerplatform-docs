@@ -63,13 +63,6 @@ jobs:
       - name: setup tunnel with sshuttle
         run: |
           SSHUTTLE_ARGS="-e 'ssh -o StrictHostKeyChecking=no -i /tmp/ssh-key/id_rsa' --daemon" sshuttle -r ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} 0/0
-      
-
-      #      - name: "Establish SSH Tunnel through Steppingstone"
-      #        run: |
-      #          # Create the SSH tunnel (port forward)
-
-      #          ssh -o StrictHostKeyChecking=no -f -N -L 5000:${{ env.ACC_REGISTRY_URL }}:443 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} -i ${{ env.SSH_KEY_PATH }}
 
       - name: "Login to registry"
         run: echo ${{ secrets.SA_DEVOPS_TOKEN_ACC }} | docker login ${{ env.ACC_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
@@ -77,7 +70,6 @@ jobs:
 
       - name: "Push image"
         run: docker push ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
-
         shell: bash
 
       # Restart deployment
@@ -96,6 +88,22 @@ jobs:
     environment:
       name: production
     steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v4
+
+      - name: Install CLI tools from OpenShift Mirror
+        uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          source: "mirror"
+          oc: ${{ env.OC_CLIENT_VERSION }}
+
+      # Install sshuttle
+      - name: Install sshuttle
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pip
+          pip3 install sshuttle
+
       - name: Create SSH Key
         id: create_ssh_key
         run: |
@@ -109,20 +117,16 @@ jobs:
           eval "$(ssh-agent -s)"
           ssh-add $SSH_KEY_PATH
 
-      - name: "Checkout code"
-        uses: actions/checkout@v4
+      - name: "Build image"
+        run: docker build -t ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable .
+        shell: bash
 
-      - name: "Establish SSH Tunnel through Steppingstone"
+      - name: setup tunnel with sshuttle
         run: |
-          # Create the SSH tunnel (port forward)
-          ssh -o StrictHostKeyChecking=no -f -N -L 5000:${{ env.PRD_REGISTRY_URL }}:443 ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} -i ${{ env.SSH_KEY_PATH }}
+          SSHUTTLE_ARGS="-e 'ssh -o StrictHostKeyChecking=no -i /tmp/ssh-key/id_rsa' --daemon" sshuttle -r ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} 0/0
 
       - name: "Login to registry"
         run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login ${{ env.PRD_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
-        shell: bash
-
-      - name: "Build image"
-        run: docker build -t ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable .
         shell: bash
 
       - name: "Push image"
@@ -131,21 +135,8 @@ jobs:
 
       # Restart deployment
 
-      - name: Install CLI tools from OpenShift Mirror
-        uses: redhat-actions/openshift-tools-installer@v1
-        with:
-          source: "mirror"
-          oc: ${{ env.OC_CLIENT_VERSION }}
-
       - name: "Authenticate to OpenShift"
-        uses: redhat-actions/oc-login@v1
-        env:
-          OPENSHIFT_USER: ${{ secrets.OPENSHIFT_USERNAME }}
-          OPENSHIFT_NAMESPACE: ${{ env.OPENSHIFT_PROJECT }}
-        with:
-          openshift_server_url: ${{ env.PRD_API_URL }}
-          openshift_token: ${{ secrets.SA_DEVOPS_TOKEN }}
-          namespace: ${{ env.OPENSHIFT_PROJECT }}
+        run: oc login --token=${{ secrets.SA_DEVOPS_TOKEN }} --server=${{ env.PRD_API_URL }}:6443
 
       - name: "OpenShift restart deployment"
-        run: oc --namespace ${{ env.OPENSHIFT_PROJECT }} rollout restart deployment/${{ env.DEPLOYMENT_NAME }}
+        run: oc delete pods --all --namespace ${{ env.OPENSHIFT_PROJECT }}
