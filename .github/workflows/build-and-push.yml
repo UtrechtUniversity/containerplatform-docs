@@ -71,10 +71,10 @@ jobs:
         with:
           openshift_server_url: ${{ env.ACC_REGISTRY_URL }}
           openshift_token: ${{ secrets.SA_DEVOPS_TOKEN_ACC }}
-          namespace: ${{ env.OPENSHIFT_PROJECT }}
+
 
       - name: "OpenShift restart deployment"
-        run: oc --namespace ${{ env.OPENSHIFT_PROJECT }} rollout restart deployment/${{ env.DEPLOYMENT_NAME }}
+        run: oc --namespace docs rollout restart deployment/docs-public
 
 
   production:
