@@ -58,7 +58,7 @@ jobs:
 
       - name: setup tunnel with sshuttle
         run: |
-          SSHUTTLE_ARGS="-e 'ssh -o StrictHostKeyChecking=no' --dns --daemon" sshuttle -r ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} 0/0
+          SSHUTTLE_ARGS="-e 'ssh -o StrictHostKeyChecking=no' --daemon" sshuttle -r ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} 0/0
       
 
       #      - name: "Establish SSH Tunnel through Steppingstone"
