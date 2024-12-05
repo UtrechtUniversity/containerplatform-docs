@@ -5,8 +5,10 @@ env:
   ACC_REGISTRY_URL: registry.cp-acc.its.uu.nl
   PRD_REGISTRY_URL: registry.cp.its.uu.nl
   IMAGE_NAME: docs
+  DEPLOYMENT_NAME: docs-public
   MAJOR_VERSION: 1
   SSH_KEY_PATH: "/tmp/ssh-key/id_rsa"
+  OC_CLIENT_VERSION: "4.17"
 
 on:
   pull_request:
@@ -56,6 +58,28 @@ jobs:
         run: docker push ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
         shell: bash
 
+      # Restart deployment
+
+      - name: Install CLI tools from OpenShift Mirror
+        uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          source: "mirror"
+          oc: ${{ env.OC_CLIENT_VERSION }}
+
+      - name: "Authenticate to OpenShift"
+        uses: redhat-actions/oc-login@v1
+        env:
+          OPENSHIFT_USER: ${{ secrets.OPENSHIFT_USERNAME }}
+          OPENSHIFT_NAMESPACE: ${{ env.OPENSHIFT_PROJECT }}
+        with:
+          openshift_server_url: ${{ env.ACC_REGISTRY_URL }}
+          openshift_token: ${{ secrets.SA_DEVOPS_TOKEN_ACC }}
+          namespace: ${{ env.OPENSHIFT_PROJECT }}
+
+      - name: "OpenShift restart deployment"
+        run: oc --namespace ${{ env.OPENSHIFT_PROJECT }} rollout restart deployment/${{ env.DEPLOYMENT_NAME }}
+
+
   production:
     runs-on: ubuntu-latest
     name: Production Build&Push
@@ -95,3 +119,24 @@ jobs:
       - name: "Push image"
         run: docker push ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable
         shell: bash
+
+      # Restart deployment
+
+      - name: Install CLI tools from OpenShift Mirror
+        uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          source: "mirror"
+          oc: ${{ env.OC_CLIENT_VERSION }}
+
+      - name: "Authenticate to OpenShift"
+        uses: redhat-actions/oc-login@v1
+        env:
+          OPENSHIFT_USER: ${{ secrets.OPENSHIFT_USERNAME }}
+          OPENSHIFT_NAMESPACE: ${{ env.OPENSHIFT_PROJECT }}
+        with:
+          openshift_server_url: ${{ env.PRD_REGISTRY_URL }}
+          openshift_token: ${{ secrets.SA_DEVOPS_TOKEN }}
+          namespace: ${{ env.OPENSHIFT_PROJECT }}
+
+      - name: "OpenShift restart deployment"
+        run: oc --namespace ${{ env.OPENSHIFT_PROJECT }} rollout restart deployment/${{ env.DEPLOYMENT_NAME }}
