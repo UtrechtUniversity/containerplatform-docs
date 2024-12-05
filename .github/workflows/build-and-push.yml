@@ -9,8 +9,8 @@ env:
   MAJOR_VERSION: 1
   SSH_KEY_PATH: "/tmp/ssh-key/id_rsa"
   OC_CLIENT_VERSION: "4.17"
-  ACC_API_URL: https://api.cl01.cp-acc.its.uu.nl:6443
-  PRD_API_URL: https://api.cl01.cp.its.uu.nl:6443
+  ACC_API_URL: 131.211.20.130:6443
+  PRD_API_URL: 131.211.51.2:6443
 
 on:
   pull_request:
