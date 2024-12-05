@@ -9,8 +9,8 @@ env:
   MAJOR_VERSION: 1
   SSH_KEY_PATH: "/tmp/ssh-key/id_rsa"
   OC_CLIENT_VERSION: "4.17"
-  ACC_API_URL: https://api.cl01.cp-acc.its.uu.nl:6443
-  PRD_API_URL: https://api.cl01.cp.its.uu.nl:6443
+  ACC_API_URL: api.cl01.cp-acc.its.uu.nl
+  PRD_API_URL: api.cl01.cp.its.uu.nl
 
 on:
   pull_request:
@@ -27,6 +27,12 @@ jobs:
     environment:
       name: acceptance
     steps:
+      - name: Install CLI tools from OpenShift Mirror
+        uses: redhat-actions/openshift-tools-installer@v1
+        with:
+          source: "mirror"
+          oc: ${{ env.OC_CLIENT_VERSION }}
+
       - name: Create SSH Key
         id: create_ssh_key
         run: |
@@ -40,9 +46,9 @@ jobs:
           eval "$(ssh-agent -s)"
           ssh-add $SSH_KEY_PATH
 
+
       - name: "Checkout code"
         uses: actions/checkout@v4
-
       - name: "Establish SSH Tunnel through Steppingstone"
         run: |
           # Create the SSH tunnel (port forward)
@@ -58,28 +64,23 @@ jobs:
       #
       #      - name: "Push image"
       #        run: docker push ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
+
       #        shell: bash
 
       # Restart deployment
 
-      - name: Install CLI tools from OpenShift Mirror
-        uses: redhat-actions/openshift-tools-installer@v1
-        with:
-          source: "mirror"
-          oc: ${{ env.OC_CLIENT_VERSION }}
-
-      - name: check that we can reach the OpenShift cluster
-        run: curl https://api.cl01.cp-acc.its.uu.nl
-
       - name: "Authenticate to OpenShift"
-        uses: redhat-actions/oc-login@v1
-        env:
-          OPENSHIFT_USER: ${{ secrets.OPENSHIFT_USERNAME }}
-          OPENSHIFT_NAMESPACE: ${{ env.OPENSHIFT_PROJECT }}
-        with:
-          openshift_server_url: ${{ env.ACC_API_URL }}
-          openshift_token: ${{ secrets.SA_DEVOPS_TOKEN_ACC }}
-          namespace: ${{ env.OPENSHIFT_PROJECT }}
+        run: oc login --token=${{ secrets.SA_DEVOPS_TOKEN_ACC }} --server=${{ env.ACC_API_URL }}:6443
+      #
+      #      - name: "Authenticate to OpenShift"
+      #        uses: redhat-actions/oc-login@v1
+      #        env:
+      #          OPENSHIFT_USER: ${{ secrets.OPENSHIFT_USERNAME }}
+      #          OPENSHIFT_NAMESPACE: ${{ env.OPENSHIFT_PROJECT }}
+      #        with:
+      #          openshift_server_url: ${{ env.ACC_API_URL }}
+      #          openshift_token: ${{ secrets.SA_DEVOPS_TOKEN_ACC }}
+      #          namespace: ${{ env.OPENSHIFT_PROJECT }}
 
       - name: "OpenShift restart deployment"
         run: oc --namespace ${{ env.OPENSHIFT_PROJECT }} rollout restart deployment/${{ env.DEPLOYMENT_NAME }}
