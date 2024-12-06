@@ -36,7 +36,6 @@ jobs:
           source: "mirror"
           oc: ${{ env.OC_CLIENT_VERSION }}
 
-      # Install sshuttle
       - name: Install sshuttle
         run: |
           sudo apt-get update
@@ -73,12 +72,21 @@ jobs:
         shell: bash
 
       # Restart deployment
-
       - name: "Authenticate to OpenShift"
         run: oc login --token=${{ secrets.SA_DEVOPS_TOKEN_ACC }} --server=${{ env.ACC_API_URL }}:6443
 
       - name: "OpenShift restart deployment"
         run: oc delete pods --all --namespace ${{ env.OPENSHIFT_PROJECT }}
+
+      # cleanup
+      - name: Remove Docker config if it exists
+        run: |
+          if [ -f "/home/runner/.docker/config.json" ]; then
+            echo "File exists. Removing..."
+            rm -f "/home/runner/.docker/config.json"
+          else
+            echo "File does not exist. Skipping..."
+          fi
 
 
   production:
@@ -97,7 +105,6 @@ jobs:
           source: "mirror"
           oc: ${{ env.OC_CLIENT_VERSION }}
 
-      # Install sshuttle
       - name: Install sshuttle
         run: |
           sudo apt-get update
@@ -134,9 +141,18 @@ jobs:
         shell: bash
 
       # Restart deployment
-
       - name: "Authenticate to OpenShift"
         run: oc login --token=${{ secrets.SA_DEVOPS_TOKEN }} --server=${{ env.PRD_API_URL }}:6443
 
       - name: "OpenShift restart deployment"
         run: oc delete pods --all --namespace ${{ env.OPENSHIFT_PROJECT }}
+
+      # cleanup
+      - name: Remove Docker config if it exists
+        run: |
+          if [ -f "/home/runner/.docker/config.json" ]; then
+            echo "File exists. Removing..."
+            rm -f "/home/runner/.docker/config.json"
+          else
+            echo "File does not exist. Skipping..."
+          fi
