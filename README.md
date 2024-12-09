@@ -3,12 +3,12 @@ Container Platform public documentation
 
 ## Instructions to contribute to this repository and our documentation site.
 
-1. [Fork your own copy of a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#creating-your-own-copy-of-a-project)
-2. [Cloning a fork to your computer;](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#cloning-a-fork-to-your-computer)
-3. [Creating a branch to work on](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#making-and-pushing-changes)
-4. [Making and pushing changes](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#making-and-pushing-changes)
-5. [Making a pull request](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#making-a-pull-request)
-4. [Managing feedback](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#managing-feedback)
+1. [Fork your own copy of a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#creating-your-own-copy-of-a-project){:target="_blank"}
+2. [Cloning a fork to your computer](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#cloning-a-fork-to-your-computer){:target="_blank"}
+3. [Creating a branch to work on](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#making-and-pushing-changes){:target="_blank"}
+4. [Making and pushing changes](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#making-and-pushing-changes){:target="_blank"}
+5. [Making a pull request](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#making-a-pull-request){:target="_blank"}
+4. [Managing feedback](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#managing-feedback){:target="_blank"}
 
 ### Example of how to include an image in your markdown file:
 ```bash
