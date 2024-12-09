@@ -3,7 +3,7 @@ Container Platform public documentation
 
 ## Instructions to contribute to this repository and our documentation site.
 
-1. [Fork your own copy of a project](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#creating-your-own-copy-of-a-project){:target="_blank"}
+1. <a href="https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#creating-your-own-copy-of-a-project" target="_blank">Fork your own copy of a project</a>
 2. [Cloning a fork to your computer](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#cloning-a-fork-to-your-computer){:target="_blank"}
 3. [Creating a branch to work on](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#making-and-pushing-changes){:target="_blank"}
 4. [Making and pushing changes](https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project#making-and-pushing-changes){:target="_blank"}
