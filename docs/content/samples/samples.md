@@ -130,6 +130,7 @@ metadata:
     app: phoenix
   annotations:
     INGRESS.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt # or: sectigo
 spec:
   ingressClassName: openshift-default
   rules:
