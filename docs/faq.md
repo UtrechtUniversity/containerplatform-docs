@@ -35,7 +35,7 @@ You can explore the official OpenShift documentation, participate in community f
 
 **11. What kind of storage do we supply?**
 At the moment we do not supply object storage, but we do supply persistent storage for your applications.
-You got two options:
+You got three options:
 
 - **Netapp storage** (preferred) RWX | ROX | RWO:  
    ReadWriteMany (RWX): `accessModes:    ReadWriteMany`  
@@ -43,8 +43,8 @@ You got two options:
    ReadWriteOnce (RWO): `accessModes:    ReadWriteOnce`
    > There is a guide on how to use NetApp storage on our documentation site named `NetApp storage`
 
-- **Storage on openshift nodes** RWO:  
-  ReadWriteOnce (RWO): `accessModes:    ReadWriteOnce`
+- **Storage on openshift nodes** RWX:  
+  ReadWriteMany (RWX): `accessModes:    ReadWriteMany`
 
 **12. Why We Use Bitnami Unprivileged Containers?**
 
@@ -61,4 +61,7 @@ You got two options:
    Bitnami unprivileged containers come pre-configured to run as non-root users. This simplifies the process of deploying applications on OpenShift, as there is no need for additional configuration to drop privileges.
 
 **13. How to access the OpenShift 4 console?**
-gewoon om te testen
+   Please follow the guide at [Accessing the OpenShift 4 console](../content/basics/login.md)
+
+**14. How to request a TLS certificate for my application?**
+   Please follow the guide at [Requesting a TLS certificate](../content/guides/request-tls-cert.md)

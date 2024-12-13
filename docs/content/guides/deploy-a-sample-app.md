@@ -55,7 +55,10 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: sample-ingress
+  annotations:
+     cert-manager.io/cluster-issuer: letsencrypt # or sectigo
 spec:
+  ingressClassName: openshift-default
   rules:
   - host: example.com  # Replace with your desired hostname
     http:
@@ -69,7 +72,7 @@ spec:
               number: 80
 ```
 
-Replace `example.com` with your desired hostname.
+Replace `example.com` with your desired hostname. For this hostname, a TLS certficate will be created via `letsencrypt` or `sectigo`, depending on which one you choose (see annotations).
 
 Apply the YAML:
 
