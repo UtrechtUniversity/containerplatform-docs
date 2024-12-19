@@ -1,12 +1,10 @@
-# Roadmap
+# OpenShift Roadmap
 
-### Roadmap from confluence
+## 2025
 
-<iframe
-src="https://utrechtuniversity.atlassian.net/wiki/spaces/LNX/pages/611123347/Roadmap+linux-team"
-width="100%"
-height="500px"
-frameBorder="0"
-title="roadmap openshift">
-</iframe>
-
+| Task                | Q1  | Q2  | Q3  | Q4 |
+|---------------------|-----|-----|-----|----|
+| RHACS policies      | === | ==  |     |    |
+| ArgoCD as a service |     | === | === |    | 
+| external registry   | === | === |     |    |
+| Source2image (s2i)  |     |     | === |    |
