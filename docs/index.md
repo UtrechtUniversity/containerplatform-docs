@@ -1,10 +1,11 @@
-# Container Platform of the University Utrecht
+# Container Platform of the Utrecht University
 
-**Welcome** to the documentation site for the Container Platform of the University Utrecht.
+**Welcome** to the documentation site for the Container Platform of the Utrecht University.
 
-You have landed on the documentation site of the Container Platform of the University Utrecht. Here you will find   
+You have landed on the documentation site of the Container Platform of the Utrecht University. Here you will find   
 information on how to connect to the platform, how to deploy applications, and how to use the platform in general.  
-If you have any questions, please contact the linux team of the University Utrecht.
+If you have any questions, please contact the linux team of the Utrecht University.
+![openshift_landingspage.webp](images/openshift_landingspage.webp)
 
 # Services we offer
 
