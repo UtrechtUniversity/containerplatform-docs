@@ -186,7 +186,6 @@ spec:
           restartPolicy: Never
       backoffLimit: 4
 ```
-
 To verify it worked: `kubectl get ingress` and then curl the returned URL ie. `curl phoenix.k8s.im.hum.uu.nl`.
 
 ### Cleanup

@@ -1,7 +1,6 @@
 # Reference
 
 ### **Official Documentation**
-
 1. **OpenShift 4 Documentation**  
    [openshift-docs](https://docs.redhat.com/en)
 2. **Red Hat Developer Resources**  
@@ -12,7 +11,6 @@
    [github.com/openshift](https://github.com/openshift)
 
 ### **Third-Party Resources**
-
 1. **Medium Articles on OpenShift**  
    [medium.com/tag/openshift](https://medium.com/tag/openshift)
 2. **Centrefordigitalhumanities**  
