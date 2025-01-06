@@ -56,22 +56,22 @@ copyright: |
 nav:
   - Welcome: index.md
   - Getting Started:
-    - Overview: content/basics/get-started.md
-    - Login to the container platform: content/basics/login.md
+      - Overview: content/basics/get-started.md
+      - Login to the container platform: content/basics/login.md
   - Guides:
       - Overview: content/guides/howtos.md
-    - Access image registry: content/guides/access-registry.md
-    - Create a project: content/guides/create-project.md
-    - Deploy sample application: content/guides/deploy-a-sample-app.md
-    - Deploy wordpress application: content/guides/wordpress-example-app.md
-    - Request a managed TLS certificate for your application: content/guides/request-tls-certificate.md
-    - NetApp storage: content/guides/netapp-storage.md
-    - Deploy Apache rootless: content/guides/apache-nonroot.md
-    - Deploy with ServiceAccount: content/guides/deploy-using-a-serviceaccount.md
-    - Deploy with Ansible: content/guides/deployment-with-ansible.md
+      - Access image registry: content/guides/access-registry.md
+      - Create a project: content/guides/create-project.md
+      - Deploy sample application: content/guides/deploy-a-sample-app.md
+      - Deploy wordpress application: content/guides/wordpress-example-app.md
+      - Request a managed TLS certificate for your application: content/guides/request-tls-certificate.md
+      - NetApp storage: content/guides/netapp-storage.md
+      - Deploy Apache rootless: content/guides/apache-nonroot.md
+      - Deploy with ServiceAccount: content/guides/deploy-using-a-serviceaccount.md
+      - Deploy with Ansible: content/guides/deployment-with-ansible.md
       - Deploy single page webapp sharedvolume: content/guides/single-page-webapp-shared_volume.md
   - Reference:
-    - Overview: content/references/reference.md
+      - Overview: content/references/reference.md
   - FAQ: faq.md
   - Roadmap: roadmap.md
 
