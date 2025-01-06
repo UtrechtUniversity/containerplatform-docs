@@ -7,12 +7,12 @@ information on how to connect to the platform, how to deploy applications, and h
 If you have any questions, please contact the linux team of the Utrecht University.
 ![openshift_landingspage.webp](images/openshift_landingspage.webp)
 
-# Services we offer
+## Services we offer
 
 1. RedHat OpenShift4
 2. ArgoCD (Roadmap)
 
-# Contribute to the documentation
+## Contribute to the documentation
 If you want to contribute to this documentation (please do, because we value your knowledge), please follow the steps below:
 
 Go to [Container Platform docs repo](https://github.com/UtrechtUniversity/containerplatform-docs/)

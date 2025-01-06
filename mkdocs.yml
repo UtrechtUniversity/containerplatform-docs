@@ -60,7 +60,7 @@ nav:
       - Login to the container platform: content/basics/login.md
   - Guides:
       - Overview: content/guides/firstpage.md
-      - HOWTO: content/guides/howto.md
+      - HOWTO: content/guides/howtos.md
       - Access image registry: content/guides/access-registry.md
       - Create a project: content/guides/create-project.md
       - Deploy sample application: content/guides/deploy-a-sample-app.md
