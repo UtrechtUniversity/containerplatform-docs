@@ -1,8 +1,17 @@
 # Reference
-Here you will references.
-## Reference documentation
-Place your reference here.
-## Command-line interfaces (CLIs)
-[cli-refs](https://docs.openshift.com/container-platform/4.15/cli_reference/openshift_cli/getting-started-cli.html)
-## Application programming interfaces (APIs)
-[api-refs](https://docs.openshift.com/container-platform/4.15/rest_api/index.html)
+
+### **Official Documentation**
+1. **OpenShift 4 Documentation**  
+   <a href="https://docs.redhat.com/en" target="_blank">openshift-docs</a>
+2. **Red Hat Developer Resources**  
+   <a href="https://developers.redhat.com" target="_blank">developers.redhat.com</a>
+3. **OpenShift Blog**  
+   <a href="https://www.openshift.com/blog" target="_blank">OpenShift Blog</a>
+4. **OpenShift GitHub Repositories**  
+   <a href="https://github.com/openshift" target="_blank">github.com/openshift</a>
+
+### **Third-Party Resources**
+1. **Medium Articles on OpenShift**  
+   <a href="https://medium.com/tag/openshift" target="_blank">medium.com/tag/openshift</a>
+2. **Centrefordigitalhumanities**  
+   <a href="https://centrefordigitalhumanities.github.io/hello-kubernetes-world/" target="_blank">hello-kubernetes-world</a>

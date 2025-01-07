@@ -24,7 +24,7 @@ We are going to use a Dockerfile here and we will build the container and push i
 Replace DOCKER-USER with your own user account on dockerhub.
 
 1. **Clone this repository**
-    [UtrechtUniversity/apache-non-root-example](https://github.com/UtrechtUniversity/apache-non-root-example)   
+    <a href="https://github.com/UtrechtUniversity/apache-non-root-example" target="_blank">UtrechtUniversity/apache-non-root-example</a><br>
     
     ```bash
     $ git clone https://github.com/UtrechtUniversity/apache-non-root-example

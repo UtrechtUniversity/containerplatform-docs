@@ -32,10 +32,10 @@ Here the project uu-boon0004 will be used as example OpenShift project.
 
 1. A key-user should login to the OpenShift GUI.
 
-    go to [OpenShift Console](https://console.cp.its.uu.nl)  
-    Enter your UU credentials and MFA token.  
-    For more information about logging in visit: [openshift Login](https://docs.cp.its.uu.nl/content/basics/login/)  
-    Click your username and the top right, followed by copy login command.  
+    - Go to <a href="https://console.cp.its.uu.nl" target="_blank">OpenShift Console</a>
+    - Enter your UU credentials and MFA token.  
+    >For more information about logging in visit: <a href="https://docs.cp.its.uu.nl/content/basics/login/" target="_blank">openshift Login</a>
+    - Click your username and the top right, followed by copy login command.  
     Press display token, copy login with this token. Such as:  
     ```bash
     oc login --token=sha256~yeahright --server=https://api.cl01.cp.its.uu.nl:6443
@@ -89,7 +89,7 @@ Here the project uu-boon0004 will be used as example OpenShift project.
 
 5. Check token in jwt 
 
-    The token holds all the information necessary to login. This information can be viewed in a jwt browser, such as jwt.io
+    The token holds all the information necessary to login. This information can be viewed in a jwt browser, such as <a href="https://www.jwt.io" target="_blank">jwt.io</a>
 
     ![jwt.png](../../images/jwt.png)
 
