@@ -62,4 +62,4 @@ You got three options:
    Please follow the guide at [Accessing the OpenShift 4 console](content/basics/login.md)
 
 ### **14. How to request a TLS certificate for my application?**
-   Please follow the guide at [Requesting a TLS certificate](content/guides/request_tls_cert.md)
+   Please follow the guide at [Requesting a TLS certificate](content/guides/request-tls-cert.md)

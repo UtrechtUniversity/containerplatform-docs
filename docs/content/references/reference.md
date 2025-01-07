@@ -2,16 +2,16 @@
 
 ### **Official Documentation**
 1. **OpenShift 4 Documentation**  
-   [openshift-docs](https://docs.redhat.com/en)
+   <a href="https://docs.redhat.com/en" target="_blank">openshift-docs</a>
 2. **Red Hat Developer Resources**  
-   [developers.redhat.com](https://developers.redhat.com)
+   <a href="https://developers.redhat.com" target="_blank">developers.redhat.com</a>
 3. **OpenShift Blog**  
-   [openshift.com/blog](https://www.openshift.com/blog)
+   <a href="https://www.openshift.com/blog" target="_blank">OpenShift Blog</a>
 4. **OpenShift GitHub Repositories**  
-   [github.com/openshift](https://github.com/openshift)
+   <a href="https://github.com/openshift" target="_blank">github.com/openshift</a>
 
 ### **Third-Party Resources**
 1. **Medium Articles on OpenShift**  
-   [medium.com/tag/openshift](https://medium.com/tag/openshift)
+   <a href="https://medium.com/tag/openshift" target="_blank">medium.com/tag/openshift</a>
 2. **Centrefordigitalhumanities**  
-   [hello-kubernetes-world](https://centrefordigitalhumanities.github.io/hello-kubernetes-world/)
+   <a href="https://centrefordigitalhumanities.github.io/hello-kubernetes-world/" target="_blank">hello-kubernetes-world</a>

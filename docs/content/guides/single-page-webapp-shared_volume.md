@@ -11,7 +11,7 @@ Let's begin!
 ### Preparation
 
 Before applying the manifests be sure to login to the Kubernetes Openshift Cluster and create
-a [docker secret](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/). \
+a <a href="https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/" target="_blank">docker secret</a>.  
 ie.
 `kubectl create secret docker-registry docker-cred --docker-server="docker.io" --docker-username=<your-uname> --docker-password=<your-pword> --docker-email=<your-uuemail>`
 
