@@ -43,7 +43,7 @@ Nothing to do. All requested collections are already installed. If you want to r
 ## Setup Service Account / Token / Project
 
 In this guide, it is assumed a service account with enough permission and a project is already available, like this steps here:  
-[deploy-using-a-serviceaccount](https://docs.cp.its.uu.nl/content/guides/deploy-using-a-serviceaccount/)
+<a href="https://docs.cp.its.uu.nl/content/guides/deploy-using-a-serviceaccount/" target="_blank">deploy-using-a-serviceaccount</a>
 
 First an example project is created:
 
@@ -166,4 +166,4 @@ NAME                      READY   STATUS    RESTARTS   AGE
 apache-64dc8cb5ff-7nd97   1/1     Running   0          116s
 ```
 A lot more cool stuff can be done with kubernetes.core.  
-Have a look at the documentation: [kubernetes.core documentation](https://github.com/ansible-collections/kubernetes.core)
+Have a look at the documentation: <a href="https://github.com/ansible-collections/kubernetes.core" target="_blank">kubernetes.core documentation</a>

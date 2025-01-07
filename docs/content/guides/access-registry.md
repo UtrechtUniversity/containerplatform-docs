@@ -11,9 +11,9 @@
 
 1. Login to the OpenShift GUI.
 
-    go to [OpenShift Console](https://console.cp.its.uu.nl) <br>
+    go to <a href="https://console.cp.its.uu.nl" target="_blank">OpenShift Console</a><br>
     Enter your UU credentials and MFA token. <br>
-    For more information about logging in visit: [openshift Login](https://docs.cp.its.uu.nl/content/basics/login/) <br>
+    For more information about logging in visit: <a href="https://docs.cp.its.uu.nl/content/basics/login/" target="_blank">openshift Login</a><br> <br>
     Click your username and the top right, followed by copy login command. <br>
     Press display token, copy login with this token. Such as:
     ```bash

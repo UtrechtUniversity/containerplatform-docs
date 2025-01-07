@@ -10,7 +10,7 @@ How to deploy an wordpress app on openshift running in unpriviliged containers
 ## Steps
 
 1. **Clone this repo**  
-[UtrechtUniversity/wordpress-example-app](https://github.com/UtrechtUniversity/wordpress-example-app)   
+<a href="https://github.com/UtrechtUniversity/wordpress-example-app" target="_blank">UtrechtUniversity/wordpress-example-app</a>
 `git clone https://github.com/UtrechtUniversity/wordpress-example-app`  
 
 2. **Replace the `<your-...>` with your own data in the yaml files below**  
@@ -28,5 +28,5 @@ How to deploy an wordpress app on openshift running in unpriviliged containers
 
 4. **Login to your admin site**  
    Go to the url you set in the ingress file, and append /admin to the url.  
-   e.g [wp-example.its.uu.nl/admin](https://wp-example.its.uu.nl/admin)  
+   e.g <a href="https://wp-example.its.uu.nl/admin" target="_blank">wp-example.its.uu.nl/admin</a>
    > Login with the credential you have set.
