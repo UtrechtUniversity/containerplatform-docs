@@ -94,3 +94,4 @@ If you want to upgrade an existing Helm deployment, use `helm upgrade`:
 ```bash
 helm upgrade artifactory-oss jfrog/artifactory-oss -f values.yaml
 ```
+.
