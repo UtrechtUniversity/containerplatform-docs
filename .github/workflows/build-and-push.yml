@@ -7,7 +7,6 @@ env:
   IMAGE_NAME: docs
   DEPLOYMENT_NAME: docs-public
   MAJOR_VERSION: 1
-  SSH_KEY_PATH: "~/.ssh/id_ed25519"
   OC_CLIENT_VERSION: "4.17"
   ACC_API_URL: api.cl01.cp-acc.its.uu.nl
   PRD_API_URL: api.cl01.cp.its.uu.nl
@@ -45,15 +44,11 @@ jobs:
       - name: Create SSH Key
         id: create_ssh_key
         run: |
-          # Create a temporary directory for the key
           mkdir -p ~/.ssh
-          export SSH_KEY_PATH="~/.ssh/id_ed25519"
-          # Write the secret to the key file
-          echo "${{ secrets.PROXY_PRIVATE_KEY }}" > $SSH_KEY_PATH
-          # Set permissions for the key
-          chmod 600 $SSH_KEY_PATH
+          echo "${{ secrets.PROXY_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
           eval "$(ssh-agent -s)"
-          echo "${{ secrets.PROXY_PASSPHRASE }}" | ssh-add $SSH_KEY_PATH
+          echo "${{ secrets.PROXY_PASSPHRASE }}" | ssh-add ~/.ssh/id_ed25519
 
       - name: "Build image"
         run: docker build -t ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
@@ -114,15 +109,11 @@ jobs:
       - name: Create SSH Key
         id: create_ssh_key
         run: |
-          # Create a temporary directory for the key
           mkdir -p ~/.ssh
-          export SSH_KEY_PATH="~/.ssh/id_ed25519"
-          # Write the secret to the key file
-          echo "${{ secrets.PROXY_PRIVATE_KEY }}" > $SSH_KEY_PATH
-          # Set permissions for the key
-          chmod 600 $SSH_KEY_PATH
+          echo "${{ secrets.PROXY_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
           eval "$(ssh-agent -s)"
-          echo "${{ secrets.PROXY_PASSPHRASE }}" | ssh-add $SSH_KEY_PATH
+          echo "${{ secrets.PROXY_PASSPHRASE }}" | ssh-add ~/.ssh/id_ed25519
 
       - name: "Build image"
         run: docker build -t ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable .
