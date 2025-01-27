@@ -61,6 +61,9 @@ artifactory:
     enabled: true
     hosts:
       - artifactory-bios-prd-cci.apps.cl01.cp.its.uu.nl
+    tls:
+      - termination: edge
+      - insecureEdgeTerminationPolicy: Redirect
 
   nginx:
     enabled: false
