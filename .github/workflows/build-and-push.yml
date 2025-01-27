@@ -47,7 +47,7 @@ jobs:
         run: |
           # Create a temporary directory for the key
           mkdir -p /tmp/ssh-key
-          export SSH_KEY_PATH="/tmp/ssh-key/id_rsa"
+          export SSH_KEY_PATH="/tmp/ssh-key/id_ed25519"
           # Write the secret to the key file
           echo "${{ secrets.PROXY_PRIVATE_KEY }}" > $SSH_KEY_PATH
           # Set permissions for the key
