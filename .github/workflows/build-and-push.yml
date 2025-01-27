@@ -52,10 +52,8 @@ jobs:
           echo "${{ secrets.PROXY_PRIVATE_KEY }}" > $SSH_KEY_PATH
           # Set permissions for the key
           chmod 600 $SSH_KEY_PATH
-          # Change the key format to PEM https://github.com/openssl/openssl/discussions/21481
-          ssh-keygen -p -m PEM -f $SSH_KEY_PATH
           eval "$(ssh-agent -s)"
-          ssh-add $SSH_KEY_PATH
+          echo "${{ secrets.PROXY_PASSPHRASE }}" | ssh-add $SSH_KEY_PATH
 
       - name: "Build image"
         run: docker build -t ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
