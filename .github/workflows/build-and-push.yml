@@ -45,10 +45,10 @@ jobs:
         id: create_ssh_key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.PROXY_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 400 ~/.ssh/id_ed25519
+          echo "${{ secrets.PROXY_PRIVATE_KEY }}" > ~/.ssh/id_ed25519.pem
+          chmod 600 ~/.ssh/id_ed25519.pem
           eval "$(ssh-agent -s)"
-          echo "${{ secrets.PROXY_PASSPHRASE }}" | ssh-add ~/.ssh/id_ed25519
+          echo "${{ secrets.PROXY_PASSPHRASE }}" | ssh-add ~/.ssh/id_ed25519.pem
 
       - name: "Build image"
         run: docker build -t ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
@@ -56,7 +56,7 @@ jobs:
 
       - name: setup tunnel with sshuttle
         run: |
-          SSHUTTLE_ARGS="-e 'ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519' --daemon" sshuttle -r ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} 0/0
+          SSHUTTLE_ARGS="-e 'ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519.pem' --daemon" sshuttle -r ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} 0/0
 
       - name: "Login to registry"
         run: echo ${{ secrets.SA_DEVOPS_TOKEN_ACC }} | docker login ${{ env.ACC_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
@@ -110,10 +110,10 @@ jobs:
         id: create_ssh_key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.PROXY_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 400 ~/.ssh/id_ed25519
+          echo "${{ secrets.PROXY_PRIVATE_KEY }}" > ~/.ssh/id_ed25519.pem
+          chmod 400 ~/.ssh/id_ed25519.pem
           eval "$(ssh-agent -s)"
-          echo "${{ secrets.PROXY_PASSPHRASE }}" | ssh-add ~/.ssh/id_ed25519
+          echo "${{ secrets.PROXY_PASSPHRASE }}" | ssh-add ~/.ssh/id_ed25519.pem
 
       - name: "Build image"
         run: docker build -t ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable .
@@ -121,7 +121,7 @@ jobs:
 
       - name: setup tunnel with sshuttle
         run: |
-          SSHUTTLE_ARGS="-e 'ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519' --daemon" sshuttle -r ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} 0/0
+          SSHUTTLE_ARGS="-e 'ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_ed25519.pem' --daemon" sshuttle -r ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} 0/0
 
       - name: "Login to registry"
         run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login ${{ env.PRD_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
