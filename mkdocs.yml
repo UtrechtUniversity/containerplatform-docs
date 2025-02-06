@@ -64,7 +64,7 @@ nav:
       - Access image registry: content/guides/access-registry.md
       - Deploy sample application: content/guides/deploy-a-sample-app.md
       - Deploy wordpress application: content/guides/wordpress-example-app.md
-      - Request a managed TLS certificate for your application: content/guides/request-tls-cert.md
+      - Request a managed TLS certificate for your application: content/guides/request-tls-certificate.md
       - NetApp storage: content/guides/netapp-storage.md
       - Deploy Apache rootless: content/guides/apache-nonroot.md
       - Deploy with ServiceAccount: content/guides/deploy-using-a-serviceaccount.md
