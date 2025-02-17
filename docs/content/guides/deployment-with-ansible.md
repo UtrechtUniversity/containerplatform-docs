@@ -3,7 +3,7 @@
 ## Prerequisites
 - You need to have an account and project on the Container Platform.
 - You need to have the OpenShift client tools installed. (only if you need to create a token)
-- You need to be have enough rights to deploy to your own project (setup by a key user)
+- You need to have enough permissions to deploy to your own project (setup by a key user)
 
 ## Install requirements
 

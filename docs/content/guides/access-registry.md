@@ -5,7 +5,7 @@
 - You need to have Docker / Podman / Buildah installed locally to be able to tag and push images
 - You need to have the OpenShift client tools installed.
 - You need to have at least edit rights on your project / projects, which all developers should have.
-- in this example, we use a locally build custom httpd container to push to OpenShift (localhost/custom-httpd:v4)
+- in this example, we use a local build custom httpd container to push to OpenShift (localhost/custom-httpd:v4)
 
 ### Steps
 
@@ -21,7 +21,7 @@
     ```
 2. Login to the registry.
 
-    You can use your username and token to login to the internal registry:
+    You can use your username and token to log in to the internal registry:
     ```bash
     $ docker login -u `oc whoami` -p `oc whoami --show-token` registry.cp.its.uu.nl
     Login Succeeded

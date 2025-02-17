@@ -1,1 +1,0 @@
-![overview_openshift.png](../../images/overview_openshift.png)

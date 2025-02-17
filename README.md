@@ -25,9 +25,7 @@ Container Platform public documentation
 ### Warning @linux team
 Because we like the fact that external people can contribute to our documentation, we need to be careful with the information
 we provide.
-Also we want them to make a fork of our master branch, in order for them to contribute to our documentation.
-Because of safety reasons the pipeline doesn't use the github secrets in the pull request made from the forked branch.
+Also, we want them to make a fork of our main branch, in order for them to contribute to our documentation.
+Because of safety reasons the pipeline doesn't use the GitHub secrets in the pull request made from the forked branch.
 So just check the contents, and if you are sure merge the pull request. 
 > That build will fail, with this reason `Failed to load key /tmp/ssh-key/id_rsa: error in libcrypto`
-
-Then afterward use the workflow dispatch to run the pipeline manually.

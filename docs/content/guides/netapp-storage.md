@@ -1,4 +1,4 @@
-# Net app Storage for OpenShift4
+# Net app Storage for OpenShift
 
 When using NetApp Trident with NFS ONTAP on OpenShift, several access modes are available for Persistent Volume Claims (
 PVCs).

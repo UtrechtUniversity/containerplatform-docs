@@ -1,10 +1,10 @@
 # wordpress-example-app
-How to deploy an wordpress app on openshift running in unpriviliged containers
+How to deploy a WordPress app on OpenShift running in unpriviliged containers
 
 ### Prerequisites
 
-**Have a dns entry for your site**  
-  Create a netwerk dns change in topdesk to apply for your dns name.  
+**Have a DNS entry for your site**  
+  Create a network DNS change in Topdesk to apply for your DNS name.  
   e.g. `wp-example.its.uu.nl`
 
 ## Steps

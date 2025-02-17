@@ -1,6 +1,6 @@
-# HOWTO's
+# Basic commands
 
-## **HOWTO: How to Monitor Pods**
+## **How to Monitor Pods**
 #### Using the OpenShift Console:
 Navigate to **Observe** > **Dashboards** or **Metrics**.
 #### CLI Method:
@@ -9,7 +9,7 @@ View pods:
 oc get pods -o wide -n <namespace>
 ```
 
-## **HOWTO: How to Start a Debug Container**
+## **How to Start a Debug Container**
 #### **Using the OpenShift Console**
 1. **Access the OpenShift Console:**
    Navigate to **Workloads > Pods**.
@@ -40,10 +40,10 @@ oc get pods -o wide -n <namespace>
 3. **Attach to a container:**
    After starting the debug pod, use `oc rsh` or `oc exec` to interact with the debug container.
 
-## **HOWTO: How to SSH into a Pod**
+## **How to connect to a pod using ssh**
 #### **CLI Method**
 Using `oc rsh`
-1. **Start an Interactive Shell in a Pod:**
+1. **Start an interactive shell in a pod:**
     ```bash
     oc rsh <pod-name>
     ```
@@ -52,7 +52,7 @@ Using `oc rsh`
       oc rsh my-app-pod
       ```
 #### **Using `oc exec`**
-1. **Run a Command in a Pod:**
+1. **Run a command in a pod:**
     ```bash
     oc exec -it <pod-name> -- <command>
     ```
@@ -61,7 +61,7 @@ Using `oc rsh`
     oc exec -it my-app-pod -- /bin/bash
     ```
 
-2. **Start a Bash Shell:**
+2. **Start a bash shell:**
     ```bash
     oc exec -it <pod-name> -- bash
     ```
@@ -77,13 +77,9 @@ Using `oc rsh`
     ```
    Check the `oc get pods` output to confirm the pod name and container name.
 
-## **HOWTO: How to debug network issues**
+## **How to debug network issues**
 #### **CLI Method**
 Use the netshoot image from quay.io:
 ```bash
 oc run tmp-shell --rm -i --tty --image quay.io/tccr/netshoot
 ```
-> I use this often so I made an alias for it in my `.bashrc`:
-> ```bash
-> alias netshoot='oc run tmp-shell --rm -i --tty --image quay.io/tccr/netshoot'
-> ```

@@ -1,6 +1,6 @@
 ## Single page webapp served from shared volume and exposed with ingress
 
-This is a simple example singlepage webapp that starts with a **PersistentVolumeClaim** and an onetime **Job** that
+This is a simple example singlepage webapp that starts with a **PersistentVolumeClaim** and a onetime **Job** that
 copies the `index.html` from a git gist to the shared volume. The **Deployment** spawns 3 **Pods** with an init
 container that waits until an `index.html` file is present.
 After that an unpriviledged nginx container starts serving it. A service is created and exposed through an **Ingress**,
@@ -10,7 +10,7 @@ Let's begin!
 
 ### Preparation
 
-Before applying the manifests be sure to login to the Kubernetes Openshift Cluster and create
+Before applying the manifests be sure to log in to the Kubernetes Openshift Cluster and create
 a <a href="https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/" target="_blank">docker secret</a>.  
 ie.
 `kubectl create secret docker-registry docker-cred --docker-server="docker.io" --docker-username=<your-uname> --docker-password=<your-pword> --docker-email=<your-uuemail>`
@@ -65,7 +65,7 @@ spec:
 ```
 
 In the meantime, the 3 **Pods** that are create by the **Deployment** are running their init containers which wait until
-the `index.html` file is present. Then an unpriviledged nginx container starts serving it. \
+the `index.html` file is present. Then an unpriviledged nginx container starts serving it.
 Note that the containers' **volumeMount** as `readOnly: true`. Since there is no need to write to it simultaneously,
 there is no need for a **StatefulSet**.
 
@@ -142,7 +142,7 @@ metadata:
     app: phoenix
   annotations:
     INGRESS.kubernetes.io/rewrite-target: /
-    cert-manager.io/cluster-issuer: letsencrypt # or: sectigo
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   ingressClassName: openshift-default
   rules:
@@ -186,7 +186,7 @@ spec:
           restartPolicy: Never
       backoffLimit: 4
 ```
-To verify it worked: `kubectl get ingress` and then curl the returned URL ie. `curl phoenix.k8s.im.hum.uu.nl`.
+To verify it worked: `kubectl get ingress` and then curl the returned URL i.e. `curl phoenix.k8s.im.hum.uu.nl`.
 
 ### Cleanup
 
