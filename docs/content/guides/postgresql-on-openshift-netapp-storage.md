@@ -13,7 +13,7 @@ To follow this guide, you need:
 - an account and project on the Container Platform.
 - the OpenShift client tools installed. 
 - helm installed
-- You need to be have enough rights to deploy to a project (setup by a key user)
+- You need to have enough permissions to deploy to a project (setup by a key user)
 
 ## Example deployment with a helm chart from bitnami
 

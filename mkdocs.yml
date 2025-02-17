@@ -51,16 +51,15 @@ extra_css:
   - stylesheets/extra.css
 
 copyright: |
-  &copy; 2024 <a href="https://uu.nl" target="_blank" rel="noopener"><Utrecht University. All rights reserved></a>
+  &copy; 2025 <a href="https://uu.nl" target="_blank" rel="noopener"><Utrecht University. All rights reserved></a>
 
 nav:
   - Welcome: index.md
   - Getting Started:
-      - Overview: content/basics/get-started.md
       - Login to the container platform: content/basics/login.md
+      - Basic commands: content/basics/basic-commands.md
   - Guides:
-      - Overview: content/guides/firstpage.md
-      - HOWTO: content/guides/howtos.md
+      - Overview: content/guides/guides.md
       - Access image registry: content/guides/access-registry.md
       - Deploy sample application: content/guides/deploy-a-sample-app.md
       - Deploy wordpress application: content/guides/wordpress-example-app.md
@@ -75,7 +74,6 @@ nav:
   - Reference:
       - Overview: content/references/reference.md
   - FAQ: faq.md
-  - Roadmap: roadmap.md
 
 markdown_extensions:
   - def_list

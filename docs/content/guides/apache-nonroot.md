@@ -5,7 +5,7 @@ By default, Docker containers are run as the root user. This means that you can 
 With a non-root container you can't do any of this . A non-root container should be configured for its main purpose, for example, run Apache. 
 
 ## Why use a non-root container?
-Mainly because it is a best practise for security. If there is a container engine security issue, running the container as an unprivileged user will prevent the malicious code from scaling permissions on the host node. Another reason is because some Kubernetes distributions, like OpenShift, forces you to use them. OpenShift runs containers with a random user, configured in your OpenShift project.
+It is the best practise for security. If there is a container engine security issue, running the container as an unprivileged user will prevent the malicious code from scaling permissions on the host node. Another reason is because some Kubernetes distributions, like OpenShift, forces you to use them. OpenShift runs containers with a random user, configured in your OpenShift project.
 
 ## Prequisites 
 - an account on dockerhub
