@@ -44,7 +44,7 @@ You got three options:
 - **Storage on openshift nodes** RWX:  
   ReadWriteMany (RWX): `accessModes:    ReadWriteMany`
 
-**12. Why We Use Bitnami Unprivileged Containers?**
+### **12. Why We Use Bitnami Unprivileged Containers?**
 
 - **Security Compliance:**
    OpenShift uses Security Context Constraints (SCCs) to define permissions and access controls for pods. By default, it restricts the use of root user to minimize the risk of privilege escalation attacks. Bitnami unprivileged containers are designed to comply with these constraints, ensuring smooth deployment and operation.
@@ -62,4 +62,4 @@ You got three options:
    Please follow the guide at [Accessing the OpenShift 4 console](content/basics/login.md)
 
 ### **14. How to request a TLS certificate for my application?**
-   Please follow the guide at [Requesting a TLS certificate](content/guides/request-tls-cert.md)
+   Please follow the guide at [Requesting a TLS certificate](content/guides/request-tls-certificate.md)
