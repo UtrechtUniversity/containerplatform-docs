@@ -29,5 +29,3 @@ Also, we want them to make a fork of our main branch, in order for them to contr
 Because of safety reasons the pipeline doesn't use the GitHub secrets in the pull request made from the forked branch.
 So just check the contents, and if you are sure merge the pull request. 
 > That build will fail, with this reason `Failed to load key /tmp/ssh-key/id_rsa: error in libcrypto`
-
-Then afterward use the workflow dispatch to run the pipeline manually.
