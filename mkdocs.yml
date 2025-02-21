@@ -76,6 +76,7 @@ nav:
   - FAQ: faq.md
 
 markdown_extensions:
+  - admonition
   - def_list
   - pymdownx.tasklist:
       custom_checkbox: true
