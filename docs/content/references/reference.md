@@ -1,7 +1,7 @@
 # Reference
 
 ### **Official Documentation**
-1. **OpenShift 4 Documentation**  
+1. **OpenShift Documentation**  
    <a href="https://docs.redhat.com/en" target="_blank">openshift-docs</a>
 2. **Red Hat Developer Resources**  
    <a href="https://developers.redhat.com" target="_blank">developers.redhat.com</a>
@@ -13,5 +13,5 @@
 ### **Third-Party Resources**
 1. **Medium Articles on OpenShift**  
    <a href="https://medium.com/tag/openshift" target="_blank">medium.com/tag/openshift</a>
-2. **Centrefordigitalhumanities**  
+2. **Centre for digital humanities**  
    <a href="https://centrefordigitalhumanities.github.io/hello-kubernetes-world/" target="_blank">hello-kubernetes-world</a>
