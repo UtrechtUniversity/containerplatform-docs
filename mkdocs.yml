@@ -71,6 +71,7 @@ nav:
       - Deploy single page webapp shared volume: content/guides/single-page-webapp-shared_volume.md
       - Deploy Postgresql with netapp persistent storage: content/guides/postgresql-on-openshift-netapp-storage.md
       - Deploy Artifactory Helm chart: content/guides/deploy-artifactory-chart.md
+      - Send mail from your application: content/guides/send-email-from-your-application.md
   - Reference:
       - Overview: content/references/reference.md
   - FAQ: faq.md
