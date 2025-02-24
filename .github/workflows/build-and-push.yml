@@ -1,4 +1,4 @@
-name: Build and push mkdocs openshift container to OpenShift
+name: Build and push public docs
 
 env:
   OPENSHIFT_PROJECT: docs
@@ -16,6 +16,10 @@ on:
     branches:
       - dev
       - main
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - "Dockerfile"
   workflow_dispatch:
 
 jobs:
@@ -29,19 +33,19 @@ jobs:
       - name: "Checkout code"
         uses: actions/checkout@v4
 
-      - name: Install CLI tools from OpenShift Mirror
+      - name: "Install CLI tools from OpenShift Mirror"
         uses: redhat-actions/openshift-tools-installer@v1
         with:
           source: "mirror"
           oc: ${{ env.OC_CLIENT_VERSION }}
 
-      - name: Install sshuttle
+      - name: "Install sshuttle"
         run: |
           sudo apt-get update
           sudo apt-get install -y python3-pip
           pip3 install sshuttle
 
-      - name: Create SSH Key
+      - name: "Create SSH Key"
         id: create_ssh_key
         run: |
           mkdir -p ~/.ssh
@@ -54,7 +58,7 @@ jobs:
         run: docker build -t ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
         shell: bash
 
-      - name: setup tunnel with sshuttle
+      - name: "Setup tunnel with sshuttle"
         run: |
           SSHUTTLE_ARGS="-e 'ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa' --daemon" sshuttle -r ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} 0/0
 
@@ -66,15 +70,13 @@ jobs:
         run: docker push ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev
         shell: bash
 
-      # Restart deployment
       - name: "Authenticate to OpenShift"
         run: oc login --token=${{ secrets.SA_DEVOPS_TOKEN_ACC }} --server=${{ env.ACC_API_URL }}:6443
 
       - name: "OpenShift restart deployment"
         run: oc delete pods --all --namespace ${{ env.OPENSHIFT_PROJECT }}
 
-      # cleanup
-      - name: Remove Docker config if it exists
+      - name: "Remove Docker config if it exists"
         run: |
           if [ -f "/home/runner/.docker/config.json" ]; then
             echo "File exists. Removing..."
@@ -82,7 +84,6 @@ jobs:
           else
             echo "File does not exist. Skipping..."
           fi
-
 
   production:
     runs-on: ubuntu-latest
@@ -94,19 +95,19 @@ jobs:
       - name: "Checkout code"
         uses: actions/checkout@v4
 
-      - name: Install CLI tools from OpenShift Mirror
+      - name: "Install CLI tools from OpenShift Mirror"
         uses: redhat-actions/openshift-tools-installer@v1
         with:
           source: "mirror"
           oc: ${{ env.OC_CLIENT_VERSION }}
 
-      - name: Install sshuttle
+      - name: "Install sshuttle"
         run: |
           sudo apt-get update
           sudo apt-get install -y python3-pip
           pip3 install sshuttle
 
-      - name: Create SSH Key
+      - name: "Create SSH Key"
         id: create_ssh_key
         run: |
           mkdir -p ~/.ssh
@@ -119,7 +120,7 @@ jobs:
         run: docker build -t ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable .
         shell: bash
 
-      - name: setup tunnel with sshuttle
+      - name: "Setup tunnel with sshuttle"
         run: |
           SSHUTTLE_ARGS="-e 'ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa' --daemon" sshuttle -r ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} 0/0
 
@@ -131,15 +132,13 @@ jobs:
         run: docker push ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable
         shell: bash
 
-      # Restart deployment
       - name: "Authenticate to OpenShift"
         run: oc login --token=${{ secrets.SA_DEVOPS_TOKEN }} --server=${{ env.PRD_API_URL }}:6443
 
       - name: "OpenShift restart deployment"
         run: oc delete pods --all --namespace ${{ env.OPENSHIFT_PROJECT }}
 
-      # cleanup
-      - name: Remove Docker config if it exists
+      - name: "Remove Docker config if it exists"
         run: |
           if [ -f "/home/runner/.docker/config.json" ]; then
             echo "File exists. Removing..."

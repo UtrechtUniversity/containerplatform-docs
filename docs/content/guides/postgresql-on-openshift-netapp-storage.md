@@ -1,10 +1,14 @@
-## Deploy postgresql on OpenShift with netapp
+!!! note
+    When using persistent storage for Databases like Postgresql, it is better to use the thin-csi storage class instead of the default netapp.
+    For example to deploy the bitnami Postgresql helm chart with the thin-csi storage class:  
+  
+    **$ helm install postgres oci://registry-1.docker.io/bitnamicharts/postgresql --set global.storageClass=thin-csi**
 
 ## Introduction
 Postgresql only starts when the username / userid the application runs as is the same as the owner of the data directory.
 The userid used by netapp is 99, so we need to tell postgres to also runs as userid 99 and don't use a random userid, which is the default on OpenShift.
-Normally we don't want this but for postgresql is the only way this works.
-Mariadb for example can run perfectly fine with random userid's.
+Normally we don't want this but for postgresql is the only way this works when using netapp storage.
+Mariadb for example can run perfectly fine with random userid's on netapp storage.
 
 ## Prerequisites
 
@@ -13,7 +17,7 @@ To follow this guide, you need:
 - an account and project on the Container Platform.
 - the OpenShift client tools installed. 
 - helm installed
-- You need to be have enough rights to deploy to a project (setup by a key user)
+- You need to have enough permissions to deploy to a project (setup by a key user)
 
 ## Example deployment with a helm chart from bitnami
 
@@ -101,7 +105,7 @@ postgresql 11:55:58.93 INFO  ==> ** Starting PostgreSQL **
 To be able to make this work we should do some modifications:
 
 * create a serviceaccount and set it in the helm chart (or let helm create it)
-* use a non root scc
+* use the custom SCC postgres-netapp
 * run with userid and groupid 99
 
 #### create service account
@@ -112,8 +116,8 @@ serviceaccount/postgresql created
 
 #### add scc to service account
 ```bash
-$ oc adm policy add-scc-to-user nonroot-v2 -z postgresql
-clusterrole.rbac.authorization.k8s.io/system:openshift:scc:nonroot-v2 added: "postgresql"
+$ oc adm policy add-scc-to-user postgres-netapp -z postgresql
+clusterrole.rbac.authorization.k8s.io/system:openshift:scc:postgres-netapp added: "postgresql"
 ```
 Note that only cluster admins can set the scc on a service account. The Linux team can help with that. 
 
@@ -122,19 +126,13 @@ We need to override some helm chart default values:
 
 ```bash
 $ cat custom-values.yaml 
-global:
-  compatibility:
-    openshift:
-      adaptSecurityContext: disabled     # this prevents from using random userid's
 primary:
   containerSecurityContext:
-    seLinuxOptions: 
-      level: "s0:c33,c22"
-    runAsUser: 99                        # run postgresql with uid 99
-    runAsGroup: 99                       # run postgresql with gid 99
+    enabled: true
+    runAsUser: 99
 serviceAccount:
-  create: false                          # set this to true if you want helm to create the service account.
   name: postgresql
+  create: false
 ```
 
 ```bash
@@ -192,3 +190,7 @@ postgresql 12:07:07.03 INFO  ==> Welcome to the Bitnami postgresql container
 ...
 2025-01-23 12:07:08.850 GMT [1] LOG:  database system is ready to accept connections
 ```
+
+!!! note
+    As said before, only use netapp NFS storage when using Postgresql if you know what you are doing and really want this!!
+

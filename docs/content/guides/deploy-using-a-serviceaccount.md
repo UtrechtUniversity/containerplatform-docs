@@ -30,7 +30,7 @@ A key-user can create service accounts for Developers in the projects they are a
 
 Here the project uu-boon0004 will be used as example OpenShift project.
 
-1. A key-user should login to the OpenShift GUI.
+1. A key-user should log in to the OpenShift GUI.
 
     - Go to <a href="https://console.cp.its.uu.nl" target="_blank">OpenShift Console</a>
     - Enter your UU credentials and MFA token.  
