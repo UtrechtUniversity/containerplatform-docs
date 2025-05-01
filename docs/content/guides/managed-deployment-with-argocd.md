@@ -1,12 +1,12 @@
 # How to manage your deployment with ArgoCD
 
 ## Prerequisites
-- Code repository with your application yaml files
+- Code repository with your application `yaml` files (contact the ITS Linux team to add your repository to ArgoCD)
 - An AppProject (provided by the ITS Linux team)
 
 ### Code repository
 ArgoCD manages the deployment of your application, based on the presence of the deployment files in your (configured) repository.
-Typically a deployment repo has files like:
+Typically, a deployment repo has files like:
 - `deployment.yaml`
 - `service.yaml`
 - `ingress.yaml`
@@ -14,14 +14,14 @@ Typically a deployment repo has files like:
 We've created an example Nginx deployment for inspiration which can be found here: https://git.its.uu.nl/ITS/example-argocd-deployment
 
 ### AppProject for ArgoCD
-An AppProject can be requested via a Topdesk call. The information needed for ITS Linux to create this appproject is the following:
+An AppProject can be requested via a Topdesk call. The information needed for ITS Linux to create this `AppProject` is the following:
 - In which namespace do you want to deploy your application?
 - What is the source git repository (.git url)?
 - Which OpenShift group is allowed to access the project (this is the group which has access in the namespace)?
 
 ## Create <application>.yaml application
 The `application.yaml` file is the file that ArgoCD uses to deploy your application. The file contains information about the application itself.
-The file is typically located in the argocd folder of your git repository. The file contains information about the application itself. 
+The file is typically located in the `argocd` folder of your git repository. The file contains information about the application itself. 
 The file should look similar like this:
 ```yaml
 ---
@@ -62,6 +62,6 @@ Now run the following command:
 
 `$ kubectl apply -f argocd/<name-of-the-application>.yaml`
 
-This will create the application in ArgoCD and it will start syncing the application with the git repository.
+This will create the application in ArgoCD, and it will start syncing the application with the git repository.
 
 Refer to the web UI for the status of the application. If everything is correct you should see a green checkmark for your application.
