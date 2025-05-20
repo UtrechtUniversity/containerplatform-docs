@@ -16,7 +16,7 @@ spec:
   tls:
   - hosts:
     - energygame.geo.uu.nl
-  secretName: hello-world-ingress-tls # Replace with your desired secret name (you don't need to make it in advance, it will be made for you)
+    secretName: hello-world-ingress-tls # Replace with your desired secret name (you don't need to make it in advance, it will be made for you)
   rules:
   - host: example.com  # Replace with your desired hostname
     http:
