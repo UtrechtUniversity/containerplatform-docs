@@ -1,4 +1,11 @@
 # Request a managed TLS certificate for your application
+
+???+ info "New clusterissuer Harica & new loadbalancers in front of the cluster"
+    We are in the process of adding a new clusterissuer (Harica) and new loadbalancers in front of the cluster. 
+    This will allow you to use the Harica certificate authority for TLS certificates. The new loadbalancers will 
+    also provide better performance and reliability for your applications. But there will be a change of ingressclass.
+    We will keep you updated on the progress of this work.
+
 To request a TLS certificate for your application, you can use cert-manager, which is a Kubernetes add-on that automates the management and issuance of TLS certificates. Cert-manager can be used to request certificates from Let's Encrypt and other certificate authorities. Currently, we only support Let's Encrypt on the OpenShift cluster. 
 > A big plus using cert-manager is, that cert-manager manages the certificate, meaning that cert-manager makes sure your certificate is replaced before it expires. No manual interaction is needed!
 ## Create an Ingress Resource
