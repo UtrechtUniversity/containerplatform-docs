@@ -72,8 +72,7 @@ nav:
       - Login to the container platform: content/basics/login.md
       - Basic commands: content/basics/basic-commands.md
   - Guides:
-      - Overview: content/guides/guides.md
-      Deployments:
+        Deployments:
         - Deploy sample application: content/guides/deploy-a-sample-app.md
         - Deploy wordpress application: content/guides/wordpress-example-app.md
         - Deploy Apache rootless: content/guides/apache-nonroot.md
