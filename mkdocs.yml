@@ -73,13 +73,13 @@ nav:
       - Basic commands: content/basics/basic-commands.md
   - Guides:
       Deployments:
+        - Deployments Introduction: content/guides/deployments-introduction.md
         - Deploy sample application: content/guides/deploy-a-sample-app.md
         - Deploy wordpress application: content/guides/wordpress-example-app.md
         - Deploy Apache rootless: content/guides/apache-nonroot.md
         - Deploy with ServiceAccount: content/guides/deploy-using-a-serviceaccount.md
         - Deploy with Ansible: content/guides/deployment-with-ansible.md
         - Deploy single page webapp shared volume: content/guides/single-page-webapp-shared_volume.md
-        - Deploy Postgresql with netapp persistent storage: content/guides/postgresql-on-openshift-netapp-storage.md
         - Deploy Artifactory Helm chart: content/guides/deploy-artifactory-chart.md
       Registry:
         - Access image registry: content/guides/access-registry.md
@@ -87,6 +87,7 @@ nav:
         - Request a managed TLS certificate for your application: content/guides/request-tls-certificate.md
       Storage:
         - NetApp storage: content/guides/netapp-storage.md
+        - Postgres with NetApp storage: content/guides/postgresql-on-openshift-netapp-storage.md
       Mail:
         - Send mail from your application: content/guides/send-email-from-your-application.md
   - Reference:
