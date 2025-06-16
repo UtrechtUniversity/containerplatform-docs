@@ -81,6 +81,10 @@ nav:
         - Deploy with Ansible: content/guides/deployment-with-ansible.md
         - Deploy single page webapp shared volume: content/guides/single-page-webapp-shared_volume.md
         - Deploy Artifactory Helm chart: content/guides/deploy-artifactory-chart.md
+      Loadbalancer:
+        - LoadBalancer Introduction: content/guides/loadbalancer-intro.md
+        - LoadBalancer Edge termination: content/guides/loadbalancer-edge.md
+        - LoadBalancer Passthrough: content/guides/loadbalancer-passthrough.md
       Registry:
         - Access image registry: content/guides/access-registry.md
       Certificate:
