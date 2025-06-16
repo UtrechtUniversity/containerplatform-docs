@@ -1,10 +1,10 @@
 ## Introduction Citrix Netscaler
 
-When you are running an application inside OpenShift, you need to provide a way for external users to access the applications from outside the OpenShift cluster.  
-Kubernetes provides an object called Ingress which allows you to define the rules for accessing the services with in the Kubernetes / OpenShift cluster.  
-At the University of Utrecht, we use Citrix Netscaler as Ingress / LoadBalancer.  
-NetScaler provides an implementation of the Kubernetes Ingress Controller to manage and route traffic into the OpenShift cluster.  
-The Citrix Netscaler (for now) provides load balancing at layer 7. 
+When you are running an application inside OpenShift, you need to provide a way for external users to access the applications from outside the OpenShift cluster.
+Kubernetes provides an object called Ingress which allows you to define the rules for accessing the services with in the Kubernetes / OpenShift cluster.
+At the University of Utrecht, we use Citrix Netscaler as Ingress / LoadBalancer.
+NetScaler provides an implementation of the Kubernetes Ingress Controller to manage and route traffic into the OpenShift cluster.
+The Citrix Netscaler (for now) provides load balancing at layer 7.
 In production, the url of the LoadBalancer is:
 
 
@@ -18,7 +18,7 @@ When you open an application to the outside world, you want it to be secure usin
 
 ### Cert Manager
 
-cert-manager is a powerful and extensible X.509 certificate controller for Kubernetes and OpenShift workloads. 
+cert-manager is a powerful and extensible X.509 certificate controller for Kubernetes and OpenShift workloads.
 It will obtain certificates from a variety of Issuers, both popular public Issuers as well as private Issuers, and ensure the certificates are valid and up-to-date, and will attempt to renew certificates at a configured time before expiry.
 cert-manager is using the ACME protocol that automates interactions between Certificate Authorities (CAs) and their users' servers.
 
@@ -34,7 +34,6 @@ At the University we have several issuers that use the ACME protocol and can be 
 
 Before, Sectigo was our private issuer to request certificates. Sectigo is not available anymore and will be replaced by Harica. At the moment Harica is not available yet using ACME.
 When you are developing or testing your code, letsencrypt-staging-vpx can be used.  For now, letsencrypt-vpx is the default for production use. When Harica is available this should be the default.
-
 
 ### Create CNAME
 
