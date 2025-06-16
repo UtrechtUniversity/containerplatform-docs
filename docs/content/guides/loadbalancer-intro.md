@@ -4,7 +4,7 @@ When you are running an application inside OpenShift, you need to provide a way 
 Kubernetes provides an object called Ingress which allows you to define the rules for accessing the services with in the Kubernetes / OpenShift cluster.
 At the University of Utrecht, we use Citrix Netscaler as Ingress / LoadBalancer.
 NetScaler provides an implementation of the Kubernetes Ingress Controller to manage and route traffic into the OpenShift cluster.
-The Citrix Netscaler (for now) provides load balancing at layer 7.
+The Citrix Netscaler (for now) provides load balancing at layer 7 only, so only HTTP traffic is possible.
 In production, the url of the LoadBalancer is:
 
 
@@ -14,9 +14,9 @@ In production, the url of the LoadBalancer is:
 
 ### Certificates
 
-When you open an application to the outside world, you want it to be secure using a TLS certificate. The request of a certificate should be easy and automated. For that we use cert manager.
+When you open an application to the outside world, you want it to be secure using a TLS certificate. The request of a certificate should be easy and automated. For that we use cert-manager.
 
-### Cert Manager
+### Cert-Manager
 
 cert-manager is a powerful and extensible X.509 certificate controller for Kubernetes and OpenShift workloads.
 It will obtain certificates from a variety of Issuers, both popular public Issuers as well as private Issuers, and ensure the certificates are valid and up-to-date, and will attempt to renew certificates at a configured time before expiry.
@@ -37,7 +37,7 @@ When you are developing or testing your code, letsencrypt-staging-vpx can be use
 
 ### Create CNAME
 
-First you have to (or let someone) create a CNAME that points to the LoadBalancer (vpx-cl01.cp.its.uu.nl)
+To use the LoadBalancer, First you have to (or let someone) create a CNAME that points to the LoadBalancer (vpx-cl01.cp.its.uu.nl)
 
 ```code
 dig +short app17.its.uu.nl
@@ -49,7 +49,7 @@ So here app17.its.uu.nl points to vpx-cl01.cp.its.uu.nl, which is the URL of the
 
 ### Termination Types
 
-Th loadbalancer can be setup using edge termination or passthrough. In edge termination, the traffic is encrypted from the browser to the loadbalancer. Traffic from the loadbalancer into the openshift
+The loadbalancer can be setup using edge termination or passthrough. In edge termination, the traffic is encrypted from the browser to the loadbalancer. Traffic from the loadbalancer into the openshift
 cluster is not encrypted. This is the easiest way to setup, because the application is not aware of any TLS certificates. Setting up TLS certificates on application pods is very application specific.
 
 For an example using edge termination: [Loadbalancer edge termination](loadbalancer-edge.md)

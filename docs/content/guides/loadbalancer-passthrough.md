@@ -5,7 +5,6 @@ When you create a passthrough ingress, the OpenShift pod mounts and uses the cer
 The application is aware of the certificates, which is not the case when edge termination is used.  
 Here the nginx image is used. The nginx configuration should be modified too to tell nginx which certificates should be used.
 
-
 ### 1. Create Nginx Configuration
 
 ```code
