@@ -92,6 +92,6 @@ spec:
           http-payload-string: '"HTTP/1.1 403 Forbidden\r\n\r\n" + "Client: " + CLIENT.IP.SRC + " is not authorized to access URL:" + HTTP.REQ.URL.HTTP_URL_SAFE +"\n"'
         respond-criteria: 'client.ip.src.IN_SUBNET(10.5.170.0/24)'
         comment: 'Blocklist certain IPs'
- ```
+```
 
 More examples can be found here: [allowlist-blocklist-ip](https://docs.netscaler.com/en-us/netscaler-k8s-ingress-controller/how-to/ip-whitelist-blacklist.html)
