@@ -54,3 +54,12 @@ cluster is not encrypted. This is the easiest way to setup, because the applicat
 
 For an example using edge termination: [Loadbalancer edge termination](loadbalancer-edge.md)
 For an example using passthrough: [Loadbalancer passthrough](loadbalancer-passthrough.md)
+
+### Allowlist / Blacklist
+
+Sometimes you want to allow or block access to your application for some IP addresses or CIDR.  
+To set this up see: [Loadbalancer allowlist blacklist](loadbalancer-white-black-list.md)
+
+### X-Forward-For
+
+To enable the X-Forward-For header: [Loadbalancer x-forward-for](loadbalancer-xforwardfor.md)

@@ -85,6 +85,8 @@ nav:
         - LoadBalancer Introduction: content/guides/loadbalancer-intro.md
         - LoadBalancer Edge termination: content/guides/loadbalancer-edge.md
         - LoadBalancer Passthrough: content/guides/loadbalancer-passthrough.md
+        - LoadBalancer Allowlist/Blacklist: content/guides/loadbalancer-white-black-list.md
+        - LoadBalancer XForwardFor: content/guides/loadbalancer-xforwardfor.md
       Registry:
         - Access image registry: content/guides/access-registry.md
       Certificate:
