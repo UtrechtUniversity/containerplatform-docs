@@ -72,19 +72,30 @@ nav:
       - Login to the container platform: content/basics/login.md
       - Basic commands: content/basics/basic-commands.md
   - Guides:
-      - Overview: content/guides/guides.md
-      - Access image registry: content/guides/access-registry.md
-      - Deploy sample application: content/guides/deploy-a-sample-app.md
-      - Deploy wordpress application: content/guides/wordpress-example-app.md
-      - Request a managed TLS certificate for your application: content/guides/request-tls-certificate.md
-      - NetApp storage: content/guides/netapp-storage.md
-      - Deploy Apache rootless: content/guides/apache-nonroot.md
-      - Deploy with ServiceAccount: content/guides/deploy-using-a-serviceaccount.md
-      - Deploy with Ansible: content/guides/deployment-with-ansible.md
-      - Deploy single page webapp shared volume: content/guides/single-page-webapp-shared_volume.md
-      - Deploy Postgresql with netapp persistent storage: content/guides/postgresql-on-openshift-netapp-storage.md
-      - Deploy Artifactory Helm chart: content/guides/deploy-artifactory-chart.md
-      - Send mail from your application: content/guides/send-email-from-your-application.md
+      Deployments:
+        - Deployments Introduction: content/guides/deployments-introduction.md
+        - Deploy sample application: content/guides/deploy-a-sample-app.md
+        - Deploy wordpress application: content/guides/wordpress-example-app.md
+        - Deploy Apache rootless: content/guides/apache-nonroot.md
+        - Deploy with ServiceAccount: content/guides/deploy-using-a-serviceaccount.md
+        - Deploy with Ansible: content/guides/deployment-with-ansible.md
+        - Deploy single page webapp shared volume: content/guides/single-page-webapp-shared_volume.md
+        - Deploy Artifactory Helm chart: content/guides/deploy-artifactory-chart.md
+      Loadbalancer:
+        - LoadBalancer Introduction: content/guides/loadbalancer-intro.md
+        - LoadBalancer Edge termination: content/guides/loadbalancer-edge.md
+        - LoadBalancer Passthrough: content/guides/loadbalancer-passthrough.md
+        - LoadBalancer Allowlist/Blacklist: content/guides/loadbalancer-white-black-list.md
+        - LoadBalancer XForwardFor: content/guides/loadbalancer-xforwardfor.md
+      Registry:
+        - Access image registry: content/guides/access-registry.md
+      Certificate:
+        - Request a managed TLS certificate for your application: content/guides/request-tls-certificate.md
+      Storage:
+        - NetApp storage: content/guides/netapp-storage.md
+        - Postgres with NetApp storage: content/guides/postgresql-on-openshift-netapp-storage.md
+      Mail:
+        - Send mail from your application: content/guides/send-email-from-your-application.md
   - Reference:
       - Overview: content/references/reference.md
   - FAQ: faq.md
