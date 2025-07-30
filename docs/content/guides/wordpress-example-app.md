@@ -15,12 +15,12 @@ How to deploy a WordPress app on OpenShift running in unpriviliged containers
 
 2. **Replace the `<your-...>` with your own data in the yaml files below**  
 
-     * [x] mariadb-secret.yaml
-     * [x] wordpress-cm.yaml
-     * [x] wordpress-ingress.yaml
-     * [x] wordpress-secret.yaml  
-   e.g.  
-   `wordpress-email: <your-email>` with `wordpress-email: thisismyemail@email.com`
+     * `mariadb-secret.yaml`
+     * `wordpress-cm.yaml`
+     * `wordpress-ingress.yaml`
+     * `wordpress-secret.yaml`  
+  
+     e.g. `wordpress-email: <your-email>` with `wordpress-email: thisismyemail@email.com`
 
 3. **Run the script wordpress-app.sh or oc command**  
    `bash wordpress-app.sh` or `oc apply -f .`  
