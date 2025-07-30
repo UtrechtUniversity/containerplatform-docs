@@ -1,8 +1,8 @@
 # How to manage your deployment with ArgoCD
 
 ## Prerequisites
-* Code repository with your application `yaml` files (contact the ITS Linux team to add your repository to ArgoCD)
-* An AppProject (provided by the ITS Linux team)
+- [x] Code repository with your application `yaml` files (contact the ITS Linux team to add your repository to ArgoCD)
+- [x] An AppProject (provided by the ITS Linux team)
 
 ### Code repository
 ArgoCD manages the deployment of your application, based on the presence of the deployment files in your (configured) repository.  

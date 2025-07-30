@@ -14,7 +14,7 @@ For a quick overview of what you will be doing check: <a href="https://kubernete
 
 ### Pre-requisites
 
-- Install sshuttle on your local machine
+- [x] sshuttle on your local machine
   <a href="https://sshuttle.readthedocs.io/en/stable/installation.html" target="_blank">sshuttle-docs</a>
 
 > If for some reason you don't have a Mac or Linux machine, you can use the Windows Subsystem for Linux (WSL) to install sshuttle <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10" target="_blank">wsl-docs</a>
