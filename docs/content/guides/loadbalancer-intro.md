@@ -28,12 +28,10 @@ At the University we have several issuers that use the ACME protocol and can be 
 | ---- |
 | letsencrypt-staging-vpx |
 | letsencrypt-vpx |
-| <s>sectigo</s> |
 | harica |
 
 
-Before, Sectigo was our private issuer to request certificates. Sectigo is not available anymore and will be replaced by Harica. At the moment Harica is not available yet using ACME.
-When you are developing or testing your code, letsencrypt-staging-vpx can be used.  For now, letsencrypt-vpx is the default for production use. When Harica is available this should be the default.
+When you are developing or testing your code, letsencrypt-staging-vpx can be used. Harica is available this should be the default for production.
 
 ### Create CNAME
 
