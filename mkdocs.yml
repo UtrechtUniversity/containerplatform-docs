@@ -34,6 +34,9 @@ theme:
       primary: custom
       accent: blue
   plugins:
+    - privacy:
+        links_attr_map:
+          target: _blank
     - mkdocs-macro
     - mkdocs-video:
         is_video: True

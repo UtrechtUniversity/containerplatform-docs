@@ -5,19 +5,20 @@
 - An AppProject (provided by the ITS Linux team)
 
 ### Code repository
-ArgoCD manages the deployment of your application, based on the presence of the deployment files in your (configured) repository.
+ArgoCD manages the deployment of your application, based on the presence of the deployment files in your (configured) repository.  
 Typically, a deployment repo has files like:
-- `deployment.yaml`
-- `service.yaml`
-- `ingress.yaml`
+* `deployment.yaml`  
+* `service.yaml`  
+* `ingress.yaml`  
 
-We've created an example Nginx deployment for inspiration which can be found here: https://git.its.uu.nl/ITS/example-argocd-deployment
+We've created an example Nginx deployment for inspiration which can be found here:  
+[example argo deployment](https://git.its.uu.nl/ITS/example-argocd-deployment)
 
 ### AppProject for ArgoCD
-An AppProject can be requested via a Topdesk call. The information needed for ITS Linux to create this `AppProject` is the following:
-- In which namespace do you want to deploy your application?
-- What is the source git repository (.git url)?
-- Which OpenShift group is allowed to access the project (this is the group which has access in the namespace)?
+An AppProject can be requested via a Topdesk call. The information needed for ITS Linux to create this `AppProject` is the following:  
+* In which namespace do you want to deploy your application?  
+* What is the source git repository (.git url)?  
+* Which OpenShift group is allowed to access the project (this is the group which has access in the namespace)?  
 
 ## Create <application>.yaml application
 The `application.yaml` file is the file that ArgoCD uses to deploy your application. The file contains information about the application itself.
