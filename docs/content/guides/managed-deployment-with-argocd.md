@@ -1,8 +1,8 @@
 # How to manage your deployment with ArgoCD
 
 ## Prerequisites
-- Code repository with your application `yaml` files (contact the ITS Linux team to add your repository to ArgoCD)
-- An AppProject (provided by the ITS Linux team)
+* Code repository with your application `yaml` files (contact the ITS Linux team to add your repository to ArgoCD)
+* An AppProject (provided by the ITS Linux team)
 
 ### Code repository
 ArgoCD manages the deployment of your application, based on the presence of the deployment files in your (configured) repository.  
@@ -54,7 +54,7 @@ spec:
 ```
 
 ## Deploy the application
-First login to the ArgoCD web UI: https://openshift-gitops-server-openshift-gitops.apps.cl01.cp.its.uu.nl/ (login with your SolisID).
+First login to the [ArgoCD web UI](https://openshift-gitops-server-openshift-gitops.apps.cl01.cp.its.uu.nl/) (login with your SolisID).
 
 Now it's time to "apply" the application file we've created above.
 To do so make sure that you're logged into the OpenShift CLI (`oc login --web https://api.cl01.cp.its.uu.nl:6443`)
