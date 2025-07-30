@@ -110,7 +110,7 @@ spec:
     app: speeltuin-cdh-uu-nl
 ```
 
-### allowlistip, new configuration
+### Allowlistip, new configuration
 > See the guide [Loadbalancer-white-black-list](loadbalancer-white-black-list.md) for examples and more information.
 
 ```yaml
