@@ -1,9 +1,9 @@
 Before you can access the <a href="https://console.cp.its.uu.nl" target="_blank">admin console</a> or the oc client, you'll have to setup an ssh tunnel through the steppingstone server.
 
 ## Prerequisites
-- You need to have a Solisid at the University Utrecht with 2fa enabled.
-- You need to have an account on the steppingstone server of the University Utrecht.
-- You need to have a project/ namespace on the OpenShift4 container platform of the University Utrecht.
+- [*] You need to have a Solisid at the University Utrecht with 2fa enabled.
+- [*] You need to have an account on the steppingstone server of the University Utrecht.
+- [*] You need to have a project/ namespace on the OpenShift4 container platform of the University Utrecht.
 
 If you do not have these prerequisites, please contact one of the service delivery managers of the Utrecht University.
 You can find all the information on how to do that on the <a href="https://manuals.uu.nl" target="_blank">manuals</a>
@@ -26,10 +26,12 @@ For a quick overview of what you will be doing check: <a href="https://kubernete
 2. Fill in your 2fa code when prompted
 
 Now the gui and cli of OpenShift are accessible, so you can start your epic work on OpenShift :-)
-> sshuttle is a VPN tool that transparently tunnels your internet traffic over SSH, combining the simplicity of SSH with
-> the capabilities of a VPN. It allows you to route traffic from your local machine through a remote server, effectively
-> providing a secure and encrypted connection without needing root access on the client
-> side. <a href="https://sshuttle.readthedocs.io/en/stable/usage.html" target="_blank">sshuttle-docs</a>
+
+???+ info "sshuttle"
+    sshuttle is a powerful tool that allows you to create a VPN-like connection over SSH, combining the simplicity of SSH 
+    with the capabilities of a VPN. It allows you to route traffic from your local machine through a remote server, 
+    effectively providing a secure and encrypted connection without needing root access on the client side. 
+    <a href="https://sshuttle.readthedocs.io/en/stable/usage.html" target="_blank">sshuttle-docs</a>
 
 ## Option 2: socks5-proxy
 
