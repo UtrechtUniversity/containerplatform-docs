@@ -11,7 +11,7 @@ Files needed for the migration:
 └── service.yaml
 ```
 
-### Ingress, old configuration which is deprecated (in the near future)
+### Ingress, old configuration
 > The haproxy.router.openshift.io/ip_whitelist annotation will be replaced by the api object rewritepolicy.
 
 ```yaml
@@ -42,7 +42,7 @@ spec:
     secretName: speeltuin-cdh-uu-nl-tls
 ```
 
-### Ingress, new configuration which is the new way to do it
+### Ingress, new configuration
 ```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -69,7 +69,7 @@ spec:
     secretName: speeltuin-cdh-uu-nl-tls
 ```
 
-### Service, old configuration which is deprecated (in the near future)
+### Service, old configuration
 
 ```yaml
 apiVersion: v1
@@ -110,7 +110,7 @@ spec:
     app: speeltuin-cdh-uu-nl
 ```
 
-### RewritePolicy, new configuration which is the new way to do it
+### RewritePolicy, new configuration
 > See the guide [Loadbalancer-white-black-list](loadbalancer-white-black-list.md) for examples and more information.
 
 ```yaml
