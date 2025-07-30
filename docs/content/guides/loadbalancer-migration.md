@@ -1,7 +1,7 @@
 # Migration from haproxy load balancer to vpx load balancer
  This guide will help you migrate from the haproxy load balancer to the vpx load balancer.
 
-## Example of the migration
+## Steps
 
 Files needed for the migration:
 ```code
@@ -110,7 +110,7 @@ spec:
     app: speeltuin-cdh-uu-nl
 ```
 
-### RewritePolicy, new configuration
+### allowlistip, new configuration
 > See the guide [Loadbalancer-white-black-list](loadbalancer-white-black-list.md) for examples and more information.
 
 ```yaml
