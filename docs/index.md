@@ -14,3 +14,5 @@ There is a README.md file in the root of the repository. This file contains the 
 ???+ info "Loadbalancer migration"
     We have configured the new citrix vpx load balancers, and they work like a charm. There is documentation on this site if you want to move the new
     load balancers. The old load balancers will be removed in the near future, so please migrate your applications to the new load balancers.
+
+![UU_logo_2021_EN_RGB.png](images/UU_logo_2021_EN_RGB.png)
