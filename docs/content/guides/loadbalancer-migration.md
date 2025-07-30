@@ -3,11 +3,13 @@
 
 ## Example of the migration
 
-- files you need to change:
-  - `ingress.yaml`
-  - `service.yaml`
-- files you need to create (if you use whitelisting):
-  - `allowlistip.yaml`
+Files needed for the migration:
+```code
+.
+├── allowlistip.yaml # only needed if you use whitelisting
+├── ingress.yaml
+└── service.yaml
+```
 
 ### Ingress, old configuration which is deprecated (in the near future)
 > The haproxy.router.openshift.io/ip_whitelist annotation will be replaced by the api object rewritepolicy.
