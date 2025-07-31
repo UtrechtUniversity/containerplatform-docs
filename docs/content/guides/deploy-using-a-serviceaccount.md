@@ -1,9 +1,9 @@
 ## These are the steps you can follow to create a service account to use in a CI/CD pipeline / Ansible playbook
 
 ## Prerequisites
-- You need to have an account and project on the Container Platform.
-- You need to have the OpenShift client tools installed.
-- You need to be admin for your own project(s) (key-user)
+- [x] You need to have an account and project on the Container Platform.
+- [x] You need to have the OpenShift client tools installed.
+- [x] You need to be admin for your own project(s) (key-user)
 
 ## Roles in OpenShift
 
