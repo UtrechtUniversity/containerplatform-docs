@@ -12,10 +12,18 @@ env:
   PRD_API_URL: api.cl01.cp.its.uu.nl
 
 on:
-  pull_request:
+  push:
     branches:
-      - dev
       - main
+    paths:
+      - "docs/**"
+      - "mkdocs.yml"
+      - "Dockerfile"
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
     paths:
       - "docs/**"
       - "mkdocs.yml"
@@ -26,7 +34,6 @@ jobs:
   acceptance:
     name: Acceptance Build&Push
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.base_ref == 'dev' || github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/dev'
     environment:
       name: acceptance
     steps:
@@ -88,7 +95,8 @@ jobs:
   production:
     runs-on: ubuntu-latest
     name: Production Build&Push
-    if: github.event_name == 'pull_request' && github.base_ref == 'main' || github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    if: ${{ github.ref == 'refs/heads/main' }}
+    needs: acceptance
     environment:
       name: production
     steps:
