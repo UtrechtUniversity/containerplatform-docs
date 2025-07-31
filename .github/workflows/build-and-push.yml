@@ -20,10 +20,13 @@ on:
       - "mkdocs.yml"
       - "Dockerfile"
   pull_request:
+    branches:
+      - main
     types:
       - opened
       - synchronize
       - reopened
+      - updated
     paths:
       - "docs/**"
       - "mkdocs.yml"
