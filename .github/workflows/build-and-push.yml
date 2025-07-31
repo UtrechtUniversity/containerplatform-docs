@@ -34,6 +34,7 @@ jobs:
   acceptance:
     name: Acceptance Build&Push
     runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' }}
     environment:
       name: acceptance
     steps:
