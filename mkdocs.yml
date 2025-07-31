@@ -79,6 +79,7 @@ nav:
         - Deployments Introduction: content/guides/deployments-introduction.md
         - Deploy sample application: content/guides/deploy-a-sample-app.md
         - Deploy wordpress application: content/guides/wordpress-example-app.md
+        - Deploy a custom application: content/guides/managed-deployment-with-argocd.md
         - Deploy Apache rootless: content/guides/apache-nonroot.md
         - Deploy with ServiceAccount: content/guides/deploy-using-a-serviceaccount.md
         - Deploy with Ansible: content/guides/deployment-with-ansible.md
