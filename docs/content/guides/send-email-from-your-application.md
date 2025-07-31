@@ -16,4 +16,11 @@ Alvast bedankt!
 ```
 
 ## Using the mail connector
-The mail connector is available on the following host: `smtp.uu.nl` on port `587` and the credentials you received.
+The mail connector is available on the following: 
+
+| SMTP server | Port | TLS/SSL |
+|-------------|------|---------|
+| smtp.uu.nl  | 587  | STARTTLS |
+
+You can use the mail connector in your application by configuring it to use the SMTP server `smtp.uu.nl` on port `587` with STARTTLS enabled.
+
