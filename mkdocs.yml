@@ -34,6 +34,9 @@ theme:
       primary: custom
       accent: blue
   plugins:
+    - privacy:
+        links_attr_map:
+          target: _blank
     - mkdocs-macro
     - mkdocs-video:
         is_video: True
@@ -79,6 +82,7 @@ nav:
         - Deploy Apache rootless: content/guides/apache-nonroot.md
         - Deploy with ServiceAccount: content/guides/deploy-using-a-serviceaccount.md
         - Deploy with Ansible: content/guides/deployment-with-ansible.md
+        - Deploy with ArgoCD: content/guides/managed-deployment-with-argocd.md
         - Deploy single page webapp shared volume: content/guides/single-page-webapp-shared_volume.md
         - Deploy Artifactory Helm chart: content/guides/deploy-artifactory-chart.md
       Loadbalancer:
