@@ -1,6 +1,13 @@
 # Migration from haproxy load balancer to vpx load balancer
  This guide will help you migrate from the haproxy load balancer to the vpx load balancer.
 
+## Prerequisites
+
+- [x] **Have a DNS entry (CNAME) for your site**  
+  Create a network DNS change in Topdesk to apply for your DNS name.  
+  e.g. `wp-example.its.uu.nl` --> `vpx-cl01.cp.its.uu.nl`  
+  CNAME wp-example.its.uu.nl (vpx-cl01.cp.its.uu.nl)
+
 ## Steps
 
 Files needed for the migration:
