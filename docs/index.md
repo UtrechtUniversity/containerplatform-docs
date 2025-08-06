@@ -1,4 +1,4 @@
-# Container Platform of the Utrecht University
+# Container Platform of Utrecht University
 
 Welcome to the documentation site for the Container Platform of Utrecht University.
 

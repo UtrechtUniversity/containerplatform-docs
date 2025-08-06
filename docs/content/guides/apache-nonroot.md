@@ -1,26 +1,26 @@
-# Run Apache as non root on OpenShift
+# Run Apache as non-root on OpenShift
 
 ## What are non-root containers?
 By default, Docker containers are run as the root user. This means that you can do whatever you want in your container, such as install system packages, edit configuration files, bind privilege ports, adjust permissions, create system users and groups, access networking information. 
-With a non-root container you can't do any of this . A non-root container should be configured for its main purpose, for example, run Apache. 
+With a non-root container, you can't do any of this. A non-root container should be configured for its main purpose, for example, run Apache. 
 
 ## Why use a non-root container?
-It is the best practise for security. If there is a container engine security issue, running the container as an unprivileged user will prevent the malicious code from scaling permissions on the host node. Another reason is because some Kubernetes distributions, like OpenShift, forces you to use them. OpenShift runs containers with a random user, configured in your OpenShift project.
+It is the best practice for security. If there is a container engine security issue, running the container as an unprivileged user will prevent the malicious code from scaling permissions on the host node. Another reason is because some Kubernetes distributions, like OpenShift, forces you to use them. OpenShift runs containers with a random user, configured in your OpenShift project.
 
-## Prequisites 
-- an account on dockerhub
-- a public repository named custom-httpd on dockerhub
-- docker installed on your local machine
-- a project in OpenShift
+## Prerequisites 
+- [x] An account on dockerhub.
+- [x] A public repository named custom-httpd on dockerhub.
+- [x] Docker installed on your local machine.
+- [x] A project in OpenShift.
 
 ## How to create a non-root container?
 
 In this example, an apache container from docker.io will be used.  
 This container runs as root.  
-It will be modified so that it runs on OpenShift.
+It will be modified so that it can run on OpenShift.
 
 ## Run root apache container on OpenShift.
-We are going to use a Dockerfile here and we will build the container and push it to dockerhub  
+We are going to use a Dockerfile, and then we will build the container and push it to dockerhub.  
 Replace DOCKER-USER with your own user account on dockerhub.
 
 1. **Clone this repository**
@@ -108,8 +108,8 @@ Replace DOCKER-USER with your own user account on dockerhub.
     no listening sockets available, shutting down
     AH00015: Unable to open logs
     ```
-    It complains that it can't bind to port 80, because it needs root privileges that is not allowed by OpenShift.
-    To fix this, we first modify the port in the Container to for example 8080.
+    It complains that it can't bind to port 80, because it needs root privileges that OpenShift does not allow.
+    To fix this, we first modify the port in the Container to, for example, 8080.
 
 4. **Change container port to 8080**
 
@@ -191,7 +191,7 @@ Replace DOCKER-USER with your own user account on dockerhub.
 
 5. **Change directory permissions**
 
-    In OpenShift, the container user is always member of the root group (but is not root!).  
+    In OpenShift, the container user is always a member of the root group (but is not root!).  
     The root group does not have any special permissions, unlike the root user.  
     You can use this to set the correct permissions for any random user OpenShift assigns to your container.
     ```bash
@@ -316,4 +316,4 @@ Replace DOCKER-USER with your own user account on dockerhub.
     </html>
     ```
 
-<h2>Now the image runs as non root on OpenShift!!</h2>
+<h2>Now the image runs as non-root on OpenShift!!</h2>
