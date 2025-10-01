@@ -157,6 +157,7 @@ spec:
     - speeltuin-cdh-uu-nl
 ```
 
+In the patset list you give access to specific IP addresses, without the /32 and in the respond-criteria you can add the CIDR subnet(s).
 
 > See the guide [Loadbalancer-white-black-list](loadbalancer-white-black-list.md) for examples and more information.
 
