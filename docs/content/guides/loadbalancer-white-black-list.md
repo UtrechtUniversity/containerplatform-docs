@@ -8,7 +8,7 @@ Some examples:
 
 To allow only two specific IP addresses:
 
-```code
+```yaml
 apiVersion: citrix.com/v1
 kind: rewritepolicy
 metadata:
@@ -35,7 +35,7 @@ like 10.1.170.55/32, this won't work.
 
 To allow a CIDR range only:
 
-```code
+```yaml
 apiVersion: citrix.com/v1
 kind: rewritepolicy
 metadata:
@@ -55,7 +55,7 @@ spec:
 
 Sometimes you may want to allow access from specific CIDR ranges and IP addresses.
 
-```code
+```yaml
 apiVersion: citrix.com/v1
 kind: rewritepolicy
 metadata:
@@ -87,7 +87,7 @@ So here access is allowed to IPs in the allowlistip patset and access from the C
 
 Two blocklist two  IP addresses: 
 
-```code
+```yaml
 apiVersion: citrix.com/v1
 kind: rewritepolicy
 metadata:
@@ -111,7 +111,7 @@ spec:
 
 ### Blocklist a CIDR
 
-```code
+```yaml
 apiVersion: citrix.com/v1
 kind: rewritepolicy
 metadata:

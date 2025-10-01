@@ -121,7 +121,7 @@ spec:
 
 As mentioned above, the haproxy loadbalancer uses the annotation haproxy.router.openshift.io/ip_whitelist to allow access to the ingress.
 
-```code
+```yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -135,7 +135,7 @@ metadata:
 This does not work on the Netscaler. This is replaced by a CRD rewritepolicy. If you had for example an ingress example like above that allows access
 from the CIDR ranges 131.211.0.0/16 and ip addresses 84.23.12.5 and 131.212.5.7, you can create the same with a rewritepolicy like below:
 
-```code
+```yaml
 apiVersion: citrix.com/v1
 kind: rewritepolicy
 metadata:
