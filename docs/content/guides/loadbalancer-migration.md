@@ -59,6 +59,7 @@ metadata:
   name: speeltuin-cdh-uu-nl
   namespace: gw-dev-systemteam-banana
 spec:
+  ingressClassName: nsic-vpx
   rules:
   - host: speeltuin.cdh.uu.nl
     http:
