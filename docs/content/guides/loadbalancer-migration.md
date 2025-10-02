@@ -55,7 +55,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-vpx # or letsencrypt-staging-vpx, for prd use harica
+    cert-manager.io/cluster-issuer: letsencrypt-vpx    # or letsencrypt-staging-vpx, for prd use harica !!
+    acme.cert-manager.io/http01-edit-in-place: "true"  # to make cert-manager work with insecure-termination: redirect
+    ingress.citrix.com/insecure-termination: redirect  # redirect port 80 -> 443
   name: speeltuin-cdh-uu-nl
   namespace: gw-dev-systemteam-banana
 spec:
