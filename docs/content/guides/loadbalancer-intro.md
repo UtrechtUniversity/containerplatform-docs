@@ -61,3 +61,7 @@ To set this up see: [Loadbalancer allowlist blacklist](loadbalancer-white-black-
 ### X-Forward-For
 
 To enable the X-Forward-For header: [Loadbalancer x-forward-for](loadbalancer-xforwardfor.md)
+
+### Configure an Ingress on the Netscaler using the GUI
+
+The procedure to create / modify an ingress using the GUI: [Loadbalancer configure GUI](loadbalancer-ingress-gui.md)
