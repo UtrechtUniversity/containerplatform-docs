@@ -19,6 +19,7 @@ We support two types of backups for CloudnativePG:
 Our storageclass `thin-csi` supports volume snapshots, on how to use the snapshot backup features, see the official docs: <a href="https://cloudnative-pg.io/documentation/1.27/appendixes/backup_volumesnapshot/#about-standard-volume-snapshots" target="_blank">snapshot feature</a>  
 #### 2. S3 Object Storage for backups
 Prerequisites:  
+
 - [x] **S3 bucket (contact our storageteam)**  
 - [x] **S3 credentials (access key id and secret access key)**  
 
