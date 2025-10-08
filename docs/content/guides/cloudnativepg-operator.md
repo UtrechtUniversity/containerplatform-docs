@@ -15,11 +15,10 @@ Use endpointURL: `https://s3.uu.nl` for S3 object storage
 
 ### Backup possibilities with CloudnativePG on our platform
 We support two types of backups for CloudnativePG:
-#### Volume snapshot for backups
+#### 1. Volume snapshot for backups
 Our storageclass `thin-csi` supports volume snapshots, on how to use the snapshot backup features, see the official docs: <a href="https://cloudnative-pg.io/documentation/1.27/appendixes/backup_volumesnapshot/#about-standard-volume-snapshots" target="_blank">snapshot feature</a>  
-#### S3 Object Storage for backups
-<b>Prerequisites:</b>  
-
+#### 2. S3 Object Storage for backups
+Prerequisites:  
 - [x] **S3 bucket (contact our storageteam)**  
 - [x] **S3 credentials (access key id and secret access key)**  
 
@@ -60,6 +59,9 @@ spec:
       parameters:
         barmanObjectName: cnpg-netapps3-store-test
 ```
+???+ warning "keep size the same for storage and walStorage"
+    It is advised to keep the size of `storage.size` and `walStorage.size` the same.
+    Otherwise, your app could run into issues when the disk is full.  
 
 ### Example of a minimal objectstore setup
 
