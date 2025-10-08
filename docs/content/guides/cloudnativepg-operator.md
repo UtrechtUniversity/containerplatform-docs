@@ -18,9 +18,9 @@ We support two types of backups for CloudnativePG:
 #### Volume snapshot for backups
 Our storageclass `thin-csi` supports volume snapshots, on how to see the official docs: <a href="https://cloudnative-pg.io/documentation/1.27/appendixes/backup_volumesnapshot/#about-standard-volume-snapshots" target="_blank">snapshot feature</a>  
 #### S3 Object Storage for backups
-prerequisites:
- - S3 bucket (contact our storageteam)
- - S3 credentials (access key id and secret access key)
+<b>Prerequisites:</b>
+- [x] **S3 bucket (contact our storageteam)**  
+- [x] **S3 credentials (access key id and secret access key)**  
 
 You can use the barman plugin to back up your cluster (databases) to our S3 object storage.
 If you want to use the barman plugin, you need to create a secret with your S3 credentials, and an ObjectStore object. See the example below.
@@ -94,6 +94,8 @@ metadata:
   namespace: example-namespace
 type: Opaque
 ```
+???+ info "`compression: bzip2`"
+    You can choose the algorithm, see the docs at: <a href="https://cloudnative-pg.io/documentation/1.27/appendixes/backup_barmanobjectstore/#compression-algorithms" target="_blank">Compression algorithms</a>
 
 ### Example of backup configuration
 
