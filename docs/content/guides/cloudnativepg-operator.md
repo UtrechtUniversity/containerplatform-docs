@@ -152,6 +152,55 @@ Always refer to the official documentation for the most up-to-date and comprehen
 Always refer to the official documentation for the most up-to-date and comprehensive information.  
 <a href="https://cloudnative-pg.io/documentation/1.27/rolling_update/" target="_blank">cloudnative-pg.io rolling updates</a>
 
+## Kubectl plugin
+You can install the kubectl plugin `cnpg` to manage your CloudnativePG clusters.  
+See the official documentation:  
+<a href="https://cloudnative-pg.io/documentation/1.27/kubectl-plugin/" target="_blank">cloudnative-pg.io kubectl plugin</a>  
+```bash
+tux@linux:~/git/containerplatform-docs$ kubectl cnpg --help
+A plugin to manage your CloudNativePG clusters
+
+Usage:
+  kubectl cnpg [command]
+
+Operator-level administration
+  install      CloudNativePG installation-related commands
+
+Troubleshooting
+  logs         Logging utilities
+  report       Report on the operator or a cluster for troubleshooting
+
+Cluster administration
+  destroy      Destroy the instance named CLUSTER-INSTANCE with the associated PVC
+  fencing      Fencing related commands
+  hibernate    Hibernation related commands
+  maintenance  Sets or removes maintenance mode from clusters
+  promote      Promote the instance named CLUSTER-INSTANCE to primary
+  reload       Reload a cluster
+  restart      Restart a cluster or a single instance in a cluster
+
+Database administration
+  backup       Request an on-demand backup for a PostgreSQL Cluster
+  certificate  Create a client certificate to connect to PostgreSQL using TLS and Certificate authentication
+  publication  Logical publication management commands
+  snapshot     DEPRECATED (use `backup -m volumeSnapshot` instead)
+  status       Get the status of a PostgreSQL cluster
+  subscription Logical subscription management commands
+
+Miscellaneous
+  fio          Creates a fio deployment, pvc and configmap
+  pgadmin4     Creates a pgAdmin deployment
+  pgbench      Creates a pgbench job
+  psql         Start a psql session targeting a CloudNativePG cluster
+
+Additional Commands:
+  completion   Generate the autocompletion script for the specified shell
+  help         Help about any command
+  version      Prints version, commit sha and date of the build
+
+```
+Really handy tool to have! I have used it to test the storage performance with the `fio` and `pgbench` commands.
+
 ## More Examples 
 Cloudnative PG has a lot of great examples and yaml files on their website, for different use cases.  
 <a href="https://cloudnative-pg.io/documentation/1.27/samples/" target="_blank">cloudnative-pg.io samples</a>
