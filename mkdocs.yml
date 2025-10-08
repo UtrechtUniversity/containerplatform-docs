@@ -92,6 +92,7 @@ nav:
         - LoadBalancer Allowlist/Blacklist: content/guides/loadbalancer-white-black-list.md
         - LoadBalancer XForwardFor: content/guides/loadbalancer-xforwardfor.md
         - LoadBalancer Migration: content/guides/loadbalancer-migration.md
+        - LoadBalancer Configuration GUI: content/guides/loadbalancer-ingress-gui.md
       Registry:
         - Access image registry: content/guides/access-registry.md
       Certificate:
