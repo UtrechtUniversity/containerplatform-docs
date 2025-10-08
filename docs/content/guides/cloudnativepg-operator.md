@@ -6,17 +6,25 @@ So we refer you to their documentation and code repository.
 Find the guide at <a href="https://cloudnative-pg.io/documentation/1.27/" target="_blank">cloudnative-pg.io</a>  
 Find the code at <a href="https://github.com/cloudnative-pg" target="_blank">GitHub cloudnative-pg</a>
 
-## Specifics for our OpenShift Container Platform
+# Specifics for our OpenShift Container Platform
 
 Use storageClass: `thin-csi`  
 Use postgresUID: `26`  
 Use postgresGID: `26`  
 
-You can use barman plugin to back up your cluster (databases) to our S3 object storage, or use the <a href="https://cloudnative-pg.io/documentation/1.27/appendixes/backup_volumesnapshot/#about-standard-volume-snapshots" target="_blank">snapshot feature</a>  
-If you want to use the barman plugin, you need to create a secret with your S3 credentials, and an ObjectStore object. See the example below.
-And contact our storageteam to create a bucket for you in our S3 object storage/ or give you access to.
+## Backups possible with CloudnativePG on our platform
+We support two types of backups for CloudnativePG:
+### Volume snapshot for backups
+Our storageclass `thin-csi` supports volume snapshots see the official docs: <a href="https://cloudnative-pg.io/documentation/1.27/appendixes/backup_volumesnapshot/#about-standard-volume-snapshots" target="_blank">snapshot feature</a>  
+### S3 Object Storage for backups
+prerequisites:
+ - S3 bucket (contact our storageteam)
+ - S3 credentials (access key id and secret access key)
 
-### Example of a minimal CloudnativePG cluster
+You can use the barman plugin to back up your cluster (databases) to our S3 object storage.
+If you want to use the barman plugin, you need to create a secret with your S3 credentials, and an ObjectStore object. See the example below.
+
+## Example of a minimal CloudnativePG cluster
 
 ```yaml
 ---
@@ -51,7 +59,7 @@ spec:
         barmanObjectName: cnpg-netapps3-store-test
 ```
 
-### Example of a minimal CloudnativePG objectstore setup
+## Example of a minimal CloudnativePG objectstore setup
 
 ```yaml
 ---
@@ -86,7 +94,7 @@ metadata:
 type: Opaque
 ```
 
-### Backup and Restore
+## Backup and Restore
 Always refer to the official documentation for the most up-to-date and comprehensive information.
 <a href="https://cloudnative-pg.io/documentation/1.27/operator_capability_levels/#point-in-time-recovery-pitr-from-a-backup" target="_blank">cloudnative-pg.io backup & restore</a>  
 PostgreSQL Backups
@@ -133,6 +141,6 @@ Replica clusters can be instantiated through various methods, including volume s
 
 Additionally, the flexibility extends to creating delayed replica clusters intentionally lagging behind the primary cluster. This intentional lag aims to minimize the Recovery Time Objective (RTO) in the event of unintended errors, such as incorrect DELETE or UPDATE SQL operations.### More execllent examples at their website
 
-### Examples 
+## Examples 
 Cloudnative PG has a lot of great examples and yaml files on their website, for different use cases.
 <a href="https://cloudnative-pg.io/documentation/1.27/samples/" target="_blank">cloudnative-pg.io samples</a>
