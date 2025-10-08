@@ -3,7 +3,7 @@
 We can't write better documentation about CloudnativePG than the CloudnativePG team itself. 
 So we refer you to their documentation and code repository.
 
-Find the guide at <a href="https://cloudnative-pg.io/documentation/1.27/" target="_blank">cloudnative-pg.io</a>  
+Find the docs guide at <a href="https://cloudnative-pg.io/documentation/1.27/" target="_blank">cloudnative-pg.io</a>  
 Find the code at <a href="https://github.com/cloudnative-pg" target="_blank">GitHub cloudnative-pg</a>
 
 ## Specifics for our OpenShift Container Platform
@@ -16,9 +16,10 @@ Use endpointURL: `https://s3.uu.nl` for S3 object storage
 ### Backup possibilities with CloudnativePG on our platform
 We support two types of backups for CloudnativePG:
 #### Volume snapshot for backups
-Our storageclass `thin-csi` supports volume snapshots, on how to see the official docs: <a href="https://cloudnative-pg.io/documentation/1.27/appendixes/backup_volumesnapshot/#about-standard-volume-snapshots" target="_blank">snapshot feature</a>  
+Our storageclass `thin-csi` supports volume snapshots, on how to use the snapshot backup features, see the official docs: <a href="https://cloudnative-pg.io/documentation/1.27/appendixes/backup_volumesnapshot/#about-standard-volume-snapshots" target="_blank">snapshot feature</a>  
 #### S3 Object Storage for backups
-<b>Prerequisites:</b>
+<b>Prerequisites:</b>  
+
 - [x] **S3 bucket (contact our storageteam)**  
 - [x] **S3 credentials (access key id and secret access key)**  
 
