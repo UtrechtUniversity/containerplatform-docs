@@ -97,6 +97,8 @@ nav:
         - Access image registry: content/guides/access-registry.md
       Certificate:
         - Request a managed TLS certificate for your application: content/guides/request-tls-certificate.md
+      Database:
+        - CloudNativePG PostgreSQL: content/guides/cloudnativepg-operator.md
       Storage:
         - NetApp storage: content/guides/netapp-storage.md
         - Postgres with NetApp storage: content/guides/postgresql-on-openshift-netapp-storage.md
