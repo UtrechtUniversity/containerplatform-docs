@@ -12,7 +12,7 @@ Use storageClass: `thin-csi`
 Use postgresUID: `26`  
 Use postgresGID: `26`  
 Use endpointURL: `https://s3.uu.nl` for S3 object storage  
-Use affinity block under spec in `cluster.spec.affinity` to schedule the cluster pods on the special database nodes.
+Use affinity block under spec in `cluster.spec.affinity` to schedule the cluster(postgres pods) pods on the special database nodes.  
 ```yaml
 ---
 kind: Cluster
@@ -29,7 +29,7 @@ spec:
       operator: Exists
       effect: NoSchedule
 ```
-Specs of the db nodes (minimal three nodes are always running in our platform, autoscaling is set up):
+Specs of the db nodes (minimal 4 nodes are always running in our platform, autoscaling is set up):
 ```bash
 CPU: 16 vCPU
 Memory: 32 GB
@@ -42,7 +42,7 @@ There is a machineautscaler setup for db nodes.
 apiVersion: "autoscaling.openshift.io/v1beta1"
 kind: "MachineAutoscaler"
 spec:
-  minReplicas: 3
+  minReplicas: 4
   maxReplicas: 12
 ```
 
