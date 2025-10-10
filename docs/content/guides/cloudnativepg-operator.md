@@ -29,22 +29,6 @@ spec:
       operator: Exists
       effect: NoSchedule
 ```
-Specs of the db nodes (minimal 4 nodes are always running in our platform, autoscaling is set up):
-```bash
-CPU: 16 vCPU
-Memory: 32 GB
-Disk: 240+ GB (SSD)
-Taints: node-role.kubernetes.io/db
-```
-There is a machineautscaler setup for db nodes.
-```yaml
----
-apiVersion: "autoscaling.openshift.io/v1beta1"
-kind: "MachineAutoscaler"
-spec:
-  minReplicas: 4
-  maxReplicas: 12
-```
 
 ### Backup possibilities with CloudnativePG on our platform
 We support two types of backups for CloudnativePG:
