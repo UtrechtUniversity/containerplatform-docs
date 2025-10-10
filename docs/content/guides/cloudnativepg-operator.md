@@ -12,6 +12,23 @@ Use storageClass: `thin-csi`
 Use postgresUID: `26`  
 Use postgresGID: `26`  
 Use endpointURL: `https://s3.uu.nl` for S3 object storage  
+Use affinity block under spec in `cluster.spec.affinity` to schedule the cluster(postgres pods) pods on the special database nodes.  
+```yaml
+---
+kind: Cluster
+apiVersion: postgresql.cnpg.io/v1
+metadata:
+  name: <example-name>
+  namespace: <example-namespace>
+spec:
+  affinity:
+    nodeSelector:
+      node-role.kubernetes.io/db: ""
+    tolerations:
+    - key: node-role.kubernetes.io/db
+      operator: Exists
+      effect: NoSchedule
+```
 
 ### Backup possibilities with CloudnativePG on our platform
 We support two types of backups for CloudnativePG:
@@ -36,6 +53,13 @@ metadata:
   name: cluster-example
   namespace: example-namespace
 spec:
+  affinity:
+    nodeSelector:
+      node-role.kubernetes.io/db: ""
+    tolerations:
+    - key: node-role.kubernetes.io/db
+      operator: Exists
+      effect: NoSchedule
   description: "CloudNativePG test Cluster"
   instances: 3
   bootstrap:
