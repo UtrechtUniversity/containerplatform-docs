@@ -34,6 +34,9 @@ theme:
       primary: custom
       accent: blue
   plugins:
+    - privacy:
+        links_attr_map:
+          target: _blank
     - mkdocs-macro
     - mkdocs-video:
         is_video: True
@@ -46,7 +49,20 @@ theme:
     social:
       - type: fontawesome/brands/github-alt
         link: https://github.com/UtrechtUniversity
-
+  icon:
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
 extra_css:
   - stylesheets/extra.css
 
@@ -59,19 +75,35 @@ nav:
       - Login to the container platform: content/basics/login.md
       - Basic commands: content/basics/basic-commands.md
   - Guides:
-      - Overview: content/guides/guides.md
-      - Access image registry: content/guides/access-registry.md
-      - Deploy sample application: content/guides/deploy-a-sample-app.md
-      - Deploy wordpress application: content/guides/wordpress-example-app.md
-      - Request a managed TLS certificate for your application: content/guides/request-tls-certificate.md
-      - NetApp storage: content/guides/netapp-storage.md
-      - Deploy Apache rootless: content/guides/apache-nonroot.md
-      - Deploy with ServiceAccount: content/guides/deploy-using-a-serviceaccount.md
-      - Deploy with Ansible: content/guides/deployment-with-ansible.md
-      - Deploy single page webapp shared volume: content/guides/single-page-webapp-shared_volume.md
-      - Deploy Postgresql with netapp persistent storage: content/guides/postgresql-on-openshift-netapp-storage.md
-      - Deploy Artifactory Helm chart: content/guides/deploy-artifactory-chart.md
-      - Send mail from your application: content/guides/send-email-from-your-application.md
+      Deployments:
+        - Deployments Introduction: content/guides/deployments-introduction.md
+        - Deploy sample application: content/guides/deploy-a-sample-app.md
+        - Deploy wordpress application: content/guides/wordpress-example-app.md
+        - Deploy Apache rootless: content/guides/apache-nonroot.md
+        - Deploy with ServiceAccount: content/guides/deploy-using-a-serviceaccount.md
+        - Deploy with Ansible: content/guides/deployment-with-ansible.md
+        - Deploy with ArgoCD: content/guides/managed-deployment-with-argocd.md
+        - Deploy single page webapp shared volume: content/guides/single-page-webapp-shared_volume.md
+        - Deploy Artifactory Helm chart: content/guides/deploy-artifactory-chart.md
+      Loadbalancer:
+        - LoadBalancer Introduction: content/guides/loadbalancer-intro.md
+        - LoadBalancer Edge termination: content/guides/loadbalancer-edge.md
+        - LoadBalancer Passthrough: content/guides/loadbalancer-passthrough.md
+        - LoadBalancer Allowlist/Blacklist: content/guides/loadbalancer-white-black-list.md
+        - LoadBalancer XForwardFor: content/guides/loadbalancer-xforwardfor.md
+        - LoadBalancer Migration: content/guides/loadbalancer-migration.md
+        - LoadBalancer Configuration GUI: content/guides/loadbalancer-ingress-gui.md
+      Registry:
+        - Access image registry: content/guides/access-registry.md
+      Certificate:
+        - Request a managed TLS certificate for your application: content/guides/request-tls-certificate.md
+      Database:
+        - CloudNativePG PostgreSQL: content/guides/cloudnativepg-operator.md
+      Storage:
+        - NetApp storage: content/guides/netapp-storage.md
+        - Postgres with NetApp storage: content/guides/postgresql-on-openshift-netapp-storage.md
+      Mail:
+        - Send mail from your application: content/guides/send-email-from-your-application.md
   - Reference:
       - Overview: content/references/reference.md
   - FAQ: faq.md
@@ -88,3 +120,4 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.details

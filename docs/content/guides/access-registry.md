@@ -1,11 +1,11 @@
 # These are the steps you can follow to access the internal OpenShift container registry.
 
 ### Prerequisites
-- You need to have an account and project on the Container Platform.
-- You need to have Docker / Podman / Buildah installed locally to be able to tag and push images
-- You need to have the OpenShift client tools installed.
-- You need to have at least edit rights on your project / projects, which all developers should have.
-- in this example, we use a local build custom httpd container to push to OpenShift (localhost/custom-httpd:v4)
+- [x] You need to have an account and project on the Container Platform.
+- [x] You need to have Docker / Podman / Buildah installed locally to be able to tag and push images
+- [x] You need to have the OpenShift client tools installed.
+- [x] You need to have at least edit rights on your project / projects, which all developers should have.
+> In this example, we use a local build custom httpd container to push to OpenShift (localhost/custom-httpd:v4)
 
 ### Steps
 
