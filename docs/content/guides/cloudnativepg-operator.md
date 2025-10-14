@@ -84,6 +84,25 @@ spec:
       parameters:
         barmanObjectName: cnpg-netapps3-store-test
 ```
+???+ info "DB credentials"
+    This example creates a DB with the name 'app', and a user with the username 'app'. The password has to be supplied
+    using a secret 'app-secret'. This secret must contain both the username and password, and must be of 
+    type `kubernetes.io/basic-auth`.
+
+    Example:
+    ```yaml
+    apiVersion: v1
+    data:
+      # Secret values are base64 encoded
+      username: YXBw  # note: this must match the username defined in the Cluster
+      password: cGFzc3dvcmQ=
+    kind: Secret
+    metadata:
+      name: app-secret
+    type: kubernetes.io/basic-auth
+    ```
+    
+
 ???+ warning "keep size the same for storage and walStorage"
     It is advised to keep the size of `storage.size` and `walStorage.size` the same.
     Otherwise, your app could run into issues when the disk is full.  
