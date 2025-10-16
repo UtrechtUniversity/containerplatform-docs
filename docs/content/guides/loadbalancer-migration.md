@@ -56,7 +56,7 @@ kind: Ingress
 metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-vpx    # or letsencrypt-staging-vpx, for prd use harica !!
-    acme.cert-manager.io/http01-edit-in-place: "true"  # to make cert-manager work with insecure-termination: redirect
+    acme.cert-manager.io/http01-edit-in-place: "true"  # only needed for letsencrypt (http01 validation), to make cert-manager work with insecure-termination: redirect
     ingress.citrix.com/insecure-termination: redirect  # redirect port 80 -> 443
   name: speeltuin-cdh-uu-nl
   namespace: gw-dev-systemteam-banana
@@ -154,8 +154,7 @@ spec:
   - responder-policy:
       comment: Allowlist certain IP addresses
       drop: ""
-      respond-criteria: '!client.ip.src.TYPECAST_text_t.equals_any("allowlistip")
-        && !client.ip.src.IN_SUBNET(131.211.0.0/16)
+      respond-criteria: '!client.ip.src.TYPECAST_text_t.equals_any("allowlistip") && !client.ip.src.IN_SUBNET(131.211.0.0/16)'
     servicenames:
     - speeltuin-cdh-uu-nl
 ```
