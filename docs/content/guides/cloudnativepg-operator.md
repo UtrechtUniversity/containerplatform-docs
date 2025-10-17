@@ -15,12 +15,14 @@ Use endpointURL: `https://s3.uu.nl` for S3 object storage
 Use affinity block under spec in `cluster.spec.affinity` to schedule the cluster(postgres pods) pods on the special database nodes.  
 ```yaml
 ---
-kind: Cluster
 apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
 metadata:
   name: <example-name>
   namespace: <example-namespace>
 spec:
+  instances: 1
+  enablePDB: false
   affinity:
     nodeSelector:
       node-role.kubernetes.io/db: ""
@@ -28,6 +30,8 @@ spec:
     - key: node-role.kubernetes.io/db
       operator: Exists
       effect: NoSchedule
+  storage:
+    size: 5Gi
 ```
 
 ### Backup possibilities with CloudnativePG on our platform
@@ -47,8 +51,8 @@ If you want to use the barman plugin, you need to create a secret with your S3 c
 
 ```yaml
 ---
-kind: Cluster
 apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
 metadata:
   name: cluster-example
   namespace: example-namespace
@@ -61,7 +65,7 @@ spec:
       operator: Exists
       effect: NoSchedule
   description: "CloudNativePG test Cluster"
-  instances: 3
+  instances: 1
   bootstrap:
     initdb:
       database: app
@@ -71,10 +75,10 @@ spec:
   logLevel: info
   primaryUpdateStrategy: unsupervised
   storage:
-    size: 20Gi
+    size: 5Gi
     storageClass: thin-csi
   walStorage:
-    size: 20Gi
+    size: 5Gi
     storageClass: thin-csi
   postgresUID: 26
   postgresGID: 26
@@ -92,14 +96,14 @@ spec:
     Example:
     ```yaml
     apiVersion: v1
-    data:
-      # Secret values are base64 encoded
-      username: YXBw  # note: this must match the username defined in the Cluster
-      password: cGFzc3dvcmQ=
     kind: Secret
     metadata:
       name: app-secret
     type: kubernetes.io/basic-auth
+    data:
+      # Secret values are base64 encoded
+      username: YXBw  # note: this must match the username defined in the Cluster
+      password: cGFzc3dvcmQ=
     ```
     
 
@@ -132,14 +136,14 @@ spec:
 
 ---
 apiVersion: v1
-data:
-  ACCESS_KEY_ID: dfdfkekdgDDGDGDDDFdf=
-  ACCESS_SECRET_KEY: DFDGGDDDG33ggsshha==
 kind: Secret
 metadata:
   name: netapps3-creds
   namespace: example-namespace
 type: Opaque
+data:
+  ACCESS_KEY_ID: dfdfkekdgDDGDGDDDFdf=
+  ACCESS_SECRET_KEY: DFDGGDDDG33ggsshha==
 ```
 ???+ info "`compression: bzip2`"
     You can choose the algorithm, see the docs at: <a href="https://cloudnative-pg.io/documentation/1.27/appendixes/backup_barmanobjectstore/#compression-algorithms" target="_blank">Compression algorithms</a>
@@ -163,8 +167,8 @@ spec:
 #### Scheduled
 ```yaml
 ---
-kind: ScheduledBackup
 apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
 metadata:
   name: scheduledbackup-sample
   namespace: example-namespace
@@ -200,7 +204,7 @@ You can install the kubectl plugin `cnpg` to manage your CloudnativePG clusters.
 See the official documentation:  
 <a href="https://cloudnative-pg.io/documentation/1.27/kubectl-plugin/" target="_blank">cloudnative-pg.io kubectl plugin</a>  
 ```bash
-tux@linux:~/git/containerplatform-docs$ kubectl cnpg --help
+$ kubectl cnpg --help
 A plugin to manage your CloudNativePG clusters
 
 Usage:
