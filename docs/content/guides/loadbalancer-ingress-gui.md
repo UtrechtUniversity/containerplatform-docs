@@ -102,7 +102,9 @@ spec:
         path: /
         pathType: Prefix
   tls:
-    secretName: test-website-tls          
+    - hosts:
+        - test-website.uu.nl
+      secretName: test-website-tls      
 ```
 
 
@@ -119,13 +121,10 @@ metadata:
 ```
 
 ```
-  - hosts:
-    - test-website.uu.nl # Change into your CNAME
-```
-
-```
   tls:
-    secretName: test-website-tls # Use meaningful name
+    - hosts:
+        - test-website.uu.nl # Change into your CNAME
+      secretName: test-website-tls # Give a meaningful name 
 ```
 
 ```
