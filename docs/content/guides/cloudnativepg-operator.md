@@ -195,7 +195,7 @@ Always refer to the official documentation for the most up-to-date and comprehen
 <a href="https://cloudnative-pg.io/documentation/1.27/recovery/" target="_blank">cloudnative-pg.io restore from backup</a>
 
 ???+ info "`restoration details`"
-    When preparing the restore cluster minifest, make sure to use the same name of the backup as in the S3 bucket. More info in https://github.com/cloudnative-pg/cloudnative-pg/issues/5434#issuecomment-2364618876
+    When preparing the restore cluster manifest, make sure to use the same name of the cluster as you can see in the S3 bucket. More info in https://github.com/cloudnative-pg/cloudnative-pg/issues/5434#issuecomment-2364618876
     Example follows
 
 ```yaml
