@@ -194,6 +194,51 @@ Always refer to the official documentation for the most up-to-date and comprehen
 Always refer to the official documentation for the most up-to-date and comprehensive information.  
 <a href="https://cloudnative-pg.io/documentation/1.27/recovery/" target="_blank">cloudnative-pg.io restore from backup</a>
 
+???+ info "`restoration details`"
+    When preparing the restore cluster minifest, make sure to use the same name of the backup as in the S3 bucket. More info in https://github.com/cloudnative-pg/cloudnative-pg/issues/5434#issuecomment-2364618876
+    Example follows
+
+```yaml
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: guppy-cluster-restore
+  labels:
+    app.kubernetes.io/name: guppy-cnpg
+spec:
+  description: "guppy cnpg DB restore"
+  instances: 1
+  logLevel: info
+  primaryUpdateStrategy: unsupervised
+  affinity:
+    nodeSelector:
+      node-role.kubernetes.io/db: ""
+    tolerations:
+    - key: node-role.kubernetes.io/db
+      operator: Exists
+      effect: NoSchedule
+  storage:
+    size: 2Gi
+    storageClass: thin-csi
+  walStorage:
+    size: 2Gi
+    storageClass: thin-csi
+  postgresUID: 26
+  postgresGID: 26
+  
+  superuserSecret:
+    name: guppy-secret
+  bootstrap:
+    recovery:
+      source: guppy-cluster
+  externalClusters:
+    - name: guppy-cluster
+      plugin:
+        name: barman-cloud.cloudnative-pg.io
+        parameters:
+          barmanObjectName: guppy-uuobjectstore
+          serverName: guppy-cluster
+```
 
 ## Rolling updates of the clusters
 Always refer to the official documentation for the most up-to-date and comprehensive information.  
