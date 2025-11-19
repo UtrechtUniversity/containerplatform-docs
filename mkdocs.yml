@@ -78,13 +78,14 @@ nav:
       Deployments:
         - Deployments Introduction: content/guides/deployments-introduction.md
         - Deploy sample application: content/guides/deploy-a-sample-app.md
-        - Deploy wordpress application: content/guides/wordpress-example-app.md
+        - Deploy WordPress application: content/guides/wordpress-example-app.md
         - Deploy Apache rootless: content/guides/apache-nonroot.md
         - Deploy with ServiceAccount: content/guides/deploy-using-a-serviceaccount.md
         - Deploy with Ansible: content/guides/deployment-with-ansible.md
         - Deploy with ArgoCD: content/guides/managed-deployment-with-argocd.md
         - Deploy single page webapp shared volume: content/guides/single-page-webapp-shared_volume.md
         - Deploy Artifactory Helm chart: content/guides/deploy-artifactory-chart.md
+        - Seal your secrets: content/guides/seal-your-secrets.md
       Loadbalancer:
         - LoadBalancer Introduction: content/guides/loadbalancer-intro.md
         - LoadBalancer Edge termination: content/guides/loadbalancer-edge.md
