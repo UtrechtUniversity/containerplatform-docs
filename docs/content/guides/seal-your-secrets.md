@@ -8,8 +8,8 @@ The controller is managed by the ITS Linux team.
 Sealed Secrets provide a way to manage sensitive information in a secure manner while still allowing you to version control your secrets. This is particularly useful in environments where you need to share configurations or collaborate with others without exposing sensitive data.
 
 ## How to seal your secrets
-To seal your secrets, follow these steps:
-1. **Install kubeseal**: Ensure you have the `kubeseal` CLI tool installed on your local machine. You can download it from the [Sealed Secrets GitHub releases page](https://github.com/bitnami-labs/sealed-secrets/tree/main?tab=readme-ov-file#kubeseal).
+To seal your secrets, follow these steps:  
+1. **Install kubeseal**: Ensure you have the `kubeseal` CLI tool installed on your local machine. You can download it from the [Sealed Secrets GitHub releases page](https://github.com/bitnami-labs/sealed-secrets/tree/main?tab=readme-ov-file#kubeseal).  
 2. **Create a Kubernetes Secret**: First, create a standard Kubernetes Secret manifest file (e.g., `mysecret.yaml`):
    ```yaml
    apiVersion: v1
