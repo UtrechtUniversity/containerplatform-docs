@@ -135,7 +135,7 @@ upload: ../tmp/file_0992.txt to s3://test-bucket/tmp/file_0992.txt
 Now let's simulate that we lost file_1000.txt
 
 ```bash
-rm /tmp/file_1000.txt
+$ rm /tmp/file_1000.txt
 ```
 
 ```bash
