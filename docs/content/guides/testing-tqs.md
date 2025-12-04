@@ -16,4 +16,4 @@ TQS offers services in the following areas:
 
 If you need support with application testing or quality assurance, the TQS department is the right place to contact.
 
-For more information, please visit the TQS website: [https://www.uu.nl/en/organisation/tqs-test-quality-services](https://www.uu.nl/en/organisation/tqs-test-quality-services)
+For more information, please visit the TQS website: [https://intranet.uu.nl/test-quality-services-tqs](https://intranet.uu.nl/test-quality-services-tqs)
