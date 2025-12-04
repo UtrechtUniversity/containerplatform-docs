@@ -106,6 +106,8 @@ nav:
         - S3 Backup and Restores: content/guides/s3-backup.md
       Mail:
         - Send mail from your application: content/guides/send-email-from-your-application.md
+      Testing:
+        - Test & Quality Services: content/guides/testing-tqs.md
   - Reference:
       - Overview: content/references/reference.md
   - FAQ: faq.md
