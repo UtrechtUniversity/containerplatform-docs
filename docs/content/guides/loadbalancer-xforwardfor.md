@@ -12,7 +12,7 @@ kind: rewritepolicy
 metadata:
   name: httpxforwardedforadd
 spec:
-  ingressclass: netscaler-vpx
+  ingressClassName: nsic-vpx
   rewrite-policies:
     - servicenames:
         - http
