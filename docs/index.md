@@ -11,8 +11,9 @@ If you want to contribute to this documentation (please do, because we value you
 Go to <a href="https://github.com/UtrechtUniversity/containerplatform-docs/" target="_blank">Container Platform docs repo</a>
 There is a README.md file in the root of the repository. This file contains the main information about the repository and the documentation site.
 
-???+ info "Load balancer migration"
-    We have configured the new citrix vpx load balancers, and they work like a charm. There is a guide on this site on how to move your apps to the new
-    load balancers. The old load balancers will be removed soon, so please migrate your applications to the new load balancers.
+???+ warning "Load balancer migration"
+    The deadline for migrating your applications to the new citrix vpx load balancers is the 9th of January 2026.  
+    There is a [guide](content/guides/loadbalancer-migration.md) on this site on how to move your apps to the new
+    load balancers.
 
 ![UU_logo_2021_EN_RGB.png](images/UU_logo_2021_EN_RGB.png)
