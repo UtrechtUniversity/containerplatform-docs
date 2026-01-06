@@ -75,42 +75,50 @@ nav:
       - Login to the container platform: content/basics/login.md
       - Basic commands: content/basics/basic-commands.md
   - Guides:
-      Deployments:
-        - Deployments Introduction: content/guides/deployments-introduction.md
-        - Deploy sample application: content/guides/deploy-a-sample-app.md
-        - Deploy WordPress application: content/guides/wordpress-example-app.md
-        - Deploy Apache rootless: content/guides/apache-nonroot.md
-        - Deploy with ServiceAccount: content/guides/deploy-using-a-serviceaccount.md
-        - Deploy with Ansible: content/guides/deployment-with-ansible.md
-        - Deploy with ArgoCD: content/guides/managed-deployment-with-argocd.md
-        - Deploy single page webapp shared volume: content/guides/single-page-webapp-shared_volume.md
-        - Deploy Artifactory Helm chart: content/guides/deploy-artifactory-chart.md
-        - Seal your secrets: content/guides/seal-your-secrets.md
-      Loadbalancer:
-        - LoadBalancer Introduction: content/guides/loadbalancer-intro.md
-        - LoadBalancer Edge termination: content/guides/loadbalancer-edge.md
-        - LoadBalancer Passthrough: content/guides/loadbalancer-passthrough.md
-        - LoadBalancer Allowlist/Blacklist: content/guides/loadbalancer-white-black-list.md
-        - LoadBalancer XForwardFor: content/guides/loadbalancer-xforwardfor.md
-        - LoadBalancer Migration: content/guides/loadbalancer-migration.md
-        - LoadBalancer Configuration GUI: content/guides/loadbalancer-ingress-gui.md
-      Registry:
-        - Access image registry: content/guides/access-registry.md
-      Certificate:
-        - Request a managed TLS certificate for your application: content/guides/request-tls-certificate.md
-      Database:
-        - CloudNativePG PostgreSQL: content/guides/cloudnativepg-operator.md
-      Storage:
-        - NetApp storage: content/guides/netapp-storage.md
-        - Postgres with NetApp storage: content/guides/postgresql-on-openshift-netapp-storage.md
-        - S3 Backup and Restores: content/guides/s3-backup.md
-      Mail:
-        - Send mail from your application: content/guides/send-email-from-your-application.md
-      Testing:
-        - Test & Quality Services: content/guides/testing-tqs.md
+      - Observe:
+          - Network Traffic: content/guides/observe-network-traffic.md
+      - Workloads:
+          - Deployments:
+              - Deployments Introduction: content/guides/deployments-introduction.md
+              - Deploy sample application: content/guides/deploy-a-sample-app.md
+              - Deploy WordPress application: content/guides/wordpress-example-app.md
+              - Deploy Apache rootless: content/guides/apache-nonroot.md
+              - Deploy with ServiceAccount: content/guides/deploy-using-a-serviceaccount.md
+              - Deploy with Ansible: content/guides/deployment-with-ansible.md
+              - Deploy with ArgoCD: content/guides/managed-deployment-with-argocd.md
+              - Deploy single page webapp shared volume: content/guides/single-page-webapp-shared_volume.md
+              - Deploy Artifactory Helm chart: content/guides/deploy-artifactory-chart.md
+          - Secrets:
+              - Seal your secrets: content/guides/seal-your-secrets.md
+      - Networking:
+          - Loadbalancer:
+              - LoadBalancer Introduction: content/guides/loadbalancer-intro.md
+              - LoadBalancer Edge termination: content/guides/loadbalancer-edge.md
+              - LoadBalancer Passthrough: content/guides/loadbalancer-passthrough.md
+              - LoadBalancer Allowlist/Blacklist: content/guides/loadbalancer-white-black-list.md
+              - LoadBalancer XForwardFor: content/guides/loadbalancer-xforwardfor.md
+              - LoadBalancer Migration: content/guides/loadbalancer-migration.md
+              - LoadBalancer Configuration GUI: content/guides/loadbalancer-ingress-gui.md
+          - Certificates:
+              - Request a managed TLS certificate for your application: content/guides/request-tls-certificate.md
+      - Container Registries:
+          - Internal registry:
+              - Access image registry: content/guides/access-registry.md
+          - External registries:
+              - Harbor: content/guides/access-harbor-registry.md
+      - Database:
+          - CloudNativePG PostgreSQL: content/guides/cloudnativepg-operator.md
+      - Storage:
+          - NetApp storage: content/guides/netapp-storage.md
+          - S3 Backup and Restores: content/guides/s3-backup.md
+      - Mail:
+          - Send mail from your application: content/guides/send-email-from-your-application.md
+      - Testing:
+          - Test & Quality Services: content/guides/testing-tqs.md
   - Reference:
       - Overview: content/references/reference.md
   - FAQ: faq.md
+  - Feedback: feedback.md
 
 markdown_extensions:
   - admonition
