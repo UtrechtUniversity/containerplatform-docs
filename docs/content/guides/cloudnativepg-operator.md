@@ -3,7 +3,7 @@
 We can't write better documentation about CloudnativePG than the CloudnativePG team itself. 
 So we refer you to their documentation and code repository.
 
-Find the docs guide at <a href="https://cloudnative-pg.io/documentation/1.27/" target="_blank">cloudnative-pg.io</a>  
+Find the docs guide at <a href="https://cloudnative-pg.io/docs/1.27/" target="_blank">cloudnative-pg.io</a>
 Find the code at <a href="https://github.com/cloudnative-pg" target="_blank">GitHub cloudnative-pg</a>
 
 ## Specifics for our OpenShift Container Platform
@@ -37,7 +37,7 @@ spec:
 ### Backup possibilities with CloudnativePG on our platform
 We support two types of backups for CloudnativePG:
 #### 1. Volume snapshot for backups
-Our storageclass `thin-csi` supports volume snapshots, on how to use the snapshot backup features, see the official docs: <a href="https://cloudnative-pg.io/documentation/1.27/appendixes/backup_volumesnapshot/#about-standard-volume-snapshots" target="_blank">snapshot feature</a>  
+Our storageclass `thin-csi` supports volume snapshots, on how to use the snapshot backup features, see the official docs: <a href="https://cloudnative-pg.io/docs/1.27/appendixes/backup_volumesnapshot/#about-standard-volume-snapshots" target="_blank">snapshot feature</a>
 #### 2. S3 Object Storage for backups
 Prerequisites:  
 
@@ -146,7 +146,7 @@ data:
   ACCESS_SECRET_KEY: DFDGGDDDG33ggsshha==
 ```
 ???+ info "`compression: bzip2`"
-    You can choose the algorithm, see the docs at: <a href="https://cloudnative-pg.io/documentation/1.27/appendixes/backup_barmanobjectstore/#compression-algorithms" target="_blank">Compression algorithms</a>
+    You can choose the algorithm, see the docs at: <a href="https://cloudnative-pg.io/docs/1.27/appendixes/backup_barmanobjectstore/#compression-algorithms" target="_blank">Compression algorithms</a>
 
 ### Example of backup configuration
 
@@ -187,12 +187,12 @@ spec:
 
 ## Backup
 Always refer to the official documentation for the most up-to-date and comprehensive information.  
-<a href="https://cloudnative-pg.io/documentation/1.27/backup/" target="_blank">cloudnative-pg.io backup</a>  
-<a href="https://cloudnative-pg.io/documentation/1.27/samples/#backups" target="_blank">cloudnative-pg.io backup samples</a>
+<a href="https://cloudnative-pg.io/docs/1.27/backup/" target="_blank">cloudnative-pg.io backup</a>
+<a href="https://cloudnative-pg.io/docs/1.27/samples/#backups" target="_blank">cloudnative-pg.io backup samples</a>
 
 ## Restore
-Always refer to the official documentation for the most up-to-date and comprehensive information.  
-<a href="https://cloudnative-pg.io/documentation/1.27/recovery/" target="_blank">cloudnative-pg.io restore from backup</a>
+Always refer to the official documentation for the most up-to-date and comprehensive information.
+<a href="https://cloudnative-pg.io/docs/1.27/recovery/" target="_blank">cloudnative-pg.io restore from backup</a>
 
 ???+ info "`restoration details`"
     When preparing the restore cluster manifest, make sure to use the same name for the external cluster source as you can see in the S3 bucket. More info in https://github.com/cloudnative-pg/cloudnative-pg/issues/5434#issuecomment-2364618876
@@ -242,12 +242,12 @@ spec:
 
 ## Rolling updates of the clusters
 Always refer to the official documentation for the most up-to-date and comprehensive information.  
-<a href="https://cloudnative-pg.io/documentation/1.27/rolling_update/" target="_blank">cloudnative-pg.io rolling updates</a>
+<a href="https://cloudnative-pg.io/docs/1.27/rolling_update/" target="_blank">cloudnative-pg.io rolling updates</a>
 
 ## Kubectl plugin
 You can install the kubectl plugin `cnpg` to manage your CloudnativePG clusters.  
 See the official documentation:  
-<a href="https://cloudnative-pg.io/documentation/1.27/kubectl-plugin/" target="_blank">cloudnative-pg.io kubectl plugin</a>  
+<a href="https://cloudnative-pg.io/docs/1.27/kubectl-plugin/" target="_blank">cloudnative-pg.io kubectl plugin</a>
 ```bash
 $ kubectl cnpg --help
 A plugin to manage your CloudNativePG clusters
@@ -295,4 +295,4 @@ Really handy tool to have! I have used it to test the storage performance with t
 
 ## More Examples 
 Cloudnative PG has a lot of great examples and yaml files on their website, for different use cases.  
-<a href="https://cloudnative-pg.io/documentation/1.27/samples/" target="_blank">cloudnative-pg.io samples</a>
+<a href="https://cloudnative-pg.io/docs/1.27/samples/" target="_blank">cloudnative-pg.io samples</a>
