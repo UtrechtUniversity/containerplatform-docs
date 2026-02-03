@@ -90,6 +90,7 @@ nav:
               - Deploy Artifactory Helm chart: content/guides/deploy-artifactory-chart.md
           - Secrets:
               - Seal your secrets: content/guides/seal-your-secrets.md
+              - Keep Secrets in the Vault: content/guides/vaulted-secrets.md
       - Networking:
           - Loadbalancer:
               - LoadBalancer Introduction: content/guides/loadbalancer-intro.md
