@@ -1,6 +1,6 @@
 # Vaulted Secrets - Proof of concept setup in SNI
 
-For a proof of concept a Single Node Infranode (SNI) Openshift cluster was created and two helm charts were installed and configured:
+For a proof of concept a Single Node Infranode (SNI) Openshift cluster was created and two helm charts were installed and configured:  
 - [OpenBao](https://openbao.org)  
 - [External Secrets Operator](https://external-secrets.io/)  
 
@@ -10,10 +10,10 @@ The overview of the concept looks like the flow diagram below.
 ![Vault-PoC-overview](../../images/Vault-PoC-overview.png)
 
 The External Secrets Operator syncs secrets from a Vault/OpenBao towards Kubernetes namespaces.
-As stated here the External Secrets Operator is supported for coupling with OpenBao <https://external-secrets.io/latest/provider/openbao/>.
+As stated in the External Secrets Operator docs, coupling with OpenBao is supported <https://external-secrets.io/latest/provider/openbao/>.
 
 ## OpenBao
-OpenBao is an opensource fork of HashiCorp Vault. We can view both OpenBao and HashiCorp Vault as a secrets storage for apps to consume (instead of human users as in case of Vaultwarden).
+OpenBao is an opensource fork of HashiCorp Vault. We can view both OpenBao and HashiCorp Vault as a secret stores for consumption by apps (instead of human users as in case of Vaultwarden).
 
 ### Why use OpenBao?
 Benefits of using OpenBao include:
@@ -51,9 +51,9 @@ Source: <https://external-secrets.io/latest/provider/hashicorp-vault/>
 ### External Secrets Operator setup
 After authenticating to the SNI, External Secrets Operator can be easily installed with helm as described in the official documentation <https://external-secrets.io/latest/introduction/getting-started/> (see Option 1). Now you can define CRDs - **ExternalSecret, SecretStore and ClusterSecretStore** that provide a user-friendly abstraction for the external API that stores and manages the lifecycle of the secrets.
 
+To continue apply the following YAMLs.  
 In this PoC, we'll use the root token to authenticate to OpenBao, of course different methods/approles are available for more fine-grained access.
 We need to base64 encode the token `echo -n '<root_token>' | base64` then place it in the `Secret` below.
-To proceed apply the following YAML.
 
 ```yaml
 apiVersion: v1
