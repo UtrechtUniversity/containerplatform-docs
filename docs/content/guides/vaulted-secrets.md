@@ -20,7 +20,7 @@ Benefits of using OpenBao include:
 - Centralized Management: Store all secrets in one place, reducing the risk of exposure.
 - Dynamic Secrets: Applications can retrieve secrets dynamically, ensuring they are always up-to-date.
 - Access Control: Fine-grained access policies can be enforced, allowing only authorized services to access specific secrets.
-- Potential to setup outside the cluster and therefore increasing resilience/security.
+- Potential to setup outside the cluster in VMs to increase resilience/security.
 
 ### OpenBao setup
 After authenticating to the SNI, OpenBao can be easily installed with helm as described in the official documentation <https://openbao.org/docs/platform/k8s/helm/>.
@@ -126,5 +126,5 @@ spec:
 ```
 
 ## Notes
-- The above setup worked fine in minikube as well.
+- The above setup worked fine in Minikube as well.
 - The above setup doesn't refer to High Availability mode of OpenBao. For more hints and info on it see <https://nanibot.net/posts/vault/> and <https://openbao.org/docs/2.3.x/internals/high-availability/>.
