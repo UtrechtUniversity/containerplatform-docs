@@ -16,11 +16,11 @@ As stated in the External Secrets Operator docs, coupling with OpenBao is suppor
 OpenBao is an opensource fork of HashiCorp Vault. We can view both OpenBao and HashiCorp Vault as a secret stores for consumption by apps (instead of human users as in case of Vaultwarden).
 
 ### Why use OpenBao?
-Benefits of using OpenBao include:
-- Centralized Management: Store all secrets in one place, reducing the risk of exposure.
-- Dynamic Secrets: Applications can retrieve secrets dynamically, ensuring they are always up-to-date.
-- Access Control: Fine-grained access policies can be enforced, allowing only authorized services to access specific secrets.
-- Potential to setup outside the cluster in VMs to increase resilience/security.
+Benefits of using OpenBao include:  
+- Centralized Management: Store all secrets in one place, reducing the risk of exposure.  
+- Dynamic Secrets: Applications can retrieve secrets dynamically, ensuring they are always up-to-date.  
+- Access Control: Fine-grained access policies can be enforced, allowing only authorized services to access specific secrets.  
+- Potential to setup outside the cluster in VMs to increase resilience/security.  
 
 ### OpenBao setup
 After authenticating to the SNI, OpenBao can be easily installed with helm as described in the official documentation <https://openbao.org/docs/platform/k8s/helm/>.
