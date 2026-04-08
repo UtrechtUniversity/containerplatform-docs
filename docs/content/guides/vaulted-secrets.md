@@ -1,5 +1,10 @@
 # Vaulted Secrets - Proof of concept setup in SNI
 
+> ## Important notice
+> 
+> This is a **proof of concept** setup for using Vaulted Secrets in SNI. This means that the setup in production is
+> not (yet) supported. When working with secrets in production you have to use sealed secrets.
+
 For a proof of concept a Single Node Infranode (SNI) Openshift cluster was created and two helm charts were installed and configured:  
 - [OpenBao](https://openbao.org)  
 - [External Secrets Operator](https://external-secrets.io/)  
