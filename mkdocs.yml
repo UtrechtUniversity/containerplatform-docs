@@ -74,6 +74,7 @@ nav:
   - Getting Started:
       - Login to the container platform: content/basics/login.md
       - Basic commands: content/basics/basic-commands.md
+      - Adding resources to Web Console (UI): content/basics/add-resources-to-web-console.md
   - Guides:
       - Observe:
           - Network Traffic: content/guides/observe-network-traffic.md
