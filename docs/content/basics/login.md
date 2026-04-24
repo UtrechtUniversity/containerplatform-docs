@@ -1,16 +1,20 @@
-Before you can access the <a href="https://console.cp.its.uu.nl" target="_blank">admin console</a> or the oc client, you'll have to setup an ssh tunnel through the steppingstone server.
+# Login to the admin console or use OC
+
+Before you can access the <a href="https://console.cp.its.uu.nl" target="_blank">admin console</a> or the oc client, you'll have to setup VPN or an ssh tunnel through the steppingstone server.
 
 ## Prerequisites
-- [x] You need to have a Solisid at the University Utrecht with 2fa enabled.
-- [x] You need to have an account on the steppingstone server of the University Utrecht.
-- [x] You need to have a project/ namespace on the OpenShift4 container platform of the University Utrecht.
+- [x] You need to have a SolisID at the University Utrecht with 2fa enabled.
 
-If you do not have these prerequisites, please contact one of the service delivery managers of the Utrecht University.
-You can find all the information on how to do that on the <a href="https://manuals.uu.nl" target="_blank">manuals</a>
-website.  
-For a quick overview of what you will be doing check: <a href="https://kubernetes.io/docs/tasks/extend-kubernetes/socks5-proxy-access-api/" target="_blank">k8s socks5-proxy-access-api</a>
+### Only for options 2 and 3
+- [x] You need to have access to the Utrecht University Steppingstone server.
 
-## Option 1: **sshuttle** (recommended)
+>If you do not have these prerequisites, please contact one of the service delivery managers of the Utrecht University.
+
+## Option 1: **Solis-VPN** (recommended)
+
+Follow the steps: <a href="https://intranet.uu.nl/kennisbank/mobiel-werken-solis-vpn" target="_blank">manual Solis-VPN</a>
+
+## Option 2: **sshuttle** (advanced)
 
 ### Pre-requisites
 
@@ -33,7 +37,7 @@ Now the gui and cli of OpenShift are accessible, so you can start your epic work
     effectively providing a secure and encrypted connection without needing root access on the client side. 
     <a href="https://sshuttle.readthedocs.io/en/stable/usage.html" target="_blank">sshuttle-docs</a>
 
-## Option 2: socks5-proxy
+## Option 3: socks5-proxy (advanced)
 
 ### Steps for the GUI
 Add lines below to your `~/.ssh/config` file.
