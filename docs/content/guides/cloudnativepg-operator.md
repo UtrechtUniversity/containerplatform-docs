@@ -21,8 +21,9 @@ metadata:
   name: <example-name>
   namespace: <example-namespace>
 spec:
-  instances: 1
-  enablePDB: false
+  instances: 3
+  enablePDB: true
+  switchoverDelay: 60
   affinity:
     nodeSelector:
       node-role.kubernetes.io/db: ""
