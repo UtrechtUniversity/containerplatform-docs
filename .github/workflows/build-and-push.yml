@@ -7,7 +7,9 @@ env:
   IMAGE_NAME: docs
   DEPLOYMENT_NAME: docs-public
   MAJOR_VERSION: 1
-  OC_CLIENT_VERSION: "4.17"
+  # Installs the latest release of oc with the major version 4.
+  # This is equivalent to "4.x" or "^4".
+  OC_CLIENT_VERSION: "4"
   ACC_API_URL: api.cl01.cp-acc.its.uu.nl
   PRD_API_URL: api.cl01.cp.its.uu.nl
 
@@ -36,12 +38,12 @@ on:
 jobs:
   acceptance:
     name: Acceptance Build&Push
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     environment:
       name: acceptance
     steps:
       - name: "Checkout code"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: "Install CLI tools from OpenShift Mirror"
         uses: redhat-actions/openshift-tools-installer@v1
@@ -49,28 +51,9 @@ jobs:
           source: "mirror"
           oc: ${{ env.OC_CLIENT_VERSION }}
 
-      - name: "Install sshuttle"
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y python3-pip
-          pip3 install sshuttle
-
-      - name: "Create SSH Key"
-        id: create_ssh_key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.PROXY_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          eval "$(ssh-agent -s)"
-          ssh-add ~/.ssh/id_rsa
-
       - name: "Build image"
         run: docker build -t ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev .
         shell: bash
-
-      - name: "Setup tunnel with sshuttle"
-        run: |
-          SSHUTTLE_ARGS="-e 'ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa' --daemon" sshuttle -r ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} 0/0
 
       - name: "Login to registry"
         run: echo ${{ secrets.SA_DEVOPS_TOKEN_ACC }} | docker login ${{ env.ACC_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
@@ -86,17 +69,8 @@ jobs:
       - name: "OpenShift restart deployment"
         run: oc delete pods --all --namespace ${{ env.OPENSHIFT_PROJECT }}
 
-      - name: "Remove Docker config if it exists"
-        run: |
-          if [ -f "/home/runner/.docker/config.json" ]; then
-            echo "File exists. Removing..."
-            rm -f "/home/runner/.docker/config.json"
-          else
-            echo "File does not exist. Skipping..."
-          fi
-
   production:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     name: Production Build&Push
     if: ${{ github.ref == 'refs/heads/main' }}
     needs: acceptance
@@ -104,7 +78,7 @@ jobs:
       name: production
     steps:
       - name: "Checkout code"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: "Install CLI tools from OpenShift Mirror"
         uses: redhat-actions/openshift-tools-installer@v1
@@ -112,28 +86,9 @@ jobs:
           source: "mirror"
           oc: ${{ env.OC_CLIENT_VERSION }}
 
-      - name: "Install sshuttle"
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y python3-pip
-          pip3 install sshuttle
-
-      - name: "Create SSH Key"
-        id: create_ssh_key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.PROXY_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          eval "$(ssh-agent -s)"
-          ssh-add ~/.ssh/id_rsa
-
       - name: "Build image"
         run: docker build -t ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable .
         shell: bash
-
-      - name: "Setup tunnel with sshuttle"
-        run: |
-          SSHUTTLE_ARGS="-e 'ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa' --daemon" sshuttle -r ${{ secrets.SSH_USERNAME }}@${{ secrets.STEPPINGSTONE_HOST }} 0/0
 
       - name: "Login to registry"
         run: echo ${{ secrets.SA_DEVOPS_TOKEN }} | docker login ${{ env.PRD_REGISTRY_URL }} -u ${{ secrets.OPENSHIFT_USERNAME }} --password-stdin
@@ -148,12 +103,3 @@ jobs:
 
       - name: "OpenShift restart deployment"
         run: oc delete pods --all --namespace ${{ env.OPENSHIFT_PROJECT }}
-
-      - name: "Remove Docker config if it exists"
-        run: |
-          if [ -f "/home/runner/.docker/config.json" ]; then
-            echo "File exists. Removing..."
-            rm -f "/home/runner/.docker/config.json"
-          else
-            echo "File does not exist. Skipping..."
-          fi
