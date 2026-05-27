@@ -69,6 +69,10 @@ jobs:
       - name: "OpenShift restart deployment"
         run: oc delete pods --all --namespace ${{ env.OPENSHIFT_PROJECT }}
 
+      - name: "Delete image on runner"
+        run: docker rmi ${{ env.ACC_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:dev"
+        shell: bash
+
   production:
     runs-on: self-hosted
     name: Production Build&Push
@@ -103,3 +107,7 @@ jobs:
 
       - name: "OpenShift restart deployment"
         run: oc delete pods --all --namespace ${{ env.OPENSHIFT_PROJECT }}
+
+      - name: "Delete image on runner"
+        run: docker rmi ${{ env.PRD_REGISTRY_URL }}/${{ env.OPENSHIFT_PROJECT }}/${{ env.IMAGE_NAME }}:stable"
+        shell: bash
