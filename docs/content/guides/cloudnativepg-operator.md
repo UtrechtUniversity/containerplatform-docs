@@ -15,14 +15,7 @@ Use endpointURL: `https://s3.uu.nl` for S3 object storage
 Use affinity block under spec in `cluster.spec.affinity` to schedule the cluster(postgres pods) pods on the special database nodes.  
 ```yaml
 ---
-apiVersion: postgresql.cnpg.io/v1
-kind: Cluster
-metadata:
-  name: <example-name>
-  namespace: <example-namespace>
 spec:
-  instances: 1
-  enablePDB: false
   affinity:
     nodeSelector:
       node-role.kubernetes.io/db: ""
@@ -30,8 +23,6 @@ spec:
     - key: node-role.kubernetes.io/db
       operator: Exists
       effect: NoSchedule
-  storage:
-    size: 5Gi
 ```
 
 ### Backup possibilities with CloudnativePG on our platform
@@ -65,7 +56,7 @@ spec:
       operator: Exists
       effect: NoSchedule
   description: "CloudNativePG test Cluster"
-  instances: 1
+  instances: 3
   bootstrap:
     initdb:
       database: app
@@ -73,6 +64,8 @@ spec:
       secret:
         name: app-secret
   logLevel: info
+  switchoverDelay: 60
+  primaryUpdateMethod: switchover
   primaryUpdateStrategy: unsupervised
   storage:
     size: 5Gi
