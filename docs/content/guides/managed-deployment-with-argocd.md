@@ -22,6 +22,83 @@ An AppProject can be requested via a Topdesk call. The information needed for IT
 - What is the source git repository (.git url)?  
 - Which OpenShift group is allowed to access the project (this is the group that has access to the namespace)?  
 
+### Private or internal Git repository
+
+If your Git repository is private or internal, ArgoCD requires credentials to access it. The recommended approach is to use a GitHub App.  
+Once the GitHub App has been configured, ArgoCD can access all repositories that the GitHub App has permission to read.
+
+#### Create a GitHub App
+
+1. Navigate to your GitHub organization.
+2. Go to **Settings → Developer settings → GitHub Apps**.
+3. Click **New GitHub App**.
+
+Configure the GitHub App with at least the following settings:
+
+##### Repository permissions
+
+| Permission | Access |
+|------------|--------|
+| Contents | Read-only |
+| Metadata | Read-only |
+
+##### Repository access
+
+Select one of the following:
+
+- **All repositories** (recommended)
+- **Only select repositories**
+
+If you choose **Only select repositories**, make sure the repositories that ArgoCD should deploy from are included.
+
+#### Generate a private key
+
+After creating and installing the GitHub App:
+
+1. Open the GitHub App.
+2. Select **Private keys**.
+3. Click **Generate a private key**.
+4. Download the generated `.pem` file.
+
+You will need the following values:
+
+- GitHub App ID
+- GitHub App Installation ID
+- GitHub App Private Key
+
+#### Create a Secret
+
+Create a Kubernetes Secret containing the GitHub App credentials:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: github-app-creds
+  namespace: openshift-gitops
+  labels:
+    argocd.argoproj.io/secret-type: repo-creds
+type: Opaque
+stringData:
+  githubAppID: "<GitHub App ID>"
+  githubAppInstallationID: "<Installation ID>"
+  githubAppPrivateKey: |
+    -----BEGIN RSA PRIVATE KEY-----
+    ...
+    -----END RSA PRIVATE KEY-----
+  url: https://github.com/<organization>
+  insecure: "true"
+  type: git
+  name: github
+```
+
+#### Seal the Secret
+
+Do **not** commit the unencrypted Secret to Git.
+Seal the Secret using your organization's Sealed Secrets process. The resulting `SealedSecret` can safely be committed to Git,   
+as only the Sealed Secrets controller running in OpenShift can decrypt it.
+[sealed-secrets](https://docs.cp.its.uu.nl/content/guides/seal-your-secrets/)
+
 ## Create <application>.yaml application
 The `application.yaml` file is the file that ArgoCD uses to deploy your application. The file contains information about the application itself.
 The file is typically located in the `argocd` folder of your git repository. The file contains information about the application itself. 
