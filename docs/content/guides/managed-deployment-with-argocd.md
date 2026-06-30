@@ -99,6 +99,9 @@ Seal the Secret using your organization's Sealed Secrets process. The resulting 
 as only the Sealed Secrets controller running in OpenShift can decrypt it.
 [sealed-secrets](https://docs.cp.its.uu.nl/content/guides/seal-your-secrets/)
 
+#### Send the sealed secret to the ITS Linux team
+They can add it to the `openshift-gitops` namespace, so argoCD can use it to access your private Git repository.
+
 ## Create <application>.yaml application
 The `application.yaml` file is the file that ArgoCD uses to deploy your application. The file contains information about the application itself.
 The file is typically located in the `argocd` folder of your git repository. The file contains information about the application itself. 
