@@ -61,14 +61,20 @@ in harbor, you can create robot accounts to run automated operations. This is es
 
 2. create pull secret in openshift
 
-    To use the robot account in OpenShift, you first have to create a docker-registry secret.
+    To use the robot account in OpenShift, you first have to create a docker-registry secret.  
+    You should create a sealed secret for this. For details about sealed secrets see: [sealed-secrets](https://docs.cp-acc.its.uu.nl/content/guides/seal-your-secrets/#how-to-seal-your-secrets)  
+    You can store this sealed secret in Git or use a command like below:  
+    
+    Fill in the correct --docker-username and --docker-password from step 1.
 
     ```bash
-    $ oc create secret docker-registry harbor-pull-secret \
-      --docker-server=harbor.its.uu.nl \
-      --docker-username='CHOSEN NAME FROM STEP 1' \
-      --docker-password='GENERATED TOKEN FROM STEP 1' \
-      --docker-email='example@uu.nl'
+    oc create secret docker-registry harbor-pull-secret \
+    --docker-server=harbor.its.uu.nl \
+    --docker-username='CHOSEN NAME FROM STEP 1' \
+    --docker-password='GENERATED TOKEN FROM STEP 1' \
+    --docker-email='example@uu.nl' -o yaml --dry-run=client | \
+    kubeseal --cert=https://seal.cp.its.uu.nl/v1/cert.pem --format=yaml | \
+    oc apply -f -
     ```
 
 3. Create deployment without image pull secret
