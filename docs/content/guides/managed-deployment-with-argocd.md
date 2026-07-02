@@ -17,9 +17,9 @@ We've created an example Nginx deployment for inspiration which can be found her
 
 ???+ info "Example Flask Application with ArgoCD"
     [Example Repository: Deploy Flask App to OpenShift with ArgoCD](https://github.com/UtrechtUniversity/example-repo-deploy-with-argocd)
-    
+
     This is a template repository demonstrating how to deploy a containerized Python application to OpenShift using ArgoCD for GitOps-based continuous deployment.
-    
+
     **Repository structure:**
     
     ```
