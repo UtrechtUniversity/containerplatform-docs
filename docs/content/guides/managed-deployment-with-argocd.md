@@ -15,6 +15,35 @@ Typically, a deployment repo has files like:
 We've created an example Nginx deployment for inspiration which can be found here:  
 [example argo deployment](https://git.its.uu.nl/ITS/example-argocd-deployment)
 
+???+ info "Example Flask Application with ArgoCD"
+    [Example Repository: Deploy Flask App to OpenShift with ArgoCD](https://github.com/UtrechtUniversity/example-repo-deploy-with-argocd)
+    
+    This is a template repository demonstrating how to deploy a containerized Python application to OpenShift using ArgoCD for GitOps-based continuous deployment.
+    
+    **Repository structure:**
+    
+    ```
+    .
+    ├── app.py                 # Flask application
+    ├── requirements.txt       # Python dependencies
+    ├── Dockerfile            # Container image definition
+    ├── openshift/            # OpenShift manifests
+    │   ├── deployment.yaml   # Deployment configuration
+    │   ├── service.yaml      # Service definition
+    │   ├── ingress.yaml      # Ingress configuration
+    │   └── configmap.yaml    # Environment variables
+    └── argocd/               # ArgoCD configuration
+        └── application.yaml  # ArgoCD Application definition
+    ```
+    
+    **Key features:**
+    
+    - Automated image builds and pushes via GitHub Actions
+    - Automatic version bumping with deployments
+    - Container registry integration (Harbor)
+    - Health checks and readiness probes
+    - Continuous deployment every 3 minutes via ArgoCD
+
 ### AppProject for ArgoCD
 An AppProject can be requested via a Topdesk call. The information needed for ITS Linux to create this `AppProject` is the following:  
 
