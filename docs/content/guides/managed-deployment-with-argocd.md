@@ -42,7 +42,7 @@ We've created an example Nginx deployment for inspiration which can be found her
     - Automatic version bumping with deployments
     - Container registry integration (Harbor)
     - Health checks and readiness probes
-    - Continuous deployment every 3 minutes via ArgoCD
+    - ArgoCD checks for Git changes approximately every 3 minutes by default (configurable)
 
 ### AppProject for ArgoCD
 An AppProject can be requested via a Topdesk call. The information needed for ITS Linux to create this `AppProject` is the following:  
