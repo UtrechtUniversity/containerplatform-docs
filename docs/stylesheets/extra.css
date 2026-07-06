@@ -6,10 +6,11 @@
     --md-primary-bg-color--light: #0000008a;
 }
 
-[data-md-color-scheme="default"] .md-typeset, [data-md-color-scheme="slate"] .md-typeset {
+[data-md-color-scheme="default"] .md-typeset,
+[data-md-color-scheme="slate"] .md-typeset {
     --md-typeset-a-color: var(--md-default-fg-color);
-}
 
-[data-md-color-scheme="default"] .md-typeset a, [data-md-color-scheme="slate"] .md-typeset a {
-    text-decoration: underline;
+    & a {
+        text-decoration: underline;
+    }
 }
