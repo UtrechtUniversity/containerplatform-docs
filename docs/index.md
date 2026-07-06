@@ -9,7 +9,7 @@ If you have any questions, first ask yourself if you can find the answer yoursel
 ???+ info "Join the Kubernetes & OpenShift Teams channel"  
     You can request to join our Teams community for Kubernetes and OpenShift. Clicking the link sends a join request, which a team owner needs to approve before you get access:
     [Request to join the Team](https://teams.microsoft.com/l/team/19%3A5Zj28eyZ4rlR11d73eps1PcxvmN7MMpYsBEVRxwf7pg1%40thread.tacv2/conversations?groupId=1bb75ba7-76f7-4533-ae16-348a788ee8cd&tenantId=d72758a0-a446-4e0f-a0aa-4bf95a4a10e7)  
-    <b>Learn, share knowledge, and help each other succeed.</b>  This channel is intended for knowledge sharing, discussion, and
+    **Learn, share knowledge, and help each other succeed.** This channel is intended for knowledge sharing, discussion, and
     collaboration between people working with Kubernetes and OpenShift. Feel free to ask questions, share experiences, and
     help each other out.  
     The Linux team monitors this channel, but we are not obligated to answer questions or provide support through Teams. If
