@@ -10,6 +10,10 @@
 #### Create a project
 1. By default you should have the proper permissions to create a new project.
 > The project name will be part of the URL, so choose carefully.
+
+Here you'll need to make a decision if your image may be downloaded publicly or if you need to be authenticated to download your image.
+If you choose the Access level to be Private, you'll need a pull secret or robot account (scroll down).
+
 2. Create a new project and set the access level to Public by checking the box.
 > By checking the box, anyone can pull your image without authenticating.
 
@@ -40,10 +44,10 @@ f5c3e456f51e: Pushed
 1.29: digest: sha256:c25290b2e274dbbbc1d13f74a56921082f1154b7a8b85e666d374f58d958b4cc size: 856
 ```
 
-#### use robot accounts
-in harbor, you can create robot accounts to run automated operations. This is especially useful when you have a private project / repository in Harbor.
+#### Use robot accounts
+In harbor, you can create robot accounts to run automated operations. This is especially useful when you have a private project / repository in Harbor.
 
-1. create Robot account  
+1. Create Robot account  
     Login to harbor, select Robot accounts and +NEW ROBOT ACCOUNT  
     give it a meaningful name, here: 
   
@@ -59,7 +63,7 @@ in harbor, you can create robot accounts to run automated operations. This is es
   
     Now you get to see the Secret token. This should be stored in a vault or in a GitHub secret etc.
 
-2. create pull secret in openshift
+2. Create pull secret in openshift
 
     To use the robot account in OpenShift, you first have to create a docker-registry secret.  
     You should create a sealed secret for this. For details about sealed secrets see: [sealed-secrets](https://docs.cp-acc.its.uu.nl/content/guides/seal-your-secrets/#how-to-seal-your-secrets)  
