@@ -76,8 +76,6 @@ nav:
       - Basic commands: content/basics/basic-commands.md
       - Adding resources to Web Console (UI): content/basics/add-resources-to-web-console.md
   - Guides:
-      - Observe:
-          - Network Traffic: content/guides/observe-network-traffic.md
       - Workloads:
           - Deployments:
               - Deployments Introduction: content/guides/deployments-introduction.md
